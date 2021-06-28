@@ -101,33 +101,11 @@ class ConfigProvider implements ConfigProviderInterface
                     'isActive' => $this->config->isActive($storeId),
                     'storeName' => $this->config->getStoreName($storeId),
                     'storeDescription' => $this->config->getStoreDescription($storeId),
-                    'signature' => $this->getSignature(),
                     'publicKey' => $this->scpConfig->getPublicKey($storeId),
                     'serviceUrl' => $this->getServiceUrl()
                 ]
             ]
         ];
-    }
-
-    /**
-     * @return string
-     */
-    private function getSignature()
-    {
-        try {
-            $storeId = $this->sessionManager->getStoreId();
-            $total = $this->checkoutSession->getQuote()->getBaseGrandTotal();
-            $response =  $this->securionPayCheckout->send([
-                AdapterInterface::FIELD_CURRENCY => $this->storeManager->getStore($storeId)->getCurrentCurrencyCode(),
-                AdapterInterface::FIELD_AMOUNT => $this->currencyHelper->getMinorUnits($total),
-                AdapterInterface::FIELD_REQUIRE_ATTEMPT => $this->config->isThreeDSecureEnabled($storeId)
-            ]);
-            $body = $response->getBody();
-            return $body['signature'];
-        } catch (\Exception $e) {
-            $this->logger->error($e->getMessage());
-            return '';
-        }
     }
 
     /**
