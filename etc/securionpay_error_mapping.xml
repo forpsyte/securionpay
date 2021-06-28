@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Payment:etc/error_mapping.xsd">
+    <message_list>
+        <message code="invalid_number" translate="true">The card number is not a valid card number.</message>
+        <message code="invalid_expiry_month" translate="true">The card's expiration month is invalid.</message>
+        <message code="invalid_expiry_year" translate="true">The card's expiration year is invalid.</message>
+        <message code="invalid_cvc" translate="true">Your card's security code is invalid.</message>
+        <message code="incorrect_zip" translate="true">The card's zip code failed verification.</message>
+        <message code="expired_card" translate="true">The card has expired.</message>
+        <message code="insufficient_funds" translate="true">The charge amount exceeds the available fund or the card's credit limit.</message>
+        <message code="lost_or_stolen" translate="true">The card is marked as lost or stolen.</message>
+        <message code="suspected_fraud" translate="true">The charge is suspected to be fraudulent.</message>
+        <message code="limit_exceeded" translate="true">You have exceeded defined limit.</message>
+        <message code="card_declined" translate="true">The card was declined for other reason.</message>
+        <message code="processing_error" translate="true">An error occurred while processing the card.</message>
+        <message code="blacklisted" translate="true">The card is blacklisted.</message>
+        <message code="expired_token" translate="true">The token has expired.</message>
+        <message code="incorrect_cvc" translate="true">The card's security code failed verification.</message>
+        <message code="authentication_required" translate="true">The charge requires cardholder authentication.</message>
+    </message_list>
+</mapping>

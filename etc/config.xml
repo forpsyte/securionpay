@@ -1,0 +1,84 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <csp>
+            <policies>
+                <storefront>
+                    <frame-ancestors>
+                        <inline>0</inline>
+                    </frame-ancestors>
+                </storefront>
+            </policies>
+        </csp>
+        <payment>
+            <securionpay>
+                <active>0</active>
+                <debug>0</debug>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_void>1</can_void>
+                <can_cancel>1</can_cancel>
+                <can_refund>1</can_refund>
+                <can_authorize_vault>1</can_authorize_vault>
+                <can_capture_vault>1</can_capture_vault>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>1</can_use_internal>
+                <is_gateway>1</is_gateway>
+                <model>SecurionPayFacade</model>
+                <order_status>processing</order_status>
+                <paymentInfoKeys>cc_type,cc_number_enc,id</paymentInfoKeys>
+                <privateInfoKeys>cc_exp_year,cc_exp_month,cvc,method_title,amount,currency,card</privateInfoKeys>
+                <payment_action>authorize</payment_action>
+                <title>Credit Card (SecurionPay)</title>
+                <currency>USD</currency>
+                <useccv>1</useccv>
+                <cctypes>VI,MC,AE,DI,JCB,DN,MI</cctypes>
+                <cctypes_securionpay_mapper><![CDATA[{"american-express":"AE","discover":"DI","jcb":"JCB","mastercard":"MC","master-card":"MC","visa":"VI","maestro":"MI","diners-club":"DN"}]]></cctypes_securionpay_mapper>
+                <three_d_secure_use_external_service_provider>0</three_d_secure_use_external_service_provider>
+                <three_d_secure_require_attempt>0</three_d_secure_require_attempt>
+                <three_d_secure_require_enrolled_card>0</three_d_secure_require_enrolled_card>
+                <three_d_secure_require_liability_shift>1</three_d_secure_require_liability_shift>
+                <environment_url><![CDATA[https://api.securionpay.com]]></environment_url>
+                <allowspecific>0</allowspecific>
+                <group>securionpay_group</group>
+                <fraud_result_risk><![CDATA[{"suspicious": "suspected fraud", "fraudulent": "fraud detected" }]]></fraud_result_risk>
+            </securionpay>
+            <securionpay_cc_vault>
+                <model>SecurionPayCreditCardVaultFacade</model>
+                <title>Saved Card (SecurionPay)</title>
+                <group>securionpay_group</group>
+            </securionpay_cc_vault>
+            <securionpay_checkout>
+                <active>0</active>
+                <debug>0</debug>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_void>1</can_void>
+                <can_cancel>1</can_cancel>
+                <can_refund>1</can_refund>
+                <can_use_checkout>1</can_use_checkout>
+                <can_use_internal>1</can_use_internal>
+                <is_gateway>1</is_gateway>
+                <model>SecurionPayCheckoutFacade</model>
+                <order_status>processing</order_status>
+                <paymentInfoKeys>cc_type,cc_number_enc,id</paymentInfoKeys>
+                <privateInfoKeys>cc_exp_year,cc_exp_month,cvc,method_title,amount,currency,card</privateInfoKeys>
+                <payment_action>authorize</payment_action>
+                <title>Credit Card (SecurionPay Checkout)</title>
+                <currency>USD</currency>
+                <useccv>1</useccv>
+                <cctypes>VI,MC,AE,DI,JCB,DN,MI</cctypes>
+                <cctypes_securionpay_mapper><![CDATA[{"american-express":"AE","discover":"DI","jcb":"JCB","mastercard":"MC","master-card":"MC","visa":"VI","maestro":"MI","diners-club":"DN"}]]></cctypes_securionpay_mapper>
+                <cctypes_securionpay_api_mapper><![CDATA[{"American Express":"AE","Discover":"DI","JCB":"JCB","MasterCard":"MC","Visa":"VI","Maestro":"MI","Diners Club":"DN", "Unknown":"NA"}]]></cctypes_securionpay_api_mapper>
+                <three_d_secure_use_external_service_provider>0</three_d_secure_use_external_service_provider>
+                <three_d_secure_require_attempt>0</three_d_secure_require_attempt>
+                <three_d_secure_require_enrolled_card>0</three_d_secure_require_enrolled_card>
+                <three_d_secure_require_liability_shift>1</three_d_secure_require_liability_shift>
+                <environment_url><![CDATA[https://api.securionpay.com]]></environment_url>
+                <allowspecific>0</allowspecific>
+                <group>securionpay_group</group>
+                <fraud_result_risk><![CDATA[{"suspicious": "suspected fraud", "fraudulent": "fraud detected" }]]></fraud_result_risk>
+            </securionpay_checkout>
+        </payment>
+    </default>
+</config>

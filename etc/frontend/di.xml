@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Visiture, LLC. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="securionpay_config_provider" xsi:type="object">Simon\SecurionPay\Model\Ui\ConfigProvider</item>
+                <item name="securionpay_checkout_config_provider" xsi:type="object">Simon\SecurionPay\Model\Ui\Checkout\ConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Payment\Model\CcGenericConfigProvider">
+        <arguments>
+            <argument name="methodCodes" xsi:type="array">
+                <item name="securionpay" xsi:type="const">Simon\SecurionPay\Model\Ui\ConfigProvider::CODE</item>
+                <item name="securionpay_checkout" xsi:type="const">Simon\SecurionPay\Model\Ui\Checkout\ConfigProvider::CODE</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Simon\SecurionPay\Block\Info">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item xsi:type="string" name="is_secure_mode">1</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Simon\SecurionPay\Block\Checkout\Info">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item xsi:type="string" name="is_secure_mode">1</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Vault\Model\Ui\TokensConfigProvider">
+        <arguments>
+            <argument name="tokenUiComponentProviders" xsi:type="array">
+                <item name="securionpay" xsi:type="object">Simon\SecurionPay\Model\Ui\TokenUiComponentProvider</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Plugins -->
+    <type name="Magento\Vault\Api\PaymentTokenRepositoryInterface">
+        <plugin name="securionpay_payment_token_repository_interface" type="Simon\SecurionPay\Plugin\PaymentTokenRepository" />
+    </type>
+</config>

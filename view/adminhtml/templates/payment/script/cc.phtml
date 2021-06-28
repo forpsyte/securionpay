@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Visiture, LLC. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var Simon\SecurionPay\Block\Payment $block */
+
+$code = $block->escapeHtml($block->getCode());
+
+?>
+<script>
+    //<![CDATA[
+    require(
+        [
+            'Simon_SecurionPay/js/securionpay',
+            'jquery',
+            'domReady!'
+        ], function(SecurionPay, $) {
+            let config = <?= /* @noEscape */ $block->getPaymentConfig() ?>,
+                payment,
+                form = $('#payment_form_<?= /* @noEscape */ $code ?>');
+
+            config.active = form.length > 0 && !form.is(':hidden');
+            payment = new SecurionPay(config);
+        });
+    //]]>
+</script>

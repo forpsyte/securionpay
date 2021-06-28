@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="securionpay_section" sortOrder="7" showInDefault="0" showInWebsite="0" showInStore="0">
+                <group id="securionpay" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SecurionPay</label>
+                    <comment>
+                        Offering a more convenient way to accept credit/debit cards in your Magento Store.
+                    </comment>
+                    <fieldset_css>complex securionpay-section</fieldset_css>
+                    <frontend_model>Simon\SecurionPay\Block\Adminhtml\System\Config\Fieldset\Payment</frontend_model>
+                    <attribute type="activity_path">payment/securionpay/active</attribute>
+                    <attribute type="displayIn">recommended_solutions</attribute>
+                    <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                           showInStore="0">
+                        <label>Enable this Solution</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>payment/securionpay/active</config_path>
+                        <requires>
+                            <group id="securionpay_required"/>
+                        </requires>
+                    </field>
+                    <field id="securionpay_cc_vault_active" translate="label" type="select" sortOrder="11" showInDefault="1"
+                           showInWebsite="1" showInStore="0">
+                        <label>Vault Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>payment/securionpay_cc_vault/active</config_path>
+                        <requires>
+                            <group id="securionpay_required"/>
+                        </requires>
+                    </field>
+                    <group id="securionpay_required" translate="label" showInDefault="1" showInWebsite="1" showInStore="1"
+                           sortOrder="5">
+                        <label>Basic SecurionPay Settings</label>
+                        <attribute type="expanded">1</attribute>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                               showInStore="1">
+                            <label>Title</label>
+                            <config_path>payment/securionpay/title</config_path>
+                        </field>
+                        <field id="environment_url" translate="label" type="text" sortOrder="30" showInDefault="1"
+                               showInWebsite="0" showInStore="0">
+                            <label>Environment Url</label>
+                            <config_path>payment/securionpay/environment_url</config_path>
+                        </field>
+                        <field id="payment_action" translate="label" type="select" sortOrder="50" showInDefault="1"
+                               showInWebsite="1" showInStore="0">
+                            <label>Payment Action</label>
+                            <source_model>Simon\SecurionPay\Model\Adminhtml\Source\PaymentAction</source_model>
+                            <config_path>payment/securionpay/payment_action</config_path>
+                        </field>
+                        <field id="public_key" translate="label" type="text" sortOrder="100" showInDefault="1"
+                               showInWebsite="1" showInStore="0">
+                            <label>Public Key</label>
+                            <config_path>payment/securionpay/public_key</config_path>
+                        </field>
+                        <field id="secret_key" translate="label" type="obscure" sortOrder="110" showInDefault="1"
+                               showInWebsite="1" showInStore="0">
+                            <label>Secret Key</label>
+                            <config_path>payment/securionpay/secret_key</config_path>
+                            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                        </field>
+                    </group>
+                    <group id="securionpay_checkout" translate="label" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20">
+                        <label>SecurionPay Checkout Settings</label>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="spc_active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Enable This Solution</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/securionpay_checkout/active</config_path>
+                        </field>
+                        <field id="spc_title" translate="label" type="text" sortOrder="10" showInDefault="1"
+                               showInWebsite="0" showInStore="0">
+                            <label>Title</label>
+                            <config_path>payment/securionpay_checkout/title</config_path>
+                        </field>
+                        <field id="store_name" translate="label" type="text" sortOrder="20" showInDefault="1"
+                               showInWebsite="0" showInStore="0">
+                            <label>Store Name</label>
+                            <config_path>payment/securionpay_checkout/store_name</config_path>
+                        </field>
+                        <field id="store_description" translate="label" type="text" sortOrder="30" showInDefault="1"
+                               showInWebsite="0" showInStore="0">
+                            <label>Description</label>
+                            <config_path>payment/securionpay_checkout/store_description</config_path>
+                        </field>
+                        <field id="spc_payment_action" translate="label" type="select" sortOrder="40" showInDefault="1"
+                               showInWebsite="1" showInStore="0">
+                            <label>Payment Action</label>
+                            <source_model>Simon\SecurionPay\Model\Adminhtml\Source\PaymentAction</source_model>
+                            <config_path>payment/securionpay_checkout/payment_action</config_path>
+                            <field id="spc_active">1</field>
+                        </field>
+                        <field id="spc_3ds_active" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Enable 3D Secure</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/securionpay_checkout/three_d_secure_active</config_path>
+                            <depends>
+                                <field id="spc_active">1</field>
+                            </depends>
+                        </field>
+                    </group>
+                    <group id="securionpay_advanced" translate="label" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="20">
+                        <label>Advanced SecurionPay Settings</label>
+                        <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                        <field id="debug" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Debug</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/securionpay/debug</config_path>
+                        </field>
+                        <field id="cctypes" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Credit Card Types</label>
+                            <source_model>Simon\SecurionPay\Model\Adminhtml\Source\CcType</source_model>
+                            <config_path>payment/securionpay/cctypes</config_path>
+                        </field>
+                        <field id="sort_order" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Sort Order</label>
+                            <frontend_class>validate-number</frontend_class>
+                            <config_path>payment/securionpay/sort_order</config_path>
+                        </field>
+                    </group>
+                    <group id="securionpay_3d_secure" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="40">
+                        <label>3D Secure Settings</label>
+                        <field id="3ds_active" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Enable for Custom Form</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/securionpay/three_d_secure_active</config_path>
+                        </field>
+                        <field id="require_attempt" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Require Attempt</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/securionpay/three_d_secure_require_attempt</config_path>
+                            <comment>
+                                When set to Yes, the charge will fail when 3D Secure verification was not attempted.
+                            </comment>
+                            <depends>
+                                <field id="3ds_active">1</field>
+                            </depends>
+                        </field>
+                        <field id="require_enrolled_card" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Require 3D Secure Enrolled Card</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/securionpay/three_d_secure_require_enrolled_card</config_path>
+                            <comment>
+                                When set to Yes, the charge will fail if card doesn't support 3D Secure (is not enrolled for 3D Secure verification).
+                            </comment>
+                            <depends>
+                                <field id="3ds_active">1</field>
+                            </depends>
+                        </field>
+                        <field id="require_liability_shift" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Require Liability Shift</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <config_path>payment/securionpay/three_d_secure_require_liability_shift</config_path>
+                            <comment>
+                                When set to Yes, the charge will fail when card supports 3D Secure verification, but that
+                                verification was not successful (i.e. customer cancelled the verification or provided
+                                invalid information is 3D Secure popup).
+                            </comment>
+                            <depends>
+                                <field id="3ds_active">1</field>
+                            </depends>
+                        </field>
+                    </group>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

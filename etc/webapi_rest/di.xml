@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Visiture, LLC. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!-- Plugins -->
+    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
+        <plugin name="securionpay_customer_repository_interface" type="Simon\SecurionPay\Plugin\CustomerRepository" />
+    </type>
+    <type name="Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayAuthorize">
+        <plugin name="securion_pay_abstract_client_create_customer" type="Simon\SecurionPay\Plugin\CreateCustomer" />
+        <plugin name="securion_pay_abstract_client_create_card" type="Simon\SecurionPay\Plugin\CreateCard" />
+    </type>
+    <type name="Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPaySale">
+        <plugin name="securion_pay_abstract_client_create_customer" type="Simon\SecurionPay\Plugin\CreateCustomer" />
+        <plugin name="securion_pay_abstract_client_create_card" type="Simon\SecurionPay\Plugin\CreateCard" />
+    </type>
+</config>

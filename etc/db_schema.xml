@@ -1,0 +1,29 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="securionpay_currency" resource="default" engine="innodb" comment="SecurionPay Currency Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="varchar" name="code" length="3" nullable="false" comment="Currency Code"/>
+        <column xsi:type="varchar" name="name" length="32" nullable="false" comment="Currency Name" />
+        <column xsi:type="int" name="decimals" nullable="false" padding="10" comment="Decimals"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+    <table name="securionpay_customer" esource="default" engine="innodb" comment="SecurionPay Customer Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="false" comment="Customer ID"/>
+        <column xsi:type="varchar" name="sp_customer_id" length="64" nullable="false" comment="SecurionPay Customer ID" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="SECURIONPAY_CUSTOMER_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID"
+                    table="securionpay_customer"
+                    column="customer_id"
+                    referenceTable="customer_entity"
+                    referenceColumn="entity_id"
+                    onDelete="CASCADE"/>
+    </table>
+</schema>
