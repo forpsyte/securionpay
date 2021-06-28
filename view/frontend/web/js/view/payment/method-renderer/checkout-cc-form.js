@@ -162,7 +162,6 @@ define(
              * @returns void
              */
             openCheckout: function(data, event) {
-                console.log(quote.totals());
                 let amount = quote.totals()['grand_total'],
                     currency = quote.totals()['quote_currency_code'];
                 if (event) {
