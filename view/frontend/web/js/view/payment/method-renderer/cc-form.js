@@ -11,6 +11,7 @@ define(
         'securionpay',
         'Magento_Payment/js/view/payment/cc-form',
         'Magento_Ui/js/model/messageList',
+        'Magento_Checkout/js/model/quote',
         'Magento_Checkout/js/model/full-screen-loader',
         'Magento_Vault/js/view/payment/vault-enabler',
     ],
@@ -20,6 +21,7 @@ define(
         SecurionPay,
         Component,
         globalMessageList,
+        quote,
         fullScreenLoader,
         VaultEnabler,
     ) {
@@ -43,7 +45,7 @@ define(
                 creditCardToken: null,
                 additionalData: {},
                 securionPay: null,
-                requireThreeDSecure: null
+                isThreeDSecureActive: null
             },
 
             /**
@@ -52,7 +54,7 @@ define(
             initialize: function() {
                 this._super();
                 this.securionPay = window.SecurionPay;
-                this.requireThreeDSecure = window.checkoutConfig.payment[this.getCode()].requireThreeDSecure;
+                this.isThreeDSecureActive = window.checkoutConfig.payment[this.getCode()].threeDSecureActive;
                 this.vaultEnabler = new VaultEnabler();
                 this.vaultEnabler.setPaymentCode(this.getVaultCode());
                 return this;
@@ -205,12 +207,15 @@ define(
                     return;
                 }
 
-                if (!this.requireThreeDSecure) {
+                if (!this.isThreeDSecureActive) {
                     this.creditCardToken(token.id);
                     this.placeOrder();
                 } else {
+                    let decimals = window.checkoutConfig.payment[this.getCode()].decimals,
+                        price = quote.totals()['grand_total'],
+                        minorUnits = parseInt(price * Math.pow(10, decimals))
                     this.securionPay.verifyThreeDSecure({
-                        amount: window.checkoutConfig.payment[this.getCode()].amount,
+                        amount: minorUnits,
                         currency: window.checkoutConfig.payment[this.getCode()].currency,
                         card: token.id
                     }, this.verifyThreeDSecureCallback.bind(this));

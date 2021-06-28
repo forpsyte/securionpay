@@ -47,4 +47,16 @@ class Currency
         $currency = $this->currencyRepository->getByCode($currencyCode);
         return intval($price * pow(10, $currency->getDecimals()));
     }
+
+    /**
+     * @param string $currency
+     * @return int
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    public function getDecimals($currency)
+    {
+        /** @var \Simon\SecurionPay\Model\Currency $currency */
+        $currency = $this->currencyRepository->getByCode($currency);
+        return $currency->getDecimals();
+    }
 }

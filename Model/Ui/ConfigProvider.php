@@ -70,7 +70,7 @@ class ConfigProvider implements ConfigProviderInterface
     public function getConfig()
     {
         $storeId = $this->sessionManager->getStoreId();
-        $total = $this->checkoutSession->getQuote()->getGrandTotal();
+        $currency = $this->storeManager->getStore($storeId)->getCurrentCurrencyCode();
         return [
             'payment' => [
                 self::CODE => [
@@ -83,8 +83,8 @@ class ConfigProvider implements ConfigProviderInterface
                     'ccVaultCode' => self::CC_VAULT_CODE,
                     'threeDSecureActive' => $this->config->isThreeDSecureActive($storeId),
                     'requireThreeDSecure' => $this->config->requireAttempt($storeId),
-                    'currency' => $this->storeManager->getStore($storeId)->getCurrentCurrencyCode(),
-                    'amount' => $this->currencyHelper->getMinorUnits($total)
+                    'currency' => $currency,
+                    'decimals' => $this->currencyHelper->getDecimals($currency)
                 ]
             ]
         ];
