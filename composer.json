@@ -1,6 +1,6 @@
 {
     "name": "simon/module-securionpay-magento",
-    "description": "N/A",
+    "description": "SecurionPay payment gateway module for Magento 2",
     "type": "magento2-module",
     "license": [
         "proprietary"
@@ -8,11 +8,10 @@
     "authors":[
         {
             "name":"Justin Simon",
-            "email":"contact@jsimon.me"
+            "email":"development@jsimon.me"
         }
     ],
     "require": {
-        "ext-json": "*",
         "php": "~7.1.3||~7.2.0||~7.3.0",
         "magento/module-vault": "100.1.*",
         "securionpay/securionpay-php": "^2.2.0"
