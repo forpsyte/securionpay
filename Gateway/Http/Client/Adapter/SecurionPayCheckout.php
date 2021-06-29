@@ -97,8 +97,12 @@ class SecurionPayCheckout implements AdapterInterface
         /** @var CheckoutRequest $checkoutRequest */
         $checkoutRequest = $this->checkoutRequestFactory->create();
         $checkoutRequest
-            ->charge($checkoutCharge)
-            ->threeDSecureRequired($data[AdapterInterface::FIELD_REQUIRE_ATTEMPT]);
+            ->charge($checkoutCharge);
+
+        if ($this->config->isThreeDSecureEnabled()) {
+            $checkoutRequest->threeDSecureRequired($data[AdapterInterface::FIELD_REQUIRE_ATTEMPT]);
+        }
+
         $signedCheckoutRequest = $this->securionPayGateway->signCheckoutRequest($checkoutRequest);
         $response = $this->responseFactory->create();
         $response->setStatus(200);

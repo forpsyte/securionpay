@@ -32,6 +32,12 @@
     </virtualType>
     <!-- END: Vault Payment Method Facade configuration -->
 
+    <type name="Simon\SecurionPay\Block\Adminhtml\Checkout\Payment">
+        <arguments>
+            <argument name="configProvider" xsi:type="object">Simon\SecurionPay\Model\Ui\Adminhtml\Checkout\ConfigProvider</argument>
+        </arguments>
+    </type>
+
     <type name="Simon\SecurionPay\Block\Payment">
         <arguments>
             <argument name="configProvider" xsi:type="object">Simon\SecurionPay\Model\Ui\ConfigProvider</argument>

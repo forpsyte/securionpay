@@ -3,16 +3,11 @@
 namespace Simon\SecurionPay\Model\Ui\Checkout;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
-use Magento\Checkout\Model\Session as CheckoutSession;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\UrlInterface;
-use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
 use Simon\SecurionPay\Gateway\Config\Checkout\Config;
 use Simon\SecurionPay\Gateway\Config\Config as ScpConfig;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCheckout;
-use Simon\SecurionPay\Helper\Currency as CurrencyHelper;
 
 class ConfigProvider implements ConfigProviderInterface
 {
@@ -27,26 +22,6 @@ class ConfigProvider implements ConfigProviderInterface
      */
     protected $sessionManager;
     /**
-     * @var CheckoutSession
-     */
-    protected $checkoutSession;
-    /**
-     * @var StoreManagerInterface
-     */
-    protected $storeManager;
-    /**
-     * @var SecurionPayCheckout
-     */
-    protected $securionPayCheckout;
-    /**
-     * @var CurrencyHelper
-     */
-    protected $currencyHelper;
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-    /**
      * @var ScpConfig
      */
     protected $scpConfig;
@@ -54,16 +29,16 @@ class ConfigProvider implements ConfigProviderInterface
      * @var UrlInterface
      */
     protected $urlBuilder;
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
 
     /**
      * ConfigProvider constructor.
      * @param Config $config
      * @param ScpConfig $scpConfig
      * @param SessionManagerInterface $sessionManager
-     * @param CheckoutSession $checkoutSession
-     * @param StoreManagerInterface $storeManager
-     * @param SecurionPayCheckout $securionPayCheckout
-     * @param CurrencyHelper $currencyHelper
      * @param UrlInterface $urlBuilder
      * @param LoggerInterface $logger
      */
@@ -71,20 +46,12 @@ class ConfigProvider implements ConfigProviderInterface
         Config $config,
         ScpConfig $scpConfig,
         SessionManagerInterface $sessionManager,
-        CheckoutSession $checkoutSession,
-        StoreManagerInterface $storeManager,
-        SecurionPayCheckout $securionPayCheckout,
-        CurrencyHelper $currencyHelper,
         UrlInterface $urlBuilder,
         LoggerInterface $logger
     ) {
         $this->config = $config;
         $this->scpConfig = $scpConfig;
         $this->sessionManager = $sessionManager;
-        $this->checkoutSession = $checkoutSession;
-        $this->storeManager = $storeManager;
-        $this->securionPayCheckout = $securionPayCheckout;
-        $this->currencyHelper = $currencyHelper;
         $this->urlBuilder = $urlBuilder;
         $this->logger = $logger;
     }
@@ -113,6 +80,8 @@ class ConfigProvider implements ConfigProviderInterface
      */
     private function getServiceUrl()
     {
-        return $this->urlBuilder->getBaseUrl() . \Simon\SecurionPay\Model\Ui\ConfigProvider::CODE . '/checkout/signature';
+        return $this->urlBuilder->getBaseUrl() .
+            \Simon\SecurionPay\Model\Ui\ConfigProvider::CODE .
+            '/checkout/signature';
     }
 }

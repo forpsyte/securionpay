@@ -8,6 +8,10 @@
                 <argument name="template" xsi:type="string">Simon_SecurionPay::form/cc.phtml</argument>
             </action>
             <action method="setMethodFormTemplate">
+                <argument name="method" xsi:type="string">securionpay_checkout</argument>
+                <argument name="template" xsi:type="string">Simon_SecurionPay::form/securionpay_checkout.phtml</argument>
+            </action>
+            <action method="setMethodFormTemplate">
                 <argument name="method" xsi:type="string">securionpay_cc_vault</argument>
                 <argument name="template" xsi:type="string">Simon_SecurionPay::form/vault.phtml</argument>
             </action>
@@ -17,6 +21,12 @@
                    as="securionpay_payment_script"
                    template="Simon_SecurionPay::payment/script/cc.phtml"
                    class="Simon\SecurionPay\Block\Payment"
+                   after="billing_method"/>
+            <block name="securionpay_checkout_payment_script"
+                   as="securionpay_checkout_payment_script"
+                   template="Simon_SecurionPay::payment/script/checkout_cc.phtml"
+                   class="Simon\SecurionPay\Block\Adminhtml\Checkout\Payment"
+                   ifconfig="payment/securionpay_checkout/active"
                    after="billing_method"/>
         </referenceBlock>
     </body>
