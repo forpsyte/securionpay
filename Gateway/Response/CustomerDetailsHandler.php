@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Simon\SecurionPay\Gateway\Response;
 
@@ -17,14 +13,6 @@ use Simon\SecurionPay\Gateway\SubjectReader;
 use Simon\SecurionPay\Model\Customer;
 use Simon\SecurionPay\Model\CustomerFactory;
 
-/**
- * Short description...
- *
- * Long description
- * Broken down into several lines
- *
- * License notice...
- */
 class CustomerDetailsHandler implements HandlerInterface
 {
     /**

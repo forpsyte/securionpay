@@ -1,11 +1,6 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Simon\SecurionPay\Gateway\Command;
-
 
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -59,7 +54,6 @@ class CaptureStrategyCommand implements CommandInterface
      * @var SubjectReader
      */
     private $subjectReader;
-
 
     /**
      * CaptureStrategyCommand constructor.

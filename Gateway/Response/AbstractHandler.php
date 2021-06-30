@@ -2,7 +2,6 @@
 
 namespace Simon\SecurionPay\Gateway\Response;
 
-
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Model\Order\Payment;

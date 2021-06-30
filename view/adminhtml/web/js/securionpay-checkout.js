@@ -1,7 +1,4 @@
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
+
 /*browser:true*/
 /*global define*/
 define([

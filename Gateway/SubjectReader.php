@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Simon\SecurionPay\Gateway;
 
@@ -11,14 +7,6 @@ use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Helper;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 
-/**
- * Short description...
- *
- * Long description
- * Broken down into several lines
- *
- * License notice...
- */
 class SubjectReader
 {
     /**

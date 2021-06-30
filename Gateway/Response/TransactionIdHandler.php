@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Simon\SecurionPay\Gateway\Response;
 
@@ -10,14 +6,6 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Model\Order\Payment;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 
-/**
- * Short description...
- *
- * Long description
- * Broken down into several lines
- *
- * License notice...
- */
 class TransactionIdHandler extends AbstractHandler
 {
 

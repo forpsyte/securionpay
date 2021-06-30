@@ -1,13 +1,4 @@
 <?php
-/**
- * Webkul Software.
- *
- * @category Webkul
- * @package Simon_SecurionPay
- * @author Webkul
- * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
- * @license https://store.webkul.com/license.html
- */
 
 namespace Simon\SecurionPay\Api\Data;
 

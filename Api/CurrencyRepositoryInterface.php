@@ -1,11 +1,6 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Simon\SecurionPay\Api;
-
 
 use Magento\Framework\Api\SearchResultsInterface;
 use Simon\SecurionPay\Model\Currency;

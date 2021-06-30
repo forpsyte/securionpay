@@ -10,14 +10,6 @@ use Simon\SecurionPay\Gateway\Config\Config;
 use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
 use Simon\SecurionPay\Observer\DataAssignObserver;
 
-/**
- * Short description...
- *
- * Long description
- * Broken down into several lines
- *
- * License notice...
- */
 abstract class AbstractClient implements AdapterInterface
 {
     /**

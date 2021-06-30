@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Simon\SecurionPay\Model\Adapter;
 
@@ -12,14 +8,6 @@ use Simon\SecurionPay\Gateway\Http\Client\Adapter\CommandStrategy;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
 
-/**
- * Short description...
- *
- * Long description
- * Broken down into several lines
- *
- * License notice...
- */
 class SecurionPayAdapter
 {
     /**

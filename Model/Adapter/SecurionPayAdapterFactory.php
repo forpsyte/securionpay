@@ -1,22 +1,10 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Simon\SecurionPay\Model\Adapter;
 
 use Magento\Framework\ObjectManagerInterface;
 use Simon\SecurionPay\Gateway\Config\Config;
 
-/**
- * Short description...
- *
- * Long description
- * Broken down into several lines
- *
- * License notice...
- */
 class SecurionPayAdapterFactory
 {
     /**
