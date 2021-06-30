@@ -1,8 +1,4 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
 namespace Simon\SecurionPay\Gateway\Http\Client\Adapter;
 
@@ -16,14 +12,6 @@ use Simon\SecurionPay\Gateway\Config\Checkout\Config;
 use Simon\SecurionPay\Gateway\Config\Config as ScpConfig;
 use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
 
-/**
- * Short description...
- *
- * Long description
- * Broken down into several lines
- *
- * License notice...
- */
 class SecurionPayCheckout implements AdapterInterface
 {
     /**

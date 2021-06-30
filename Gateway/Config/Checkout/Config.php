@@ -20,13 +20,15 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     protected $serializer;
 
+
     /**
      * Config constructor.
      * @param ScopeConfigInterface $scopeConfig
      * @param Json $serializer
      * @param null $methodCode
      * @param string $pathPattern
-     */public function __construct(
+     */
+    public function __construct(
         ScopeConfigInterface $scopeConfig,
         Json $serializer,
         $methodCode = null,

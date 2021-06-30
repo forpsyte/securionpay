@@ -173,7 +173,8 @@ define(
                     datatype: 'json',
                     data: {
                         amount: amount,
-                        currency: currency
+                        currency: currency,
+                        requireAttempt: window.checkoutConfig.payment[this.getCode()].requireThreeDSecure
                     },
                     success: function (response) {
                         this.securionPayCheckout.open({

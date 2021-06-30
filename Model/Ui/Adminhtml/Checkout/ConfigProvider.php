@@ -4,6 +4,10 @@ namespace Simon\SecurionPay\Model\Ui\Adminhtml\Checkout;
 
 use Magento\Backend\Model\Session\Quote;
 use Magento\Checkout\Model\ConfigProviderInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\UrlInterface;
+use Magento\Store\Model\Store;
 use Psr\Log\LoggerInterface;
 use Simon\SecurionPay\Gateway\Config\Checkout\Config;
 use Simon\SecurionPay\Gateway\Config\Config as ScpConfig;
@@ -28,10 +32,6 @@ class ConfigProvider implements ConfigProviderInterface
      */
     protected $currencyHelper;
     /**
-     * @var SecurionPayAdapterFactory
-     */
-    protected $adapterFactory;
-    /**
      * @var LoggerInterface
      */
     protected $logger;
@@ -41,12 +41,22 @@ class ConfigProvider implements ConfigProviderInterface
     protected $scpConfig;
 
     /**
+     * @var ScopeConfigInterface
+     */
+    protected $scopeConfig;
+    /**
+     * @var UrlInterface
+     */
+    protected $urlBuilder;
+
+    /**
      * ConfigProvider constructor.
      * @param Config $config
      * @param ScpConfig $scpConfig
      * @param Quote $quote
      * @param CurrencyHelper $currencyHelper
-     * @param SecurionPayAdapterFactory $adapterFactory
+     * @param ScopeConfigInterface $scopeConfig
+     * @param UrlInterface $urlBuilder
      * @param LoggerInterface $logger
      */
     public function __construct(
@@ -54,23 +64,27 @@ class ConfigProvider implements ConfigProviderInterface
         ScpConfig $scpConfig,
         Quote $quote,
         CurrencyHelper $currencyHelper,
-        SecurionPayAdapterFactory $adapterFactory,
+        ScopeConfigInterface $scopeConfig,
+        UrlInterface $urlBuilder,
         LoggerInterface $logger
     ) {
         $this->config = $config;
         $this->scpConfig = $scpConfig;
         $this->quote = $quote;
         $this->currencyHelper = $currencyHelper;
-        $this->adapterFactory = $adapterFactory;
         $this->logger = $logger;
+        $this->scopeConfig = $scopeConfig;
+        $this->urlBuilder = $urlBuilder;
     }
 
     /**
      * @inheritDoc
+     * @throws LocalizedException
      */
     public function getConfig()
     {
         $storeId = $this->quote->getStoreId();
+        $currency = $this->quote->getQuote()->getQuoteCurrencyCode();
         return [
             'payment' => [
                 self::CODE => [
@@ -78,7 +92,8 @@ class ConfigProvider implements ConfigProviderInterface
                     'storeName' => $this->config->getStoreName($storeId),
                     'storeDescription' => $this->config->getStoreDescription($storeId),
                     'publicKey' => $this->scpConfig->getPublicKey($storeId),
-                    'signature' => $this->getSignature()
+                    'decimals' => $this->currencyHelper->getDecimals($currency),
+                    'serviceUrl' => $this->getServiceUrl()
                 ]
             ]
         ];
@@ -87,24 +102,10 @@ class ConfigProvider implements ConfigProviderInterface
     /**
      * @return string
      */
-    private function getSignature()
+    private function getServiceUrl()
     {
-        try {
-            $storeId = $this->quote->getStoreId();
-            $amount = $this->currencyHelper->getMinorUnits($this->quote->getQuote()->getGrandTotal());
-            $currency = $this->quote->getQuote()->getQuoteCurrencyCode();
-            $requireThreeDSecure = $this->scpConfig->requireAttempt($storeId);
-            $response = $this->adapterFactory->create()->getCheckout([
-                AdapterInterface::FIELD_CURRENCY => $currency,
-                AdapterInterface::FIELD_AMOUNT => $amount,
-                AdapterInterface::FIELD_REQUIRE_ATTEMPT => $requireThreeDSecure
-            ]);
-            $body = $response->getBody();
-            return $body['signature'];
-        } catch (\Exception $e) {
-            $this->logger->error($e->getMessage());
-            return null;
-        }
-
+        return $this->urlBuilder->getBaseUrl() .
+            \Simon\SecurionPay\Model\Ui\ConfigProvider::CODE .
+            '/checkout/signature';
     }
 }

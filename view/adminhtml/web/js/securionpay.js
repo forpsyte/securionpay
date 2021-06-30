@@ -79,8 +79,7 @@ define([
             this.disableEventListeners();
             window.order.addExcludedPaymentMethod(this.code);
             if (!this.publicKey) {
-                this.showError($.mage.__('This payment is not available'));
-
+                alert($.mage.__('This payment is not available'));
                 return;
             }
             this.enableEventListeners();

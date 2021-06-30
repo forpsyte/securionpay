@@ -83,7 +83,8 @@ class Signature extends Action
     {
         $params = $this->getRequest()->getParams();
         if (!array_key_exists(AdapterInterface::FIELD_CURRENCY, $params) ||
-            !array_key_exists(AdapterInterface::FIELD_AMOUNT, $params)
+            !array_key_exists(AdapterInterface::FIELD_AMOUNT, $params) ||
+            !array_key_exists(AdapterInterface::FIELD_REQUIRE_ATTEMPT, $params)
         ) {
             return $this->createResponse([
                 'message' => 'Invalid Request'
@@ -91,13 +92,12 @@ class Signature extends Action
         }
 
         try {
-            $storeId = $this->sessionManager->getStoreId();
             $response = $this->adapterFactory->create()->getCheckout([
                 AdapterInterface::FIELD_CURRENCY => $params[AdapterInterface::FIELD_CURRENCY],
                 AdapterInterface::FIELD_AMOUNT => $this->currencyHelper->getMinorUnits(
                     $params[AdapterInterface::FIELD_AMOUNT]
                 ),
-                AdapterInterface::FIELD_REQUIRE_ATTEMPT => $this->config->isThreeDSecureEnabled($storeId)
+                AdapterInterface::FIELD_REQUIRE_ATTEMPT => $params[AdapterInterface::FIELD_REQUIRE_ATTEMPT]
             ]);
             $body = $response->getBody();
             return $this->createResponse([

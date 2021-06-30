@@ -1,8 +1,9 @@
 <?php
 /**
- * @var Magento\Payment\Block\Form\Cc $block
+ * @var Simon\SecurionPay\Block\Adminhtml\Form\Cc $block
  */
 $code = $block->escapeHtml($block->getMethodCode());
+$orderTotal = $block->getQuote()->getGrandTotal();
 ?>
 <fieldset class="admin__fieldset payment-method" id="payment_form_<?= /* @noEscape */ $code ?>" style="display:none">
     <p style="padding-left: 28px; padding-top: 10px">
@@ -10,9 +11,9 @@ $code = $block->escapeHtml($block->getMethodCode());
     </p>
     <input type="hidden" id="<?= /* @noEscape */ $code ?>_charge_id"
            name="payment[chargeId]"/>
-    <input type="submit" name="Submit" style="display: none;">
     <input type="hidden" id="<?= /* @noEscape */ $code ?>_customer_id"
            name="payment[customerId]"/>
-    <input type="submit" name="Submit" style="display: none;">
+    <input type="hidden" id="<?= /* @noEscape */ $code ?>_customer_id"
+           name="payment[chargeAmount]" value="<?= /* @noEscape */ $orderTotal; ?>>"/>
 </fieldset>
 

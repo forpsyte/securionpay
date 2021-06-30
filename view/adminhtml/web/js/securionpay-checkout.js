@@ -22,11 +22,13 @@ define([
             formSelector: 'securionpay_checkout_cc_form',
             active: false,
             code: 'securionpay_checkout',
-            signature: null,
             publicKey: null,
             securionPayCheckout: null,
             storeName: null,
             storeDescription: null,
+            serviceUrl: null,
+            decimals: null,
+            chargeAmount: null,
             imports: {
                 onActiveChange: 'active'
             }
@@ -36,6 +38,7 @@ define([
          * @returns {exports.initialize}
          */
         initialize: function(){
+            console.log(SecurionPayCheckout);
             this._super();
             this.securionPayCheckout = window.SecurionpayCheckout;
             this.securionPayCheckout.key = this.publicKey;
@@ -89,9 +92,8 @@ define([
             this.disableEventListeners();
             window.order.addExcludedPaymentMethod(this.code);
 
-            if (!this.signature) {
-                this.showError($.mage.__('This payment is not available'));
-
+            if (!this.serviceUrl) {
+                alert($.mage.__('This payment is not available'));
                 return;
             }
 
@@ -155,10 +157,27 @@ define([
          * Open SecurionPay checkout form
          */
         openCheckout: function() {
-            this.securionPayCheckout.open({
-                checkoutRequest: this.signature,
-                name: this.storeName,
-                description: this.storeDescription
+            let amount = parseFloat($('[name="payment[chargeAmount]"]').val()),
+                currency = $('#currency_switcher').val()
+            $.ajax({
+                url: this.serviceUrl,
+                method: 'GET',
+                datatype: 'json',
+                data: {
+                    amount: amount,
+                    currency: currency,
+                    requireAttempt: false
+                },
+                success: function (response) {
+                    this.securionPayCheckout.open({
+                        checkoutRequest: response.signature,
+                        name: this.storeName,
+                        description: this.storeDescription
+                    });
+                }.bind(this),
+                error: function (xhr, status, error) {
+                    this.stopProcess(error);
+                }.bind(this)
             });
         },
 

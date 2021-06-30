@@ -19,6 +19,12 @@
             <argument name="commandPool" xsi:type="object">SecurionPayCommandPool</argument>
         </arguments>
     </virtualType>
+
+    <type name="SecurionPayCheckoutFacade">
+        <arguments>
+            <argument name="formBlockType" xsi:type="string">Simon\SecurionPay\Block\Adminhtml\Form\Cc</argument>
+        </arguments>
+    </type>
     <!-- END Payment Method Facade configuration -->
 
     <!-- Vault Payment Method Facade configuration -->
