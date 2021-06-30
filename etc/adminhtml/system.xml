@@ -91,7 +91,9 @@
                             <label>Payment Action</label>
                             <source_model>Simon\SecurionPay\Model\Adminhtml\Source\PaymentAction</source_model>
                             <config_path>payment/securionpay_checkout/payment_action</config_path>
-                            <field id="spc_active">1</field>
+                            <depends>
+                                <field id="spc_active">1</field>
+                            </depends>
                         </field>
                         <field id="spc_3ds_active" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Enable 3D Secure</label>
