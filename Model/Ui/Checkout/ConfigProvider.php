@@ -69,7 +69,8 @@ class ConfigProvider implements ConfigProviderInterface
                     'storeName' => $this->config->getStoreName($storeId),
                     'storeDescription' => $this->config->getStoreDescription($storeId),
                     'publicKey' => $this->scpConfig->getPublicKey($storeId),
-                    'serviceUrl' => $this->getServiceUrl()
+                    'serviceUrl' => $this->getServiceUrl(),
+                    'requireThreeDSecure' => $this->config->isThreeDSecureEnabled()
                 ]
             ]
         ];

@@ -173,7 +173,7 @@ define([
                     });
                 }.bind(this),
                 error: function (xhr, status, error) {
-                    this.stopProcess(error);
+                    this.stopProcess(xhr.responseJSON.message);
                 }.bind(this)
             });
         },

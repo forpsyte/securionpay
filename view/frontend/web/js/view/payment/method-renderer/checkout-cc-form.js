@@ -181,7 +181,7 @@ define(
                         });
                     }.bind(this),
                     error: function (xhr, status, error) {
-                        this.showError(error);
+                        this.showError(xhr.responseJSON.message);
                     }.bind(this)
                 });
 
