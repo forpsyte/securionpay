@@ -9,6 +9,7 @@ define(
         'Magento_Payment/js/view/payment/cc-form',
         'Magento_Ui/js/model/messageList',
         'Magento_Checkout/js/model/quote',
+        'Simon_SecurionPay/js/action/get-checkout-request'
     ],
     function (
         _,
@@ -16,7 +17,8 @@ define(
         SecurionPayCheckout,
         Component,
         globalMessageList,
-        quote
+        quote,
+        getCheckoutRequestAction,
     ) {
         'use strict';
 
@@ -159,32 +161,21 @@ define(
              * @returns void
              */
             openCheckout: function(data, event) {
-                let amount = quote.totals()['grand_total'],
-                    currency = quote.totals()['quote_currency_code'];
+                let self = this;
+
                 if (event) {
                     event.preventDefault();
                 }
-                $.ajax({
-                    url: this.serviceUrl,
-                    method: 'GET',
-                    datatype: 'json',
-                    data: {
-                        amount: amount,
-                        currency: currency,
-                        requireAttempt: window.checkoutConfig.payment[this.getCode()].requireThreeDSecure
-                    },
-                    success: function (response) {
-                        this.securionPayCheckout.open({
-                            checkoutRequest: response.signature,
-                            name: this.storeName,
-                            description: this.storeDescription
-                        });
-                    }.bind(this),
-                    error: function (xhr, status, error) {
-                        this.showError(xhr.responseJSON.message);
-                    }.bind(this)
-                });
 
+                getCheckoutRequestAction().done(
+                    function (response) {
+                        self.securionPayCheckout.open({
+                            checkoutRequest: response.signature,
+                            name: self.storeName,
+                            description: self.storeDescription
+                        });
+                    }
+                );
             },
 
             /**

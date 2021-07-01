@@ -255,6 +255,7 @@
             <argument name="requestBuilder" xsi:type="object">SecurionPayCheckoutAuthorizeRequest</argument>
             <argument name="client" xsi:type="object">Simon\SecurionPay\Gateway\Http\Client\Checkout\TransactionGetCharge</argument>
             <argument name="handler" xsi:type="object">SecurionPayCheckoutAuthorizationHandler</argument>
+            <argument name="validator" xsi:type="object">Simon\SecurionPay\Gateway\Validator\Checkout\ResponseValidator</argument>
         </arguments>
     </virtualType>
 
@@ -432,6 +433,9 @@
     <preference for="Simon\SecurionPay\Api\CustomerRepositoryInterface" type="Simon\SecurionPay\Model\CustomerRepository"/>
     <preference for="Simon\SecurionPay\Api\Data\CustomerInterface" type="Simon\SecurionPay\Model\Customer" />
     <preference for="Simon\SecurionPay\Api\Data\CustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Simon\SecurionPay\Api\CheckoutRequestGeneratorInterface" type="\Simon\SecurionPay\Model\CheckoutRequestGenerator" />
+    <preference for="Simon\SecurionPay\Api\GuestCheckoutRequestGeneratorInterface" type="Simon\SecurionPay\Model\GuestCheckoutRequestGenerator" />
+    <preference for="Simon\SecurionPay\Api\Data\CheckoutRequestDetailsInterface" type="Simon\SecurionPay\Model\CheckoutRequestDetails" />
 
     <!-- Collections Processors -->
     <virtualType name="Simon\SecurionPay\Model\Api\SearchCriteria\CurrencyCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">

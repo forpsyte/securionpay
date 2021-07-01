@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Guest get SecurionPay checkout request signature -->
+    <route url="/V1/guest-carts/:cartId/checkout-request" method="GET">
+        <service class="Simon\SecurionPay\Api\GuestCheckoutRequestGeneratorInterface" method="getCheckoutRequest"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Customer get SecurionPay checkout request signature -->
+    <route url="/V1/carts/mine/checkout-request" method="GET">
+        <service class="Simon\SecurionPay\Api\CheckoutRequestGeneratorInterface" method="getCheckoutRequest"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
+</routes>
