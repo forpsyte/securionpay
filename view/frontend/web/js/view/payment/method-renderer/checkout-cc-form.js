@@ -8,7 +8,6 @@ define(
         'securionpay_checkout',
         'Magento_Payment/js/view/payment/cc-form',
         'Magento_Ui/js/model/messageList',
-        'Magento_Checkout/js/model/quote',
         'Simon_SecurionPay/js/action/get-checkout-request'
     ],
     function (
@@ -17,7 +16,6 @@ define(
         SecurionPayCheckout,
         Component,
         globalMessageList,
-        quote,
         getCheckoutRequestAction,
     ) {
         'use strict';
@@ -109,9 +107,7 @@ define(
              */
             isActive: function () {
                 let active = this.getCode() === this.isChecked();
-
                 this.active(active);
-
                 return active;
             },
 
