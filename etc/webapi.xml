@@ -25,4 +25,23 @@
             <parameter name="cartId" force="true">%cart_id%</parameter>
         </data>
     </route>
+
+    <!-- Guest get SecurionPay 3D-Secure verification params -->
+    <route url="/V1/guest-carts/:cartId/3d-secure-information" method="POST">
+        <service class="Simon\SecurionPay\Api\GuestThreeDSecureManagementInterface" method="getThreeDSecureParams"/>
+        <resources>
+            <resource ref="anonymous" />
+        </resources>
+    </route>
+
+    <!-- Customer get SecurionPay 3D-Secure verification params -->
+    <route url="/V1/carts/mine/3d-secure-information" method="POST">
+        <service class="Simon\SecurionPay\Api\ThreeDSecureManagementInterface" method="getThreeDSecureParams"/>
+        <resources>
+            <resource ref="self" />
+        </resources>
+        <data>
+            <parameter name="cartId" force="true">%cart_id%</parameter>
+        </data>
+    </route>
 </routes>

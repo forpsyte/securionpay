@@ -44,7 +44,7 @@ class PaymentDataBuilder implements BuilderInterface
     public function build(array $buildSubject)
     {
         $storeId = $this->sessionManager->getStoreId();
-        if (!$this->config->requireAttempt($storeId)) {
+        if (!$this->config->isThreeDSecureActive($storeId)) {
             return [];
         }
 

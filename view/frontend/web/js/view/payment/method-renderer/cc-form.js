@@ -11,6 +11,7 @@ define(
         'Magento_Checkout/js/model/quote',
         'Magento_Checkout/js/model/full-screen-loader',
         'Magento_Vault/js/view/payment/vault-enabler',
+        'Simon_SecurionPay/js/action/get-3d-secure-information'
     ],
     function (
         _,
@@ -21,6 +22,7 @@ define(
         quote,
         fullScreenLoader,
         VaultEnabler,
+        GetThreeDSecureInfoAction,
     ) {
         'use strict';
 
@@ -199,6 +201,8 @@ define(
              * @returns void
              */
             createCardTokenCallback: function(token) {
+                let self = this;
+
                 if (token.error) {
                     this.showError(token.error.message);
                     return;
@@ -208,14 +212,15 @@ define(
                     this.creditCardToken(token.id);
                     this.placeOrder();
                 } else {
-                    let decimals = window.checkoutConfig.payment[this.getCode()].decimals,
-                        price = quote.totals()['grand_total'],
-                        minorUnits = parseInt(price * Math.pow(10, decimals))
-                    this.securionPay.verifyThreeDSecure({
-                        amount: minorUnits,
-                        currency: window.checkoutConfig.payment[this.getCode()].currency,
-                        card: token.id
-                    }, this.verifyThreeDSecureCallback.bind(this));
+                    GetThreeDSecureInfoAction(token).done(
+                        function (response) {
+                            self.securionPay.verifyThreeDSecure({
+                                amount: response.amount,
+                                currency: response.currency,
+                                card: response.token
+                            }, self.verifyThreeDSecureCallback.bind(self));
+                        }
+                    );
                 }
 
 

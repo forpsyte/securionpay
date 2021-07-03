@@ -12,6 +12,10 @@
     <preference for="Simon\SecurionPay\Api\CheckoutRequestGeneratorInterface" type="\Simon\SecurionPay\Model\CheckoutRequestGenerator" />
     <preference for="Simon\SecurionPay\Api\GuestCheckoutRequestGeneratorInterface" type="Simon\SecurionPay\Model\GuestCheckoutRequestGenerator" />
     <preference for="Simon\SecurionPay\Api\Data\CheckoutRequestDetailsInterface" type="Simon\SecurionPay\Model\CheckoutRequestDetails" />
+    <preference for="Simon\SecurionPay\Api\Data\ThreeDSecureInformationInterface" type="Simon\SecurionPay\Model\ThreeDSecureInformation" />
+    <preference for="Simon\SecurionPay\Api\Data\TokenInformationInterface" type="Simon\SecurionPay\Model\TokenInformation" />
+    <preference for="Simon\SecurionPay\Api\GuestThreeDSecureManagementInterface" type="Simon\SecurionPay\Model\GuestThreeDSecureManagement" />
+    <preference for="Simon\SecurionPay\Api\ThreeDSecureManagementInterface" type="Simon\SecurionPay\Model\ThreeDSecureManagement" />
 
     <!-- Payment Method Facade configuration -->
     <virtualType name="SecurionPayFacade" type="Magento\Payment\Model\Method\Adapter">
