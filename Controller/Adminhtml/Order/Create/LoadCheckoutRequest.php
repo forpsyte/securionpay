@@ -1,20 +1,23 @@
 <?php
 
-namespace Simon\SecurionPay\Controller\Checkout;
+namespace Simon\SecurionPay\Controller\Adminhtml\Order\Create;
 
-use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\Action\Context;
+use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
+use Magento\Backend\Model\Session\Quote;
+use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\Result\Redirect;
-use Magento\Framework\Session\SessionManagerInterface;
 use Simon\SecurionPay\Gateway\Config\Checkout\Config;
 use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
 use Simon\SecurionPay\Helper\Currency as CurrencyHelper;
 use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
 
-class Signature extends Action
+class LoadCheckoutRequest extends Action
 {
+    const ADMIN_RESOURCE = 'Simon_SecurionPay::get_checkout_request';
+
     /**
      * @var SecurionPayAdapterFactory
      */
@@ -28,36 +31,36 @@ class Signature extends Action
      */
     protected $currencyHelper;
     /**
-     * @var SessionManagerInterface
-     */
-    protected $sessionManager;
-    /**
      * @var JsonFactory
      */
     protected $jsonFactory;
+    /**
+     * @var Quote
+     */
+    private $quote;
 
     /**
      * Signature constructor.
      * @param Context $context
      * @param SecurionPayAdapterFactory $adapterFactory
+     * @param Quote $quote
      * @param Config $config
      * @param CurrencyHelper $currencyHelper
-     * @param SessionManagerInterface $sessionManager
      * @param JsonFactory $jsonFactory
      */
     public function __construct(
         Context $context,
         SecurionPayAdapterFactory $adapterFactory,
+        Quote $quote,
         Config $config,
         CurrencyHelper $currencyHelper,
-        SessionManagerInterface $sessionManager,
         JsonFactory $jsonFactory
     ) {
         parent::__construct($context);
         $this->adapterFactory = $adapterFactory;
+        $this->quote = $quote;
         $this->config = $config;
         $this->currencyHelper = $currencyHelper;
-        $this->sessionManager = $sessionManager;
         $this->jsonFactory = $jsonFactory;
     }
 
@@ -81,27 +84,21 @@ class Signature extends Action
      */
     public function execute()
     {
-        $params = $this->getRequest()->getParams();
-        if (!array_key_exists(AdapterInterface::FIELD_CURRENCY, $params) ||
-            !array_key_exists(AdapterInterface::FIELD_AMOUNT, $params) ||
-            !array_key_exists(AdapterInterface::FIELD_REQUIRE_ATTEMPT, $params)
-        ) {
+        $quote = $this->quote->getQuote();
+        if (!$quote->getId()) {
             return $this->createResponse([
-                'message' => 'Invalid Request'
+                'message' => 'Quote does not exist.'
             ])->setHttpResponseCode(\Symfony\Component\HttpFoundation\Response::HTTP_BAD_REQUEST);
         }
 
         try {
             $response = $this->adapterFactory->create()->getCheckout([
-                AdapterInterface::FIELD_CURRENCY => $params[AdapterInterface::FIELD_CURRENCY],
-                AdapterInterface::FIELD_AMOUNT => $this->currencyHelper->getMinorUnits(
-                    $params[AdapterInterface::FIELD_AMOUNT]
-                ),
-                AdapterInterface::FIELD_REQUIRE_ATTEMPT => $params[AdapterInterface::FIELD_REQUIRE_ATTEMPT]
-            ]);
-            $body = $response->getBody();
+                AdapterInterface::FIELD_CURRENCY => $quote->getBaseCurrencyCode(),
+                AdapterInterface::FIELD_REQUIRE_ATTEMPT => false,
+                AdapterInterface::FIELD_AMOUNT => $this->currencyHelper->getMinorUnits($quote->getGrandTotal())
+            ])->getBody();
             return $this->createResponse([
-                'signature' => $body['signature']
+                'signature' => $response['signature']
             ]);
         } catch (\Exception $e) {
             return $this->createResponse([

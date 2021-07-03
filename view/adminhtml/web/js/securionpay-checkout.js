@@ -154,17 +154,10 @@ define([
          * Open SecurionPay checkout form
          */
         openCheckout: function() {
-            let amount = parseFloat($('[name="payment[chargeAmount]"]').val()),
-                currency = $('#currency_switcher').val()
             $.ajax({
                 url: this.serviceUrl,
                 method: 'GET',
                 datatype: 'json',
-                data: {
-                    amount: amount,
-                    currency: currency,
-                    requireAttempt: false
-                },
                 success: function (response) {
                     this.securionPayCheckout.open({
                         checkoutRequest: response.signature,
@@ -173,7 +166,7 @@ define([
                     });
                 }.bind(this),
                 error: function (xhr, status, error) {
-                    this.stopProcess(xhr.responseJSON.message);
+                    this.stopProcess();
                 }.bind(this)
             });
         },

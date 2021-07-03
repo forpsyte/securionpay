@@ -7,13 +7,10 @@ use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\UrlInterface;
-use Magento\Store\Model\Store;
 use Psr\Log\LoggerInterface;
 use Simon\SecurionPay\Gateway\Config\Checkout\Config;
 use Simon\SecurionPay\Gateway\Config\Config as ScpConfig;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
 use Simon\SecurionPay\Helper\Currency as CurrencyHelper;
-use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
 
 class ConfigProvider implements ConfigProviderInterface
 {
@@ -104,8 +101,9 @@ class ConfigProvider implements ConfigProviderInterface
      */
     private function getServiceUrl()
     {
-        return $this->urlBuilder->getBaseUrl() .
+        return $this->urlBuilder->getUrl(
             \Simon\SecurionPay\Model\Ui\ConfigProvider::CODE .
-            '/checkout/signature';
+            '/order_create/loadCheckoutRequest'
+        );
     }
 }

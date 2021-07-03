@@ -2,6 +2,17 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
+    <!-- Class Preferences -->
+    <preference for="Simon\SecurionPay\Api\CurrencyRepositoryInterface" type="Simon\SecurionPay\Model\CurrencyRepository"/>
+    <preference for="Simon\SecurionPay\Api\Data\CurrencyInterface" type="Simon\SecurionPay\Model\Currency" />
+    <preference for="Simon\SecurionPay\Api\Data\CurrencySearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Simon\SecurionPay\Api\CustomerRepositoryInterface" type="Simon\SecurionPay\Model\CustomerRepository"/>
+    <preference for="Simon\SecurionPay\Api\Data\CustomerInterface" type="Simon\SecurionPay\Model\Customer" />
+    <preference for="Simon\SecurionPay\Api\Data\CustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Simon\SecurionPay\Api\CheckoutRequestGeneratorInterface" type="\Simon\SecurionPay\Model\CheckoutRequestGenerator" />
+    <preference for="Simon\SecurionPay\Api\GuestCheckoutRequestGeneratorInterface" type="Simon\SecurionPay\Model\GuestCheckoutRequestGenerator" />
+    <preference for="Simon\SecurionPay\Api\Data\CheckoutRequestDetailsInterface" type="Simon\SecurionPay\Model\CheckoutRequestDetails" />
+
     <!-- Payment Method Facade configuration -->
     <virtualType name="SecurionPayFacade" type="Magento\Payment\Model\Method\Adapter">
         <arguments>
@@ -425,17 +436,6 @@
         </arguments>
     </virtualType>
     <!-- END Payment blocks configuration -->
-
-    <!-- Class Preferences -->
-    <preference for="Simon\SecurionPay\Api\CurrencyRepositoryInterface" type="Simon\SecurionPay\Model\CurrencyRepository"/>
-    <preference for="Simon\SecurionPay\Api\Data\CurrencyInterface" type="Simon\SecurionPay\Model\Currency" />
-    <preference for="Simon\SecurionPay\Api\Data\CurrencySearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
-    <preference for="Simon\SecurionPay\Api\CustomerRepositoryInterface" type="Simon\SecurionPay\Model\CustomerRepository"/>
-    <preference for="Simon\SecurionPay\Api\Data\CustomerInterface" type="Simon\SecurionPay\Model\Customer" />
-    <preference for="Simon\SecurionPay\Api\Data\CustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
-    <preference for="Simon\SecurionPay\Api\CheckoutRequestGeneratorInterface" type="\Simon\SecurionPay\Model\CheckoutRequestGenerator" />
-    <preference for="Simon\SecurionPay\Api\GuestCheckoutRequestGeneratorInterface" type="Simon\SecurionPay\Model\GuestCheckoutRequestGenerator" />
-    <preference for="Simon\SecurionPay\Api\Data\CheckoutRequestDetailsInterface" type="Simon\SecurionPay\Model\CheckoutRequestDetails" />
 
     <!-- Collections Processors -->
     <virtualType name="Simon\SecurionPay\Model\Api\SearchCriteria\CurrencyCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">

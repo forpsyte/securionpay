@@ -1,5 +1,5 @@
 {
-    "name": "securionpay/magento2-module-securionpay",
+    "name": "simon/magento2-module-securionpay",
     "description": "SecurionPay payment gateway module for Magento 2",
     "version": "1.0.0",
     "type": "magento2-module",
