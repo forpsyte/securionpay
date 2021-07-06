@@ -112,8 +112,11 @@ class SecurionPayAdapter
     private function placeRequest(array $data, $command)
     {
         try {
+            $this->logger->debug('SecurePay API Request:', $data);
             $data[CommandStrategy::STRATEGY] = $command;
-            return $this->commandStrategy->send($data);
+            $response = $this->commandStrategy->send($data);
+            $this->logger->debug('SecurePay API Response:', $response->getBody());
+            return $response;
         } catch (SecurionPayException $e) {
             return $this->handle($e);
         }

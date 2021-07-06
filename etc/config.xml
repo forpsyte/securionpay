@@ -28,7 +28,7 @@
                 <model>SecurionPayFacade</model>
                 <order_status>processing</order_status>
                 <paymentInfoKeys>cc_type,cc_number_enc,id</paymentInfoKeys>
-                <privateInfoKeys>cc_exp_year,cc_exp_month,cvc,method_title,amount,currency,card</privateInfoKeys>
+                <privateInfoKeys>id,cc_exp_year,cc_exp_month,cvc,method_title,amount,currency,card</privateInfoKeys>
                 <payment_action>authorize</payment_action>
                 <title>Credit Card (SecurionPay)</title>
                 <currency>USD</currency>
@@ -43,6 +43,7 @@
                 <allowspecific>0</allowspecific>
                 <group>securionpay_group</group>
                 <fraud_result_risk><![CDATA[{"suspicious": "suspected fraud", "fraudulent": "fraud detected" }]]></fraud_result_risk>
+                <fraud_detection_action>during_checkout</fraud_detection_action>
             </securionpay>
             <securionpay_cc_vault>
                 <model>SecurionPayCreditCardVaultFacade</model>
@@ -63,7 +64,7 @@
                 <model>SecurionPayCheckoutFacade</model>
                 <order_status>processing</order_status>
                 <paymentInfoKeys>cc_type,cc_number_enc,id</paymentInfoKeys>
-                <privateInfoKeys>cc_exp_year,cc_exp_month,cvc,method_title,amount,currency,card</privateInfoKeys>
+                <privateInfoKeys>id,cc_exp_year,cc_exp_month,cvc,method_title,amount,currency,card</privateInfoKeys>
                 <payment_action>authorize</payment_action>
                 <title>Credit Card (SecurionPay Checkout)</title>
                 <currency>USD</currency>

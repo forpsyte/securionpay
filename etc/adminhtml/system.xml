@@ -122,6 +122,27 @@
                             <frontend_class>validate-number</frontend_class>
                             <config_path>payment/securionpay/sort_order</config_path>
                         </field>
+                        <field id="fraud_detection_action" translate="label" type="select" sortOrder="40" showInDefault="1"
+                               showInWebsite="0" showInStore="0">
+                            <label>Fraud Detection Action</label>
+                            <source_model>Simon\SecurionPay\Model\Adminhtml\Source\FraudDetectionAction</source_model>
+                            <config_path>payment/securionpay/fraud_detection_action</config_path>
+                            <comment>
+                                <![CDATA[
+                                Determines when fraud detection will occur during the checkout process. <br><br>
+
+                                When <b>During Checkout</b> is selected, the checkout process will not complete until the
+                                payment is verified. No additional configuration will be required when this option is
+                                selected<br><br>
+
+                                When <b>After Checkout</b> is selected, the checkout process will complete immediately. However
+                                if the payment has not been verified, the order status will be marked as Under Review
+                                until the verification is complete. Selecting this option will require setting up a webhook in
+                                your  <a href="https://securionpay.com/account-settings#webhook-endpoints" target="_blank">SecurionPay account settings</a>.
+                                Please add the url below in the Webhook Url setting in the <b>Webhooks</b> account setting in your SecurionPay dashboard.
+                                ]]>
+                            </comment>
+                        </field>
                     </group>
                     <group id="securionpay_3d_secure" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="40">
                         <label>3D Secure Settings</label>

@@ -16,7 +16,7 @@ interface CurrencyRepositoryInterface
 
     /**
      * @param int $entityId
-     * @return Data\CurrencyInterface
+     * @return Data\CurrencyInterface|Currency
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getById($entityId);

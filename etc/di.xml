@@ -3,19 +3,21 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
     <!-- Class Preferences -->
-    <preference for="Simon\SecurionPay\Api\CurrencyRepositoryInterface" type="Simon\SecurionPay\Model\CurrencyRepository"/>
-    <preference for="Simon\SecurionPay\Api\Data\CurrencyInterface" type="Simon\SecurionPay\Model\Currency" />
-    <preference for="Simon\SecurionPay\Api\Data\CurrencySearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
-    <preference for="Simon\SecurionPay\Api\CustomerRepositoryInterface" type="Simon\SecurionPay\Model\CustomerRepository"/>
-    <preference for="Simon\SecurionPay\Api\Data\CustomerInterface" type="Simon\SecurionPay\Model\Customer" />
-    <preference for="Simon\SecurionPay\Api\Data\CustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
     <preference for="Simon\SecurionPay\Api\CheckoutRequestGeneratorInterface" type="\Simon\SecurionPay\Model\CheckoutRequestGenerator" />
+    <preference for="Simon\SecurionPay\Api\CurrencyRepositoryInterface" type="Simon\SecurionPay\Model\CurrencyRepository"/>
+    <preference for="Simon\SecurionPay\Api\CustomerRepositoryInterface" type="Simon\SecurionPay\Model\CustomerRepository"/>
+    <preference for="Simon\SecurionPay\Api\EventRepositoryInterface" type="Simon\SecurionPay\Model\EventRepository" />
     <preference for="Simon\SecurionPay\Api\GuestCheckoutRequestGeneratorInterface" type="Simon\SecurionPay\Model\GuestCheckoutRequestGenerator" />
-    <preference for="Simon\SecurionPay\Api\Data\CheckoutRequestDetailsInterface" type="Simon\SecurionPay\Model\CheckoutRequestDetails" />
-    <preference for="Simon\SecurionPay\Api\Data\ThreeDSecureInformationInterface" type="Simon\SecurionPay\Model\ThreeDSecureInformation" />
-    <preference for="Simon\SecurionPay\Api\Data\TokenInformationInterface" type="Simon\SecurionPay\Model\TokenInformation" />
     <preference for="Simon\SecurionPay\Api\GuestThreeDSecureManagementInterface" type="Simon\SecurionPay\Model\GuestThreeDSecureManagement" />
     <preference for="Simon\SecurionPay\Api\ThreeDSecureManagementInterface" type="Simon\SecurionPay\Model\ThreeDSecureManagement" />
+    <preference for="Simon\SecurionPay\Api\Data\CurrencyInterface" type="Simon\SecurionPay\Model\Currency" />
+    <preference for="Simon\SecurionPay\Api\Data\CurrencySearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Simon\SecurionPay\Api\Data\CustomerInterface" type="Simon\SecurionPay\Model\Customer" />
+    <preference for="Simon\SecurionPay\Api\Data\CustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Simon\SecurionPay\Api\Data\CheckoutRequestDetailsInterface" type="Simon\SecurionPay\Model\CheckoutRequestDetails" />
+    <preference for="Simon\SecurionPay\Api\Data\EventInterface" type="Simon\SecurionPay\Model\Event" />
+    <preference for="Simon\SecurionPay\Api\Data\ThreeDSecureInformationInterface" type="Simon\SecurionPay\Model\ThreeDSecureInformation" />
+    <preference for="Simon\SecurionPay\Api\Data\TokenInformationInterface" type="Simon\SecurionPay\Model\TokenInformation" />
 
     <!-- Payment Method Facade configuration -->
     <virtualType name="SecurionPayFacade" type="Magento\Payment\Model\Method\Adapter">
@@ -468,6 +470,20 @@
     <type name="Simon\SecurionPay\Model\CustomerRepository">
         <arguments>
             <argument name="collectionProcessor" xsi:type="object">Simon\SecurionPay\Model\Api\SearchCriteria\CustomerCollectionProcessor</argument>
+        </arguments>
+    </type>
+    <virtualType name="Simon\SecurionPay\Model\Api\SearchCriteria\EventCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Simon\SecurionPay\Model\EventRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Simon\SecurionPay\Model\Api\SearchCriteria\EventCollectionProcessor</argument>
         </arguments>
     </type>
 

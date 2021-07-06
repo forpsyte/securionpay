@@ -7,6 +7,7 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Simon\SecurionPay\Api\CustomerRepositoryInterface;
 use Simon\SecurionPay\Api\Data;
 use Simon\SecurionPay\Model\ResourceModel\Customer as ResourceCustomer;
 use Simon\SecurionPay\Model\ResourceModel\Customer\CollectionFactory as CustomerCollectionFactory;
@@ -14,7 +15,7 @@ use Simon\SecurionPay\Model\ResourceModel\Customer\CollectionFactory as Customer
 /**
  * CustomerRepository Class
  */
-class CustomerRepository implements \Simon\SecurionPay\Api\CustomerRepositoryInterface
+class CustomerRepository implements CustomerRepositoryInterface
 {
     protected $customerFactory = null;
 

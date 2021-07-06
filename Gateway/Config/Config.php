@@ -30,6 +30,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     const KEY_3DS_REQUIRE_ENROLLED_CARD = 'three_d_secure_require_enrolled_card';
     const KEY_3DS_REQUIRE_LIABILITY_SHIFT = 'three_d_secure_require_liability_shift';
     const KEY_FRAUD_RESULT_RISK = 'fraud_result_risk';
+    const KEY_FRAUD_DETECTION_ACTION = 'fraud_detection_action';
 
     /**
      * @var Json
@@ -208,5 +209,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function requireLiabilityShift($storeId = null)
     {
         return (bool) $this->getValue(self::KEY_3DS_REQUIRE_LIABILITY_SHIFT, $storeId);
+    }
+
+    /**
+     * @param int|null $storeId
+     * @return string
+     */
+    public function getFraudDetectionAction($storeId = null)
+    {
+        return $this->getValue(self::KEY_FRAUD_DETECTION_ACTION, $storeId);
     }
 }
