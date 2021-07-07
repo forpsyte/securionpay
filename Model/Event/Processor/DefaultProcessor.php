@@ -44,8 +44,9 @@ class DefaultProcessor extends AbstractProcessor
         $result = $this->eventRepository->getList($searchCriteria);
 
         if ($result->getTotalCount()) {
+            $items = $result->getItems();
             /** @var Event $event */
-            $event = array_pop($result->getItems());
+            $event = array_pop($items);
             $event->incrementProcessAttempts();
         } else {
             $event->setIsProcessed(true);
