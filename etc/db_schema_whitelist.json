@@ -1,0 +1,39 @@
+{
+    "securionpay_currency": {
+        "column": {
+            "entity_id": true,
+            "code": true,
+            "name": true,
+            "decimals": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "securionpay_customer": {
+        "column": {
+            "entity_id": true,
+            "customer_id": true,
+            "sp_customer_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SECURIONPAY_CUSTOMER_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    },
+    "securionpay_event": {
+        "column": {
+            "entity_id": true,
+            "event_id": true,
+            "event_type": true,
+            "is_processed": true,
+            "process_attempts": true,
+            "source": true,
+            "details": true,
+            "type": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
