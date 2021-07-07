@@ -1,0 +1,144 @@
+<?php
+
+namespace Simon\SecurionPay\Model\Event\Processor;
+
+use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Serialize\Serializer\Json as Serializer;
+use Magento\Payment\Model\MethodInterface;
+use Magento\Sales\Api\Data\OrderPaymentInterface;
+use Magento\Sales\Api\OrderPaymentRepositoryInterface;
+use Magento\Sales\Api\OrderRepositoryInterface;
+use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Payment;
+use Simon\SecurionPay\Api\Data\EventInterface;
+use Simon\SecurionPay\Api\EventRepositoryInterface;
+use Simon\SecurionPay\Gateway\Config\Config;
+use Simon\SecurionPay\Gateway\Http\Data\Response;
+
+class ChargeUpdatedProcessor extends AbstractProcessor
+{
+    /**
+     * @var string
+     */
+    protected $_eventType = 'CHARGE_UPDATED';
+    /**
+     * @var OrderPaymentRepositoryInterface
+     */
+    protected $orderPaymentRepository;
+    /**
+     * @var EventRepositoryInterface
+     */
+    protected $eventRepository;
+    /**
+     * @var OrderRepositoryInterface
+     */
+    protected $orderRepository;
+    /**
+     * @var SearchCriteriaBuilder
+     */
+    protected $searchCriteriaBuilder;
+    /**
+     * @var Order\StatusResolver
+     */
+    protected $statusResolver;
+    /**
+     * @var Config
+     */
+    protected $config;
+    /**
+     * @var Serializer
+     */
+    protected $serializer;
+
+    /**
+     * ChargeUpdated constructor.
+     * @param OrderPaymentRepositoryInterface $orderPaymentRepository
+     * @param EventRepositoryInterface $eventRepository
+     * @param OrderRepositoryInterface $orderRepository
+     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param Order\StatusResolver $statusResolver
+     * @param Config $config
+     * @param Serializer $serializer
+     */
+    public function __construct(
+        OrderPaymentRepositoryInterface $orderPaymentRepository,
+        EventRepositoryInterface $eventRepository,
+        OrderRepositoryInterface $orderRepository,
+        SearchCriteriaBuilder $searchCriteriaBuilder,
+        Order\StatusResolver $statusResolver,
+        Config $config,
+        Serializer $serializer
+    ) {
+        $this->orderPaymentRepository = $orderPaymentRepository;
+        $this->eventRepository = $eventRepository;
+        $this->orderRepository = $orderRepository;
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->statusResolver = $statusResolver;
+        $this->config = $config;
+        $this->serializer = $serializer;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function process(EventInterface $event)
+    {
+        $details = $this->serializer->unserialize($event->getDetails());
+        $eventData = $details[Response::DATA];
+        $searchCriteria = $this->searchCriteriaBuilder
+            ->addFilter(OrderPaymentInterface::CC_TRANS_ID, $eventData[Response::ID])
+            ->create();
+        $results = $this->orderPaymentRepository->getList($searchCriteria);
+        if ($results->getTotalCount() == 0) {
+            return;
+        }
+        /** @var Payment $payment */
+        $payment = array_pop($results->getItems());
+        $order = $payment->getOrder();
+        $fraudDetails = $eventData[Response::FRAUD_DETAILS];
+        $status = $fraudDetails[Response::FRAUD_DETAIL_STATUS];
+        $paymentAction = $this->getActionText();
+
+        if ($status == Response::FRAUD_STATUS_FRAUDULENT || $status == Response::FRAUD_STATUS_SUSPICIOUS) {
+            $message = "Order is suspended as its {$paymentAction} amount %1 is suspected to be fraudulent.";
+            $order->setStatus(Order::STATUS_FRAUD);
+        }
+
+        if ($status == Response::FRAUD_STATUS_SAFE) {
+            $message = "Order is approved as its {$paymentAction} amount %1 has been verified.";
+            $order->setState(Order::STATE_PROCESSING);
+            $orderStatus = $this->statusResolver->getOrderStatusByState($order, Order::STATE_PROCESSING);
+            $order->setStatus($orderStatus);
+        }
+
+        if (!isset($message)) {
+            return;
+        }
+
+        $amount = $order->getGrandTotal();
+        $message = __($message, $order->getBaseCurrency()->formatTxt($amount));
+        $order->addCommentToStatusHistory($message, false, false);
+        $this->orderRepository->save($order);
+        return;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function canProcess(EventInterface $event)
+    {
+        return !$this->eventRepository->exists($event) && $event->getType() == $this->_eventType;
+    }
+
+    /**
+     * @return string
+     */
+    private function getActionText()
+    {
+        if ($this->config->getPaymentAction() == MethodInterface::ACTION_AUTHORIZE) {
+            return 'authorizing';
+        } else {
+            return 'capturing';
+        }
+    }
+}

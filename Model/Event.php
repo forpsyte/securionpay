@@ -56,6 +56,22 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @inheritDoc
      */
+    public function getType()
+    {
+        return $this->getData(self::EVENT_TYPE);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setType($eventType)
+    {
+        return $this->setData(self::EVENT_TYPE, $eventType);
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getIsProcessed()
     {
         return $this->getData(self::IS_PROCESSED);
@@ -115,5 +131,16 @@ class Event extends AbstractModel implements EventInterface
     public function setSource($source)
     {
         return $this->setData(self::SOURCE, $source);
+    }
+
+    /**
+     * Increment the number of process attempts.
+     *
+     * @return void
+     */
+    public function incrementProcessAttempts()
+    {
+        $attempts = $this->getProcessAttempts();
+        $this->setData($attempts + 1);
     }
 }

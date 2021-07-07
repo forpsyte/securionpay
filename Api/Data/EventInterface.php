@@ -8,6 +8,8 @@ interface EventInterface
 
     const EVENT_ID = 'event_id';
 
+    const EVENT_TYPE = 'type';
+
     const IS_PROCESSED = 'is_processed';
 
     const PROCESS_ATTEMPTS = 'process_attempts';
@@ -45,6 +47,21 @@ interface EventInterface
      * @return $this
      */
     public function setEventId($eventId);
+
+    /**
+     * Get the event type.
+     *
+     * @return string
+     */
+    public function getType();
+
+    /**
+     * Set the event type.
+     *
+     * @param string $eventType
+     * @return $this
+     */
+    public function setType($eventType);
 
     /**
      * Get process status of the event.

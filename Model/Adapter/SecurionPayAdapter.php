@@ -106,6 +106,15 @@ class SecurionPayAdapter
 
     /**
      * @param array $data
+     * @return Response
+     */
+    public function getEvent(array $data)
+    {
+        return $this->placeRequest($data, 'get_event');
+    }
+
+    /**
+     * @param array $data
      * @param string $command
      * @return Response
      */

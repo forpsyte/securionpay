@@ -20,6 +20,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     const KEY_ACTIVE = 'active';
     const KEY_PUBLIC_KEY = 'public_key';
     const KEY_SECRET_KEY = 'secret_key';
+    const KEY_PAYMENT_ACTION = 'payment_action';
     const KEY_DEBUG = 'debug';
     const KEY_USE_CVC = 'useccv';
     const KEY_CC_TYPES = 'cctypes';
@@ -218,5 +219,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function getFraudDetectionAction($storeId = null)
     {
         return $this->getValue(self::KEY_FRAUD_DETECTION_ACTION, $storeId);
+    }
+
+    /**
+     * @param int|null $storeId
+     * @return string
+     */
+    public function getPaymentAction($storeId = null)
+    {
+        return $this->getValue(self::KEY_PAYMENT_ACTION, $storeId);
     }
 }

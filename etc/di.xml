@@ -16,6 +16,7 @@
     <preference for="Simon\SecurionPay\Api\Data\CustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
     <preference for="Simon\SecurionPay\Api\Data\CheckoutRequestDetailsInterface" type="Simon\SecurionPay\Model\CheckoutRequestDetails" />
     <preference for="Simon\SecurionPay\Api\Data\EventInterface" type="Simon\SecurionPay\Model\Event" />
+    <preference for="Simon\SecurionPay\Api\Data\EventSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
     <preference for="Simon\SecurionPay\Api\Data\ThreeDSecureInformationInterface" type="Simon\SecurionPay\Model\ThreeDSecureInformation" />
     <preference for="Simon\SecurionPay\Api\Data\TokenInformationInterface" type="Simon\SecurionPay\Model\TokenInformation" />
 
@@ -487,6 +488,21 @@
         </arguments>
     </type>
 
+    <!-- Event Processors -->
+    <virtualType name="Simon\SecurionPay\Api\Event\EventProcessor" type="Simon\SecurionPay\EventProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="default" xsi:type="object">Simon\SecurionPay\Model\Event\Processor\DefaultProcessor</item>
+                <item name="charge_updated" xsi:type="object">Simon\SecurionPay\Model\Event\Processor\ChargeUpdatedProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Simon\SecurionPay\Controller\Payment\Event\Process">
+        <arguments>
+            <argument name="eventProcessor" xsi:type="object">Simon\SecurionPay\Api\Event\EventProcessor</argument>
+        </arguments>
+    </type>
+
     <!-- Custom transaction client strategy -->
     <type name="Simon\SecurionPay\Gateway\Http\Client\Adapter\CommandStrategy">
         <arguments>
@@ -498,6 +514,7 @@
                 <item name="delete_card" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayDeleteCard</item>
                 <item name="get_charge" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayGetCharge</item>
                 <item name="get_checkout" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCheckout</item>
+                <item name="get_event" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayGetEvent</item>
             </argument>
         </arguments>
     </type>

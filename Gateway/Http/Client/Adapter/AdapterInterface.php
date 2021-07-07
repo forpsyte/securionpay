@@ -26,6 +26,7 @@ interface AdapterInterface
     const FIELD_COUNTRY = 'country';
     const FIELD_VAT = 'vat';
     const FIELD_CHARGE_ID = 'chargeId';
+    const FIELD_EVENT_ID = 'eventId';
     const FIELD_ID = 'id';
     const FIELD_CREATED = 'created';
     const FIELD_CAPTURED = 'captured';

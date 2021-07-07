@@ -143,4 +143,20 @@ class EventRepository implements EventRepositoryInterface
         }
         return true;
     }
+
+    /**
+     * Determine if the event exists.
+     *
+     * @param Data\EventInterface $event
+     * @return bool
+     */
+    public function exists(Data\EventInterface $event)
+    {
+        try {
+            $this->getByEventId($event->getEventId());
+            return true;
+        } catch (NoSuchEntityException $e) {
+            return false;
+        }
+    }
 }

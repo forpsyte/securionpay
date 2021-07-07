@@ -20,6 +20,11 @@ class Response implements \ArrayAccess
     const FAILURE_MESSAGE = 'failureMessage';
     const FRAUD_DETAILS = 'fraudDetails';
     const FRAUD_DETAIL_STATUS = 'status';
+    const FRAUD_STATUS_SAFE = 'safe';
+    const FRAUD_STATUS_SUSPICIOUS = 'suspicious';
+    const FRAUD_STATUS_FRAUDULENT = 'fraudulent';
+    const FRAUD_STATUS_IN_PROGRESS = 'in_progress';
+    const DATA = 'data';
     const LAST_4 = 'last4';
     const BRAND = 'brand';
     const EXP_MONTH = 'expMonth';
