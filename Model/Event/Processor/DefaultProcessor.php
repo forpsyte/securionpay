@@ -47,7 +47,8 @@ class DefaultProcessor extends AbstractProcessor
             $items = $result->getItems();
             /** @var Event $event */
             $event = array_pop($items);
-            $event->incrementProcessAttempts();
+            $attempts = $event->getProcessAttempts() + 1;
+            $event->setProcessAttempts($attempts);
         } else {
             $event->setIsProcessed(true);
             $event->setProcessAttempts(1);
