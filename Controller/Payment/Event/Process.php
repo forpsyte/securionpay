@@ -92,11 +92,10 @@ class Process extends Action implements CsrfAwareActionInterface, HttpPostAction
                 AdapterInterface::FIELD_EVENT_ID => $requestBody[AdapterInterface::FIELD_ID]
             ]);
             $eventDetails = $response->getBody();
-            $eventData = $eventDetails[Response::DATA];
             /** @var Event $eventModel */
             $eventModel = $this->eventFactory->create();
             $eventModel
-                ->setEventId($eventData[Response::ID])
+                ->setEventId($eventDetails[Response::ID])
                 ->setType($eventDetails[Response::CHARGE_TYPE])
                 ->setSource($request->getClientIp())
                 ->setDetails($response->getBodyAsString());
