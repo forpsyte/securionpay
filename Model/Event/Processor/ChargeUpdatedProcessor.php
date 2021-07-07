@@ -105,6 +105,11 @@ class ChargeUpdatedProcessor extends AbstractProcessor
         $items = $results->getItems();
         $payment = array_pop($items);
         $order = $payment->getOrder();
+
+        if ($order->getState() == Order::STATE_PROCESSING) {
+            return;
+        }
+
         $fraudDetails = $eventData[Response::FRAUD_DETAILS];
         $status = $fraudDetails[Response::FRAUD_DETAIL_STATUS];
         $paymentAction = $this->getActionText();
