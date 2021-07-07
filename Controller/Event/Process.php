@@ -16,8 +16,8 @@ use Magento\Framework\Phrase;
 use Magento\Framework\Serialize\Serializer\Json as Serializer;
 use Psr\Log\LoggerInterface;
 use Simon\SecurionPay\Api\Event\EventProcessorInterface;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
 use Simon\SecurionPay\Gateway\Http\Data\Error;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
 use Simon\SecurionPay\Model\Event;
@@ -88,14 +88,14 @@ class Process extends Action implements CsrfAwareActionInterface, HttpPostAction
             $request = $this->getRequest();
             $requestBody = $this->serializer->unserialize($request->getContent());
             $response = $this->adapterFactory->create()->getEvent([
-                AdapterInterface::FIELD_EVENT_ID => $requestBody[AdapterInterface::FIELD_ID]
+                Request::FIELD_EVENT_ID => $requestBody[Request::FIELD_ID]
             ]);
             $eventDetails = $response->getBody();
 
             if (array_key_exists(Response::ERROR_TYPE, $eventDetails) &&
                 $eventDetails[Response::ERROR_TYPE] == Error::TYPE_INVALID_REQUEST
             ) {
-                $message = __('Event with ID %1 does not exist.', $requestBody[AdapterInterface::FIELD_ID]);
+                $message = __('Event with ID %1 does not exist.', $requestBody[Request::FIELD_ID]);
                 throw new Exception($message);
             }
 
@@ -142,7 +142,7 @@ class Process extends Action implements CsrfAwareActionInterface, HttpPostAction
         }
 
         $requestBody = $this->serializer->unserialize($request->getContent());
-        if (!array_key_exists(AdapterInterface::FIELD_ID, $requestBody)) {
+        if (!array_key_exists(Request::FIELD_ID, $requestBody)) {
             return false;
         }
 

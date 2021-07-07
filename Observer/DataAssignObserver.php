@@ -10,8 +10,7 @@ use Magento\Quote\Api\Data\PaymentInterface;
 use Magento\Quote\Model\Quote\Payment;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
-use Simon\SecurionPay\Model\Ui\ConfigProvider;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 
 /**
  * Adds additional data to quote payment.
@@ -29,8 +28,8 @@ class DataAssignObserver extends AbstractDataAssignObserver
         OrderPaymentInterface::CC_TYPE,
         OrderPaymentInterface::CC_NUMBER_ENC,
         OrderPaymentInterface::CC_LAST_4,
-        AdapterInterface::FIELD_CHARGE_ID,
-        AdapterInterface::FIELD_CUSTOMER_ID,
+        Request::FIELD_CHARGE_ID,
+        Request::FIELD_CUSTOMER_ID,
         self::STORE_CARD
     ];
 

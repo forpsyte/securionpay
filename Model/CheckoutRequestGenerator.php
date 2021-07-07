@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Simon\SecurionPay\Model;
 
 use Magento\Quote\Model\Quote;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 
 /**
  * Checkout request generator model.
@@ -66,9 +66,9 @@ class CheckoutRequestGenerator implements \Simon\SecurionPay\Api\CheckoutRequest
         /** @var Quote $quote */
         $quote = $this->cartRepository->getActive($cartId);
         $response = $this->securionPayAdapterFactory->create()->getCheckout([
-            AdapterInterface::FIELD_AMOUNT => $this->currencyHelper->getMinorUnits($quote->getGrandTotal()),
-            AdapterInterface::FIELD_CURRENCY => $quote->getBaseCurrencyCode(),
-            AdapterInterface::FIELD_REQUIRE_ATTEMPT => $this->config->requireAttempt($quote->getStoreId())
+            Request::FIELD_AMOUNT => $this->currencyHelper->getMinorUnits($quote->getGrandTotal()),
+            Request::FIELD_CURRENCY => $quote->getBaseCurrencyCode(),
+            Request::FIELD_REQUIRE_ATTEMPT => $this->config->requireAttempt($quote->getStoreId())
         ])->getBody();
         /** @var CheckoutRequestDetails $checkoutRequestDetails */
         $checkoutRequestDetails = $this->checkoutRequestDetailsFactory->create();

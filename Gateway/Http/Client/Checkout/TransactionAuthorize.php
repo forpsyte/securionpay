@@ -5,7 +5,7 @@ namespace Simon\SecurionPay\Gateway\Http\Client\Checkout;
 use Magento\Payment\Model\Method\Logger;
 use Psr\Log\LoggerInterface;
 use Simon\SecurionPay\Gateway\Http\Client\AbstractTransaction;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
 use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
 
@@ -40,8 +40,8 @@ class TransactionAuthorize extends AbstractTransaction
         $response = $this->responseFactory->create();
         $response->setStatus(200);
         $response->setBody([
-            AdapterInterface::FIELD_ID => $data[AdapterInterface::FIELD_CHARGE_ID],
-            AdapterInterface::FIELD_CUSTOMER_ID => $data[AdapterInterface::FIELD_CUSTOMER_ID]
+            Request::FIELD_ID => $data[Request::FIELD_CHARGE_ID],
+            Request::FIELD_CUSTOMER_ID => $data[Request::FIELD_CUSTOMER_ID]
         ]);
         return $response;
     }

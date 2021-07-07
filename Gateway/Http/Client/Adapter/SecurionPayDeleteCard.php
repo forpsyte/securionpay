@@ -4,6 +4,7 @@ namespace Simon\SecurionPay\Gateway\Http\Client\Adapter;
 
 use SecurionPay\SecurionPayGateway;
 use Simon\SecurionPay\Gateway\Config\Config;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
 
 /**
@@ -52,8 +53,8 @@ class SecurionPayDeleteCard implements AdapterInterface
     {
         $this->securionPayGateway->setPrivateKey($this->config->getSecretKey());
         $result = $this->securionPayGateway->deleteCard(
-            $data[AdapterInterface::FIELD_CUSTOMER_ID],
-            $data[AdapterInterface::FIELD_CARD_ID]
+            $data[Request::FIELD_CUSTOMER_ID],
+            $data[Request::FIELD_CARD_ID]
         )->toArray();
         $response = $this->responseFactory->create();
         $response->setStatus(200);

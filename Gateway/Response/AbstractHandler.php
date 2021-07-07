@@ -5,7 +5,7 @@ namespace Simon\SecurionPay\Gateway\Response;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 use Simon\SecurionPay\Gateway\SubjectReader;
 
@@ -22,13 +22,13 @@ abstract class AbstractHandler implements HandlerInterface
      * @var array
      */
     protected $additionalInformationMapping = [
-        AdapterInterface::FIELD_ID,
-        AdapterInterface::FIELD_AMOUNT,
-        AdapterInterface::FIELD_CURRENCY,
-        AdapterInterface::FIELD_CREATED,
-        AdapterInterface::FIELD_CAPTURED,
-        AdapterInterface::FIELD_REFUNDED,
-        AdapterInterface::FIELD_DISPUTED
+        Request::FIELD_ID,
+        Request::FIELD_AMOUNT,
+        Request::FIELD_CURRENCY,
+        Request::FIELD_CREATED,
+        Request::FIELD_CAPTURED,
+        Request::FIELD_REFUNDED,
+        Request::FIELD_DISPUTED
     ];
     /**
      * @var SubjectReader

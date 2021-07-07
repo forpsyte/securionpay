@@ -10,6 +10,7 @@ use SecurionPay\Request\CheckoutRequestFactory;
 use SecurionPay\SecurionPayGateway;
 use Simon\SecurionPay\Gateway\Config\Checkout\Config;
 use Simon\SecurionPay\Gateway\Config\Config as ScpConfig;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
 
 class SecurionPayCheckout implements AdapterInterface
@@ -73,8 +74,8 @@ class SecurionPayCheckout implements AdapterInterface
         /** @var CheckoutRequestCharge $checkoutCharge */
         $checkoutCharge = $this->checkoutRequestChargeFactory->create();
         $checkoutCharge
-            ->amount($data[AdapterInterface::FIELD_AMOUNT])
-            ->currency($data[AdapterInterface::FIELD_CURRENCY]);
+            ->amount($data[Request::FIELD_AMOUNT])
+            ->currency($data[Request::FIELD_CURRENCY]);
 
         if ($this->config->getPaymentAction() == MethodInterface::ACTION_AUTHORIZE_CAPTURE) {
             $checkoutCharge->capture(true);
@@ -88,7 +89,7 @@ class SecurionPayCheckout implements AdapterInterface
             ->charge($checkoutCharge);
 
         if ($this->config->isThreeDSecureEnabled()) {
-            $checkoutRequest->threeDSecureRequired($data[AdapterInterface::FIELD_REQUIRE_ATTEMPT]);
+            $checkoutRequest->threeDSecureRequired($data[Request::FIELD_REQUIRE_ATTEMPT]);
         }
 
         $signedCheckoutRequest = $this->securionPayGateway->signCheckoutRequest($checkoutRequest);

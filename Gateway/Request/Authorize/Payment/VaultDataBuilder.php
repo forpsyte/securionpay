@@ -9,7 +9,7 @@ use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Vault\Model\PaymentToken;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\SubjectReader;
 use Simon\SecurionPay\Helper\Currency;
 
@@ -67,12 +67,12 @@ class VaultDataBuilder implements BuilderInterface
         $tokenDetails = $this->serializer->unserialize($token->getTokenDetails());
 
         return [
-            AdapterInterface::FIELD_AMOUNT =>  $this->currencyHelper->getMinorUnits(
+            Request::FIELD_AMOUNT =>  $this->currencyHelper->getMinorUnits(
                 $this->subjectReader->readAmount($buildSubject)
             ),
-            AdapterInterface::FIELD_CURRENCY => $this->storeManager->getStore()->getCurrentCurrencyCode(),
-            AdapterInterface::FIELD_CUSTOMER_ID => $tokenDetails[AdapterInterface::FIELD_CUSTOMER_ID],
-            AdapterInterface::FIELD_CARD => $token->getGatewayToken()
+            Request::FIELD_CURRENCY => $this->storeManager->getStore()->getCurrentCurrencyCode(),
+            Request::FIELD_CUSTOMER_ID => $tokenDetails[Request::FIELD_CUSTOMER_ID],
+            Request::FIELD_CARD => $token->getGatewayToken()
         ];
     }
 }

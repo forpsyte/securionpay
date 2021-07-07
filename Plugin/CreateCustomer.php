@@ -9,7 +9,7 @@ use SecurionPay\Request\CustomerRequestFactory;
 use SecurionPay\SecurionPayGateway;
 use Simon\SecurionPay\Gateway\Config\Config;
 use Simon\SecurionPay\Gateway\Http\Client\Adapter\AbstractClient;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 use Simon\SecurionPay\Observer\DataAssignObserver;
 
@@ -77,12 +77,12 @@ class CreateCustomer
 
         if (!isset($spCustomerId)) {
             $request = $this->customerRequestFactory->create();
-            $request->card($response[AdapterInterface::FIELD_ID]);
+            $request->card($response[Request::FIELD_ID]);
             $request->email($data[CustomerInterface::EMAIL]);
             $customerResponse = $this->securionPayGateway->createCustomer($request)->toArray();
             $body = $response->getBody();
-            $body[AdapterInterface::FIELD_CUSTOMER_ID] = $customerResponse[AdapterInterface::FIELD_ID];
-            $body[PaymentTokenInterface::GATEWAY_TOKEN] = $customerResponse[AdapterInterface::FIELD_DEFAULT_CARD_ID];
+            $body[Request::FIELD_CUSTOMER_ID] = $customerResponse[Request::FIELD_ID];
+            $body[PaymentTokenInterface::GATEWAY_TOKEN] = $customerResponse[Request::FIELD_DEFAULT_CARD_ID];
             $response->setBody($body);
         }
         return $response;

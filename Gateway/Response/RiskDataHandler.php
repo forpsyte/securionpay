@@ -5,7 +5,7 @@ namespace Simon\SecurionPay\Gateway\Response;
 use Magento\Payment\Gateway\Helper\ContextHelper;
 use Magento\Sales\Model\Order\Payment;
 use Simon\SecurionPay\Gateway\Config\Config;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 use Simon\SecurionPay\Gateway\SubjectReader;
 use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
@@ -68,7 +68,7 @@ class RiskDataHandler extends AbstractHandler
         while ($fraudDetails[Response::FRAUD_DETAIL_STATUS] == Response::FRAUD_STATUS_IN_PROGRESS) {
             sleep(5);
             $chargeResponse = $this->securionPayAdapterFactory->create()->getCharge([
-                AdapterInterface::FIELD_CHARGE_ID => $transaction[Response::ID]
+                Request::FIELD_CHARGE_ID => $transaction[Response::ID]
             ])->getBody();
             $fraudDetails = $chargeResponse[Response::FRAUD_DETAILS];
         }

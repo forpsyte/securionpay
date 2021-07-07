@@ -4,6 +4,7 @@ namespace Simon\SecurionPay\Gateway\Http\Client\Adapter;
 
 use SecurionPay\SecurionPayGateway;
 use Simon\SecurionPay\Gateway\Config\Config;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
 
 class SecurionPayGetCharge implements AdapterInterface
@@ -44,7 +45,7 @@ class SecurionPayGetCharge implements AdapterInterface
     {
         $this->securionPayGateway->setPrivateKey($this->config->getSecretKey());
         $result = $this->securionPayGateway
-            ->retrieveCharge($data[AdapterInterface::FIELD_CHARGE_ID])
+            ->retrieveCharge($data[Request::FIELD_CHARGE_ID])
             ->toArray();
         $response = $this->responseFactory->create();
         $response->setStatus(200);

@@ -5,12 +5,11 @@ namespace Simon\SecurionPay\Controller\Adminhtml\Order\Create;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\Session\Quote;
-use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\Result\Redirect;
 use Simon\SecurionPay\Gateway\Config\Checkout\Config;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Helper\Currency as CurrencyHelper;
 use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
 
@@ -93,9 +92,9 @@ class LoadCheckoutRequest extends Action
 
         try {
             $response = $this->adapterFactory->create()->getCheckout([
-                AdapterInterface::FIELD_CURRENCY => $quote->getBaseCurrencyCode(),
-                AdapterInterface::FIELD_REQUIRE_ATTEMPT => false,
-                AdapterInterface::FIELD_AMOUNT => $this->currencyHelper->getMinorUnits($quote->getGrandTotal())
+                Request::FIELD_CURRENCY => $quote->getBaseCurrencyCode(),
+                Request::FIELD_REQUIRE_ATTEMPT => false,
+                Request::FIELD_AMOUNT => $this->currencyHelper->getMinorUnits($quote->getGrandTotal())
             ])->getBody();
             return $this->createResponse([
                 'signature' => $response['signature']

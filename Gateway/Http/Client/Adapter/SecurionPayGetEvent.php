@@ -4,6 +4,7 @@ namespace Simon\SecurionPay\Gateway\Http\Client\Adapter;
 
 use SecurionPay\SecurionPayGateway;
 use Simon\SecurionPay\Gateway\Config\Config;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
 
 class SecurionPayGetEvent implements AdapterInterface
@@ -44,7 +45,7 @@ class SecurionPayGetEvent implements AdapterInterface
     {
         $this->securionPayGateway->setPrivateKey($this->config->getSecretKey());
         $result = $this->securionPayGateway
-            ->retrieveEvent($data[AdapterInterface::FIELD_EVENT_ID])
+            ->retrieveEvent($data[Request::FIELD_EVENT_ID])
             ->toArray();
         $response = $this->responseFactory->create();
         $response->setStatus(200);

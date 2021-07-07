@@ -8,10 +8,9 @@ use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Sales\Model\Order\Payment;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\SubjectReader;
 use Simon\SecurionPay\Helper\Currency;
-use Simon\SecurionPay\Observer\DataAssignObserver;
 
 class PaymentDataBuilder implements BuilderInterface
 {
@@ -60,11 +59,11 @@ class PaymentDataBuilder implements BuilderInterface
         $payment = $paymentDO->getPayment();
 
         return [
-            AdapterInterface::FIELD_AMOUNT =>  $this->currencyHelper->getMinorUnits(
+            Request::FIELD_AMOUNT =>  $this->currencyHelper->getMinorUnits(
                 $this->subjectReader->readAmount($buildSubject)
             ),
-            AdapterInterface::FIELD_CURRENCY => $this->storeManager->getStore()->getCurrentCurrencyCode(),
-            AdapterInterface::FIELD_CARD => $payment->getAdditionalInformation(PaymentTokenInterface::GATEWAY_TOKEN),
+            Request::FIELD_CURRENCY => $this->storeManager->getStore()->getCurrentCurrencyCode(),
+            Request::FIELD_CARD => $payment->getAdditionalInformation(PaymentTokenInterface::GATEWAY_TOKEN),
         ];
     }
 }

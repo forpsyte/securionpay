@@ -6,7 +6,7 @@ use Magento\Framework\Serialize\Serializer\Json as Serializer;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Api\PaymentTokenRepositoryInterface;
 use Psr\Log\LoggerInterface;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
 
 class PaymentTokenRepository
@@ -50,8 +50,8 @@ class PaymentTokenRepository
         $this->securionPayAdapterFactory
             ->create()
             ->deleteCard([
-                AdapterInterface::FIELD_CUSTOMER_ID => $details[AdapterInterface::FIELD_CUSTOMER_ID],
-                AdapterInterface::FIELD_CARD_ID => $paymentToken->getGatewayToken()
+                Request::FIELD_CUSTOMER_ID => $details[Request::FIELD_CUSTOMER_ID],
+                Request::FIELD_CARD_ID => $paymentToken->getGatewayToken()
             ]);
         return $result;
     }

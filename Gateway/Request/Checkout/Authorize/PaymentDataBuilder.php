@@ -4,7 +4,7 @@ namespace Simon\SecurionPay\Gateway\Request\Checkout\Authorize;
 
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\SubjectReader;
 
 class PaymentDataBuilder implements BuilderInterface
@@ -32,10 +32,10 @@ class PaymentDataBuilder implements BuilderInterface
 
         /** @var Payment $payment */
         $payment = $paymentDO->getPayment();
-        $chargeId = $payment->getAdditionalInformation(AdapterInterface::FIELD_CHARGE_ID);
-        $payment->unsAdditionalInformation(AdapterInterface::FIELD_CHARGE_ID);
+        $chargeId = $payment->getAdditionalInformation(Request::FIELD_CHARGE_ID);
+        $payment->unsAdditionalInformation(Request::FIELD_CHARGE_ID);
         return [
-            AdapterInterface::FIELD_CHARGE_ID => $chargeId
+            Request::FIELD_CHARGE_ID => $chargeId
         ];
     }
 }

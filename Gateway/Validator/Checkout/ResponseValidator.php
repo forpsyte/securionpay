@@ -8,10 +8,9 @@ namespace Simon\SecurionPay\Gateway\Validator\Checkout;
 
 
 use Magento\Payment\Gateway\Validator\AbstractValidator;
-use Magento\Payment\Gateway\Validator\ResultInterface;
 use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
-use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Error;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\SubjectReader;
 use Simon\SecurionPay\Helper\Currency;
 
@@ -61,7 +60,7 @@ class ResponseValidator extends AbstractValidator
         /** @var  $response */
         $response = $this->subjectReader->readResponseObject($validationSubject);
         $responseBody = $response->getBody();
-        $chargedAmount = $responseBody[AdapterInterface::FIELD_AMOUNT];
+        $chargedAmount = $responseBody[Request::FIELD_AMOUNT];
         $subjectAmount = $this->currencyHelper->getMinorUnits(
             $this->subjectReader->readAmount($validationSubject)
         );
@@ -70,7 +69,7 @@ class ResponseValidator extends AbstractValidator
             [
                 $chargedAmount !== $subjectAmount,
                 __('Invalid payment amount'),
-                'suspected_fraud'
+                Error::CODE_SUSPECTED_FRAUD
             ]
         ];
 

@@ -8,7 +8,7 @@ use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Psr\Log\LoggerInterface;
 use Simon\SecurionPay\Api\CustomerRepositoryInterface;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\SubjectReader;
 use Simon\SecurionPay\Model\Customer;
 use Simon\SecurionPay\Model\CustomerFactory;
@@ -72,7 +72,7 @@ class CustomerDetailsHandler implements HandlerInterface
     {
         $transaction = $this->subjectReader->readTransaction($response);
 
-        if (!$this->session->isLoggedIn() || !isset($transaction[AdapterInterface::FIELD_CUSTOMER_ID])) {
+        if (!$this->session->isLoggedIn() || !isset($transaction[Request::FIELD_CUSTOMER_ID])) {
             return;
         }
 
@@ -81,7 +81,7 @@ class CustomerDetailsHandler implements HandlerInterface
             // then do NOT save the relation
             $searchCriteria = $this->searchCriteriaBuilder
                 ->addFilter(Customer::CUSTOMER_ID, $this->session->getCustomerId())
-                ->addFilter(Customer::SP_CUSTOMER_ID, $transaction[AdapterInterface::FIELD_CUSTOMER_ID])
+                ->addFilter(Customer::SP_CUSTOMER_ID, $transaction[Request::FIELD_CUSTOMER_ID])
                 ->create();
 
             $result = $this->customerRepository->getList($searchCriteria);
@@ -91,7 +91,7 @@ class CustomerDetailsHandler implements HandlerInterface
 
             $customerModel = $this->customerFactory->create();
             $customerModel->setCustomerId($this->session->getId());
-            $customerModel->setSpCustomerId($transaction[AdapterInterface::FIELD_CUSTOMER_ID]);
+            $customerModel->setSpCustomerId($transaction[Request::FIELD_CUSTOMER_ID]);
             $this->customerRepository->save($customerModel);
         } catch (Exception $e) {
             $this->logger->critical($e->getMessage());

@@ -5,8 +5,8 @@ namespace Simon\SecurionPay\Gateway\Response;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
 use Simon\SecurionPay\Gateway\Config\Checkout\Config;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 use Simon\SecurionPay\Gateway\SubjectReader;
 
@@ -37,11 +37,11 @@ class ChargeDetailsHandler extends AbstractHandler
         $paymentDO = $this->subjectReader->readPayment($handlingSubject);
         $transaction = $this->subjectReader->readTransaction($response);
 
-        if (empty($transaction[AdapterInterface::FIELD_CARD])) {
+        if (empty($transaction[Request::FIELD_CARD])) {
             return;
         }
 
-        $card = $transaction[AdapterInterface::FIELD_CARD];
+        $card = $transaction[Request::FIELD_CARD];
 
         /** @var Payment $payment */
         $payment = $paymentDO->getPayment();

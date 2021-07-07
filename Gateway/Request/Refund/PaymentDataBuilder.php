@@ -6,7 +6,7 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\SubjectReader;
 use Simon\SecurionPay\Helper\Currency;
 
@@ -49,8 +49,8 @@ class PaymentDataBuilder implements BuilderInterface
         $payment = $paymentDO->getPayment();
 
         return [
-            AdapterInterface::FIELD_CHARGE_ID => $payment->getAdditionalInformation(AdapterInterface::FIELD_ID),
-            AdapterInterface::FIELD_AMOUNT => $this->currencyHelper->getMinorUnits(
+            Request::FIELD_CHARGE_ID => $payment->getAdditionalInformation(Request::FIELD_ID),
+            Request::FIELD_AMOUNT => $this->currencyHelper->getMinorUnits(
                 $this->subjectReader->readAmount($buildSubject)
             )
         ];

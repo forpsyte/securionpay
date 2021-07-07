@@ -4,7 +4,7 @@ namespace Simon\SecurionPay\Gateway\Request\Capture;
 
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\SubjectReader;
 
 class PaymentDataBuilder implements BuilderInterface
@@ -34,7 +34,7 @@ class PaymentDataBuilder implements BuilderInterface
         $payment = $paymentDO->getPayment();
 
         return [
-            AdapterInterface::FIELD_CHARGE_ID => $payment->getAdditionalInformation(AdapterInterface::FIELD_ID)
+            Request::FIELD_CHARGE_ID => $payment->getAdditionalInformation(Request::FIELD_ID)
         ];
     }
 }

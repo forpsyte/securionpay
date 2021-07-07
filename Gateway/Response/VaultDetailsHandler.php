@@ -14,10 +14,9 @@ use Magento\Sales\Model\Order\Payment;
 use Magento\Vault\Api\Data\PaymentTokenFactoryInterface;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Api\PaymentTokenRepositoryInterface;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 use Simon\SecurionPay\Gateway\SubjectReader;
-use Simon\SecurionPay\Observer\DataAssignObserver;
 
 /**
  * Adds customer payment information to the Magento Vault.
@@ -137,7 +136,7 @@ class VaultDetailsHandler implements HandlerInterface
             'maskedCC' => $payment->getAdditionalInformation(OrderPaymentInterface::CC_NUMBER_ENC),
             'expirationDate' => $payment->getCcExpMonth() .
                 '/' . $payment->getCcExpYear(),
-            'customerId' => $transaction[AdapterInterface::FIELD_CUSTOMER_ID]
+            'customerId' => $transaction[Request::FIELD_CUSTOMER_ID]
         ]));
 
         return $paymentToken;

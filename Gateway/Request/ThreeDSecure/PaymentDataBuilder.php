@@ -4,7 +4,7 @@ namespace Simon\SecurionPay\Gateway\Request\ThreeDSecure;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Simon\SecurionPay\Gateway\Config\Config;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Request;
 use Simon\SecurionPay\Gateway\SubjectReader;
 
 class PaymentDataBuilder implements BuilderInterface
@@ -49,10 +49,10 @@ class PaymentDataBuilder implements BuilderInterface
         }
 
         return [
-            AdapterInterface::FIELD_3D_SECURE => [
-                AdapterInterface::FIELD_REQUIRE_ATTEMPT => $this->config->requireAttempt($storeId),
-                AdapterInterface::FIELD_REQUIRE_ENROLLED_CARD => $this->config->requireEnrolledCard($storeId),
-                AdapterInterface::FIELD_REQUIRE_LIABILITY_SHIFT => $this->config->requireLiabilityShift($storeId)
+            Request::FIELD_3D_SECURE => [
+                Request::FIELD_REQUIRE_ATTEMPT => $this->config->requireAttempt($storeId),
+                Request::FIELD_REQUIRE_ENROLLED_CARD => $this->config->requireEnrolledCard($storeId),
+                Request::FIELD_REQUIRE_LIABILITY_SHIFT => $this->config->requireLiabilityShift($storeId)
             ]
         ];
     }
