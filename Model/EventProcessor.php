@@ -53,4 +53,12 @@ class EventProcessor implements EventProcessorInterface
     {
         return true;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getEventType()
+    {
+        return null;
+    }
 }

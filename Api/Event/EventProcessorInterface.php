@@ -24,7 +24,7 @@ interface EventProcessorInterface
     /**
      * Get the event type for the processor.
      *
-     * @return string
+     * @return string|null
      */
     public function getEventType();
 }
