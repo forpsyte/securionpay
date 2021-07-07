@@ -59,8 +59,6 @@ class DefaultProcessor extends AbstractProcessor
             $event->setProcessAttempts(1);
             $this->eventRepository->save($event);
         }
-
-        return;
     }
 
     /**

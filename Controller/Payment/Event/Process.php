@@ -102,12 +102,12 @@ class Process extends Action implements CsrfAwareActionInterface, HttpPostAction
             return $this->createResponse([
                 'processed' => true,
                 'message' => 'Event successfully processed.'
-            ])->setHttpResponseCode(\Symfony\Component\HttpFoundation\Response::HTTP_OK);
+            ]);
         } catch (Exception $e) {
             return $this->createResponse([
                 'processed' => false,
                 'message' => __('Error processing event: %1', $e->getMessage())
-            ])->setHttpResponseCode(\Symfony\Component\HttpFoundation\Response::HTTP_OK);
+            ]);
         }
 
 
