@@ -87,7 +87,6 @@ class Process extends Action implements CsrfAwareActionInterface, HttpPostAction
             /** @var HttpRequest $request */
             $request = $this->getRequest();
             $requestBody = $this->serializer->unserialize($request->getContent());
-            $this->logger->debug('Incoming event Request body: ', $requestBody);
             $response = $this->adapterFactory->create()->getEvent([
                 AdapterInterface::FIELD_EVENT_ID => $requestBody[AdapterInterface::FIELD_ID]
             ]);

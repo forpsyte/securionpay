@@ -3,7 +3,9 @@
 namespace Simon\SecurionPay\Model\Event\Processor;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Phrase;
 use Simon\SecurionPay\Api\Data\EventInterface;
 use Simon\SecurionPay\Api\EventRepositoryInterface;
 use Simon\SecurionPay\Model\Event;
@@ -35,6 +37,7 @@ class DefaultProcessor extends AbstractProcessor
     /**
      * @inheritDoc
      * @throws CouldNotSaveException
+     * @throws AlreadyExistsException
      */
     public function process(EventInterface $event)
     {
@@ -49,12 +52,14 @@ class DefaultProcessor extends AbstractProcessor
             $event = array_pop($items);
             $attempts = $event->getProcessAttempts() + 1;
             $event->setProcessAttempts($attempts);
+            $this->eventRepository->save($event);
+            $this->throwAlreadyExistsException();
         } else {
             $event->setIsProcessed(true);
             $event->setProcessAttempts(1);
+            $this->eventRepository->save($event);
         }
 
-        $this->eventRepository->save($event);
         return;
     }
 
@@ -64,5 +69,15 @@ class DefaultProcessor extends AbstractProcessor
     public function canProcess(EventInterface $event)
     {
         return true;
+    }
+
+    /**
+     * @throws AlreadyExistsException
+     */
+    private function throwAlreadyExistsException()
+    {
+        throw new AlreadyExistsException(
+            new Phrase('Event has been processed previously.')
+        );
     }
 }
