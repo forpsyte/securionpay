@@ -1,0 +1,78 @@
+name: SecurionPay Payments Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to environment
+    runs-on: ubuntu-latest
+    env:
+      build_path_prefix: build-
+      build_path: /var/www/securionpay.jsimon.me/public_html/releases/build-${{ github.run_number }}
+      webroot_path: /var/www/securionpay.jsimon.me/public_html/
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Create build directory
+        if: endsWith(github.ref, '/main')
+        uses: appleboy/ssh-action@master
+        with:
+          HOST: ${{ secrets.SSH_HOST }}
+          USERNAME: ${{ secrets.SSH_USERNAME }}
+          PORT: ${{ secrets.SSH_PORT }}
+          KEY: ${{ secrets.SSH_KEY }}
+          script: mkdir -p ${{ env.build_path }}
+
+      - name: Copy files to build directory
+        if: endsWith(github.ref, '/main')
+        uses: appleboy/scp-action@master
+        env:
+          HOST: ${{ secrets.SSH_HOST }}
+          USERNAME: ${{ secrets.SSH_USERNAME }}
+          PORT: ${{ secrets.SSH_PORT }}
+          KEY: ${{ secrets.SSH_KEY }}
+        with:
+          source: "."
+          target: ${{ env.build_path }}
+
+      - name: Update symlinks and build directory permissions
+        if: endsWith(github.ref, '/main')
+        uses: appleboy/ssh-action@master
+        with:
+          HOST: ${{ secrets.SSH_HOST }}
+          USERNAME: ${{ secrets.SSH_USERNAME }}
+          PORT: ${{ secrets.SSH_PORT }}
+          KEY: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ${{ env.webroot_path }}
+            rm -rf app/code/Simon/SecurionPay
+            ln -sfn ${{ env.build_path }} app/code/Simon/SecurionPay
+            sudo chown -R :www-data ${{ env.build_path }}
+
+      - name: Clean up previous builds
+        if: endsWith(github.ref, '/main')
+        uses: appleboy/ssh-action@master
+        with:
+          HOST: ${{ secrets.SSH_HOST }}
+          USERNAME: ${{ secrets.SSH_USERNAME }}
+          PORT: ${{ secrets.SSH_PORT }}
+          KEY: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ${{ env.webroot_path }}releases
+            ls -tp | grep 'build' | tail -n +3 | while IFS= read -r d; do rm -rf "$d"; done
+
+      - name: Executing remote commands
+        if: endsWith(github.ref, '/main')
+        uses: appleboy/ssh-action@master
+        with:
+          HOST: ${{ secrets.SSH_HOST }}
+          USERNAME: ${{ secrets.SSH_USERNAME }}
+          PORT: ${{ secrets.SSH_PORT }}
+          KEY: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ${{ env.webroot_path }}
+            tsp sh -c "sh ~/scripts/module/deploy.sh securionpay.jsimon.me 7.3"
