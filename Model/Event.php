@@ -24,6 +24,14 @@ class Event extends AbstractModel implements EventInterface
     /**
      * @inheritDoc
      */
+    public function _construct()
+    {
+        $this->_init(\Simon\SecurionPay\Model\ResourceModel\Event::class);
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getId()
     {
         return $this->getData(self::ENTITY_ID);

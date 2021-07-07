@@ -93,7 +93,8 @@ class ChargeUpdatedProcessor extends AbstractProcessor
             return;
         }
         /** @var Payment $payment */
-        $payment = array_pop($results->getItems());
+        $items = $results->getItems();
+        $payment = array_pop($items);
         $order = $payment->getOrder();
         $fraudDetails = $eventData[Response::FRAUD_DETAILS];
         $status = $fraudDetails[Response::FRAUD_DETAIL_STATUS];
