@@ -379,6 +379,7 @@
                 <item name="auth_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\AuthDetailsHandler</item>
                 <item name="txn_id" xsi:type="string">Simon\SecurionPay\Gateway\Response\TransactionIdHandler</item>
                 <item name="risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\RiskDataHandler</item>
+                <item name="post_risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
                 <item name="customer_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\CustomerDetailsHandler</item>
                 <item name="vault_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\VaultDetailsHandler</item>
             </argument>
@@ -391,6 +392,7 @@
                 <item name="charge_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\ChargeDetailsHandler</item>
                 <item name="txn_id" xsi:type="string">Simon\SecurionPay\Gateway\Response\TransactionIdHandler</item>
                 <item name="risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\RiskDataHandler</item>
+                <item name="post_risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
             </argument>
         </arguments>
     </virtualType>
@@ -400,6 +402,7 @@
                     <item name="txn_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\AuthDetailsHandler</item>
                     <item name="sale_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\SaleDetailsHandler</item>
                     <item name="risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\RiskDataHandler</item>
+                    <item name="post_risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
                     <item name="customer_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\CustomerDetailsHandler</item>
                     <item name="vault_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\VaultDetailsHandler</item>
                 </argument>
@@ -411,6 +414,7 @@
                 <item name="settlement_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\SettleDetailsHandler</item>
                 <item name="txn_id" xsi:type="string">Simon\SecurionPay\Gateway\Response\TransactionIdHandler</item>
                 <item name="risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\RiskDataHandler</item>
+                <item name="post_risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
             </argument>
         </arguments>
     </virtualType>
