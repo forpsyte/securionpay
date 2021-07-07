@@ -9,6 +9,7 @@ use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 use Simon\SecurionPay\Gateway\SubjectReader;
 use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
+use Simon\SecurionPay\Model\Adminhtml\Source\FraudDetectionAction;
 
 /**
  * Risk data response handler.
@@ -62,7 +63,7 @@ class RiskDataHandler extends AbstractHandler
 
         $fraudDetails = $transaction[Response::FRAUD_DETAILS];
 
-        if ($this->config->getFraudDetectionAction() == 'after_checkout') {
+        if ($this->config->getFraudDetectionAction() == FraudDetectionAction::OPTION_AFTER_CHECKOUT) {
             if ($fraudDetails[Response::FRAUD_DETAIL_STATUS] == Response::FRAUD_STATUS_IN_PROGRESS) {
                 $payment->setIsTransactionPending(true);
             }

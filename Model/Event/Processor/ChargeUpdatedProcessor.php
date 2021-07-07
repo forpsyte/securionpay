@@ -14,6 +14,7 @@ use Simon\SecurionPay\Api\Data\EventInterface;
 use Simon\SecurionPay\Api\EventRepositoryInterface;
 use Simon\SecurionPay\Gateway\Config\Config;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
+use Simon\SecurionPay\Model\Adminhtml\Source\FraudDetectionAction;
 
 class ChargeUpdatedProcessor extends AbstractProcessor
 {
@@ -140,7 +141,9 @@ class ChargeUpdatedProcessor extends AbstractProcessor
      */
     public function canProcess(EventInterface $event)
     {
-        return !$this->eventRepository->exists($event) && $event->getType() == $this->_eventType;
+        return !$this->eventRepository->exists($event) &&
+            $event->getType() == $this->_eventType &&
+            $this->config->getFraudDetectionAction() == FraudDetectionAction::OPTION_AFTER_CHECKOUT;
     }
 
     /**
