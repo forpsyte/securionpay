@@ -15,7 +15,7 @@ use Simon\SecurionPay\Model\Adminhtml\Source\FraudDetectionAction;
  *
  * Raises flag for fraud if address verification failed.
  */
-class RiskDataHandler extends AbstractHandler
+class PostRiskDataHandler extends AbstractHandler
 {
     /**
      * @var Config
