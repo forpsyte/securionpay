@@ -21,6 +21,14 @@ class ChargeUpdatedProcessor extends AbstractProcessor
      * @var string
      */
     protected $_eventType = 'CHARGE_UPDATED';
+
+    /**
+     * @var array
+     */
+    protected $_highRiskStatuses = [
+        Response::FRAUD_STATUS_FRAUDULENT,
+        Response::FRAUD_STATUS_SUSPICIOUS
+    ];
     /**
      * @var OrderPaymentRepositoryInterface
      */
@@ -100,9 +108,13 @@ class ChargeUpdatedProcessor extends AbstractProcessor
         $status = $fraudDetails[Response::FRAUD_DETAIL_STATUS];
         $paymentAction = $this->getActionText();
 
-        if ($status == Response::FRAUD_STATUS_FRAUDULENT || $status == Response::FRAUD_STATUS_SUSPICIOUS) {
+        if (in_array($status, $this->_highRiskStatuses)) {
             $message = "Order is suspended as its {$paymentAction} amount %1 is suspected to be fraudulent.";
             $order->setStatus(Order::STATUS_FRAUD);
+        }
+
+        if ($status == Response::FRAUD_STATUS_IN_UNKNOWN) {
+            $message = "Order will remain suspended as its {$paymentAction} amount %1 cannot be verified.";
         }
 
         if ($status == Response::FRAUD_STATUS_SAFE) {

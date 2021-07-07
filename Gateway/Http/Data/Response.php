@@ -24,6 +24,7 @@ class Response implements \ArrayAccess
     const FRAUD_STATUS_SUSPICIOUS = 'suspicious';
     const FRAUD_STATUS_FRAUDULENT = 'fraudulent';
     const FRAUD_STATUS_IN_PROGRESS = 'in_progress';
+    const FRAUD_STATUS_IN_UNKNOWN = 'unknown';
     const DATA = 'data';
     const LAST_4 = 'last4';
     const BRAND = 'brand';

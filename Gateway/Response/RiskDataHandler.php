@@ -63,11 +63,11 @@ class RiskDataHandler extends AbstractHandler
         $fraudDetails = $transaction[Response::FRAUD_DETAILS];
 
         if ($this->config->getFraudDetectionAction() == 'after_checkout') {
-            if ($fraudDetails[Response::FRAUD_DETAIL_STATUS] == 'in_progress') {
+            if ($fraudDetails[Response::FRAUD_DETAIL_STATUS] == Response::FRAUD_STATUS_IN_PROGRESS) {
                 $payment->setIsTransactionPending(true);
             }
         } else {
-            while ($fraudDetails[Response::FRAUD_DETAIL_STATUS] == 'in_progress') {
+            while ($fraudDetails[Response::FRAUD_DETAIL_STATUS] == Response::FRAUD_STATUS_IN_PROGRESS) {
                 sleep(5);
                 $chargeResponse = $this->securionPayAdapterFactory->create()->getCharge([
                     AdapterInterface::FIELD_CHARGE_ID => $transaction[Response::ID]
