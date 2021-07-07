@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Controller\Payment\Event;
+namespace Simon\SecurionPay\Controller\Event;
 
 use Exception;
 use Magento\Framework\App\Action\Action;

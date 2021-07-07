@@ -501,7 +501,7 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Simon\SecurionPay\Controller\Payment\Event\Process">
+    <type name="Simon\SecurionPay\Controller\Event\Process">
         <arguments>
             <argument name="eventProcessor" xsi:type="object">Simon\SecurionPay\Api\Event\EventProcessor</argument>
         </arguments>
