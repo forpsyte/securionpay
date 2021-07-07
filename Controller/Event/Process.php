@@ -17,6 +17,7 @@ use Magento\Framework\Serialize\Serializer\Json as Serializer;
 use Psr\Log\LoggerInterface;
 use Simon\SecurionPay\Api\Event\EventProcessorInterface;
 use Simon\SecurionPay\Gateway\Http\Client\Adapter\AdapterInterface;
+use Simon\SecurionPay\Gateway\Http\Data\Error;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
 use Simon\SecurionPay\Model\Event;
@@ -82,7 +83,6 @@ class Process extends Action implements CsrfAwareActionInterface, HttpPostAction
      */
     public function execute()
     {
-
         try {
             /** @var HttpRequest $request */
             $request = $this->getRequest();
@@ -91,6 +91,14 @@ class Process extends Action implements CsrfAwareActionInterface, HttpPostAction
                 AdapterInterface::FIELD_EVENT_ID => $requestBody[AdapterInterface::FIELD_ID]
             ]);
             $eventDetails = $response->getBody();
+
+            if (array_key_exists(Response::ERROR_TYPE, $eventDetails) &&
+                $eventDetails[Response::ERROR_TYPE] == Error::TYPE_INVALID_REQUEST
+            ) {
+                $message = __('Event with ID %1 does not exist.', $requestBody[AdapterInterface::FIELD_ID]);
+                throw new Exception($message);
+            }
+
             /** @var Event $eventModel */
             $eventModel = $this->eventFactory->create();
             $eventModel
@@ -109,8 +117,6 @@ class Process extends Action implements CsrfAwareActionInterface, HttpPostAction
                 'message' => __('Error processing event: %1', $e->getMessage())
             ]);
         }
-
-
     }
 
     /**
@@ -132,6 +138,11 @@ class Process extends Action implements CsrfAwareActionInterface, HttpPostAction
         /** @var HttpRequest $request */
         $request = $this->getRequest();
         if (!$request->isSecure() || !$request->isPost()) {
+            return false;
+        }
+
+        $requestBody = $this->serializer->unserialize($request->getContent());
+        if (!array_key_exists(AdapterInterface::FIELD_ID, $requestBody)) {
             return false;
         }
 
