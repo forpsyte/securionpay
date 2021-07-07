@@ -20,4 +20,11 @@ interface EventProcessorInterface
      * @return bool
      */
     public function canProcess(EventInterface $event);
+
+    /**
+     * Get the event type for the processor.
+     *
+     * @return string
+     */
+    public function getEventType();
 }

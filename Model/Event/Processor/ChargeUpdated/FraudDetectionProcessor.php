@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Event\Processor;
+namespace Simon\SecurionPay\Model\Event\Processor\ChargeUpdated;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Serialize\Serializer\Json as Serializer;
@@ -15,8 +15,9 @@ use Simon\SecurionPay\Api\EventRepositoryInterface;
 use Simon\SecurionPay\Gateway\Config\Config;
 use Simon\SecurionPay\Gateway\Http\Data\Response;
 use Simon\SecurionPay\Model\Adminhtml\Source\FraudDetectionAction;
+use Simon\SecurionPay\Model\Event\Processor\AbstractProcessor;
 
-class ChargeUpdatedProcessor extends AbstractProcessor
+class FraudDetectionProcessor extends AbstractProcessor
 {
     /**
      * @var string
@@ -147,7 +148,7 @@ class ChargeUpdatedProcessor extends AbstractProcessor
     public function canProcess(EventInterface $event)
     {
         return !$this->eventRepository->exists($event) &&
-            $event->getType() == $this->_eventType &&
+            $event->getType() == $this->getEventType() &&
             $this->config->getFraudDetectionAction() == FraudDetectionAction::OPTION_AFTER_CHECKOUT;
     }
 

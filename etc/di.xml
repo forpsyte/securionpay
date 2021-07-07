@@ -497,7 +497,7 @@
         <arguments>
             <argument name="processors" xsi:type="array">
                 <item name="default" xsi:type="object">Simon\SecurionPay\Model\Event\Processor\DefaultProcessor</item>
-                <item name="charge_updated" xsi:type="object">Simon\SecurionPay\Model\Event\Processor\ChargeUpdatedProcessor</item>
+                <item name="fraud_detection" xsi:type="object">Simon\SecurionPay\Model\Event\Processor\ChargeUpdated\FraudDetectionProcessor</item>
             </argument>
         </arguments>
     </virtualType>
