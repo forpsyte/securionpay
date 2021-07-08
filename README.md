@@ -22,6 +22,7 @@ SecurionPay.
 * SecurionPay checkout payment method
 * 3D Secure payment services
 * Stored payment methods for customers
+* Fraud detection
 
 ## Installation
 ### Composer (Recommended)
