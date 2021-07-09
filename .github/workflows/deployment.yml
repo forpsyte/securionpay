@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Create build directory
-        if: endsWith(github.ref, '/main')
+        if: endsWith(github.ref, '/develop')
         uses: appleboy/ssh-action@master
         with:
           HOST: ${{ secrets.SSH_HOST }}
@@ -28,7 +28,7 @@ jobs:
           script: mkdir -p ${{ env.build_path }}
 
       - name: Copy files to build directory
-        if: endsWith(github.ref, '/main')
+        if: endsWith(github.ref, '/develop')
         uses: appleboy/scp-action@master
         env:
           HOST: ${{ secrets.SSH_HOST }}
@@ -40,7 +40,7 @@ jobs:
           target: ${{ env.build_path }}
 
       - name: Update symlinks and build directory permissions
-        if: endsWith(github.ref, '/main')
+        if: endsWith(github.ref, '/develop')
         uses: appleboy/ssh-action@master
         with:
           HOST: ${{ secrets.SSH_HOST }}
@@ -54,7 +54,7 @@ jobs:
             sudo chown -R :www-data ${{ env.build_path }}
 
       - name: Clean up previous builds
-        if: endsWith(github.ref, '/main')
+        if: endsWith(github.ref, '/develop')
         uses: appleboy/ssh-action@master
         with:
           HOST: ${{ secrets.SSH_HOST }}
@@ -66,7 +66,7 @@ jobs:
             ls -tp | grep 'build' | tail -n +3 | while IFS= read -r d; do rm -rf "$d"; done
 
       - name: Executing remote commands
-        if: endsWith(github.ref, '/main')
+        if: endsWith(github.ref, '/develop')
         uses: appleboy/ssh-action@master
         with:
           HOST: ${{ secrets.SSH_HOST }}
