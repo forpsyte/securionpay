@@ -55,7 +55,6 @@ class DefaultProcessor extends AbstractProcessor
             $this->eventRepository->save($event);
             $this->throwAlreadyExistsException();
         } else {
-            $event->setIsProcessed(true);
             $event->setProcessAttempts(1);
             $this->eventRepository->save($event);
         }
@@ -75,7 +74,7 @@ class DefaultProcessor extends AbstractProcessor
     private function throwAlreadyExistsException()
     {
         throw new AlreadyExistsException(
-            new Phrase('Event has been processed previously.')
+            new Phrase('Event already exists.')
         );
     }
 }
