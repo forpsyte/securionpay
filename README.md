@@ -6,7 +6,6 @@ Module Simon\SecurionPay implements integration with the SecurionPay payment sys
 
 This module implements integration with SecurionPay payment system via Custom Form or the Checkout solution provided by
 SecurionPay.  
-Try the <a href="https://securionpay.jsimon.me/" target="_blank">demo site.</a>
 
 ## Available Payment Methods
 * Credit Card
@@ -48,3 +47,21 @@ Store->Configuration->Sales->Payment Methods->SecurionPay
 | Module Version | Magento Version |
 | -------------- | --------------- |
 | v1.x.x         | v2.3.x, v2.4.x  |
+
+## Demo Site
+A <a href="http://securionpay.jsimon.me/" target="_blank">demo site</a> is available for this module. Use the test
+cards below when making a payment. Click <a href="https://securionpay.com/docs/testing">here</a> for 
+a full list of the test cards.
+
+### Test card numbers
+| Card number | Card type |
+| ---------------- | --------------- |
+| 4012000100000007 | Visa |
+| 5555555555554444 | MasterCard |
+| 6759649826438453 | Maestro |
+| 378282246310005 | American Express |
+| 6011000990139424 | Discover |
+| 30569309025904 | Diners Club |
+| 3530111333300000 | JCB |
+
+
