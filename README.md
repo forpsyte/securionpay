@@ -5,7 +5,7 @@ Module Simon\SecurionPay implements integration with the SecurionPay payment sys
 ## Overview
 
 This module implements integration with SecurionPay payment system via Custom Form or the Checkout solution provided by
-SecurionPay.
+SecurionPay.  [Demo Site](https://securionpay.jsimon.me)
 
 ## Available Payment Methods
 * Credit Card
