@@ -136,7 +136,9 @@ class VaultDetailsHandler implements HandlerInterface
             'maskedCC' => $payment->getAdditionalInformation(OrderPaymentInterface::CC_NUMBER_ENC),
             'expirationDate' => $payment->getCcExpMonth() .
                 '/' . $payment->getCcExpYear(),
-            'customerId' => $transaction[Request::FIELD_CUSTOMER_ID]
+            'customerId' => $transaction[Request::FIELD_CUSTOMER_ID],
+            'chargeId' => $transaction[Request::FIELD_ID],
+            'created' => $transaction[Response::CREATED]
         ]));
 
         return $paymentToken;

@@ -515,6 +515,8 @@
                 <item name="capture" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCapture</item>
                 <item name="refund" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayRefund</item>
                 <item name="sale" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPaySale</item>
+                <item name="create_customer" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCreateCustomer</item>
+                <item name="create_card" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCreateCard</item>
                 <item name="delete_card" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayDeleteCard</item>
                 <item name="get_charge" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayGetCharge</item>
                 <item name="get_checkout" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCheckout</item>

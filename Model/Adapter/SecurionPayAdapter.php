@@ -81,6 +81,15 @@ class SecurionPayAdapter
      * @param array $data
      * @return Response
      */
+    public function createCard(array $data)
+    {
+        return $this->placeRequest($data, 'create_card');
+    }
+
+    /**
+     * @param array $data
+     * @return Response
+     */
     public function deleteCard(array $data)
     {
         return $this->placeRequest($data, 'delete_card');
@@ -111,6 +120,15 @@ class SecurionPayAdapter
     public function getEvent(array $data)
     {
         return $this->placeRequest($data, 'get_event');
+    }
+
+    /**
+     * @param array $data
+     * @return Response
+     */
+    public function createCustomer(array $data)
+    {
+        return $this->placeRequest($data, 'create_customer');
     }
 
     /**

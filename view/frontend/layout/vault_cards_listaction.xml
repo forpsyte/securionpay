@@ -8,6 +8,7 @@
                        name="securionpay.card.renderer"
                        template="Magento_Vault::customer_account/credit_card.phtml"/>
             </referenceBlock>
+            <block class="Simon\SecurionPay\Block\Customer\PaymentMethod" name="vault.cards.add" cacheable="false" template="Simon_SecurionPay::cards_add.phtml"/>
         </referenceContainer>
     </body>
 </page>

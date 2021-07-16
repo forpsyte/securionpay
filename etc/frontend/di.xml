@@ -27,6 +27,12 @@
         </arguments>
     </type>
 
+    <type name="Simon\SecurionPay\Block\Form\Cc">
+        <arguments>
+            <argument name="method" xsi:type="object">SecurionPayFacade</argument>
+        </arguments>
+    </type>
+
     <type name="Simon\SecurionPay\Block\Checkout\Info">
         <arguments>
             <argument name="data" xsi:type="array">
@@ -46,5 +52,8 @@
     <!-- Plugins -->
     <type name="Magento\Vault\Api\PaymentTokenRepositoryInterface">
         <plugin name="securionpay_payment_token_repository_interface" type="Simon\SecurionPay\Plugin\PaymentTokenRepository" />
+    </type>
+    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
+        <plugin name="securionpay_customer_repository_interface" type="Simon\SecurionPay\Plugin\CustomerRepository" />
     </type>
 </config>

@@ -1,0 +1,20 @@
+<?php
+
+/** @var \Simon\SecurionPay\Block\Customer\PaymentMethod $block */
+
+?>
+<div class="actions-toolbar">
+    <div class="primary">
+        <button type="button" role="add-payment-method" title="<?= $block->escapeHtmlAttr(__('Add Payment Method')) ?>" class="action primary add"><?= $block->escapeHtmlAttr(__('Add Payment Method')) ?></button>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        ".page-main": {
+            "payment-method": {
+                "addPaymentMethod": "button[role='add-payment-method']",
+                "addPaymentMethodLocation": "<?= $block->escapeJs($block->escapeUrl($block->getAddPaymentMethodUrl())) ?>"
+            }
+        }
+    }
+</script>
