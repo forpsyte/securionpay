@@ -139,6 +139,7 @@ class FraudDetectionProcessor extends AbstractProcessor
         $message = __($message, $order->getBaseCurrency()->formatTxt($amount));
         $order->addCommentToStatusHistory($message, false, false);
         $this->orderRepository->save($order);
+        $event->setIsProcessed(true);
         return;
     }
 

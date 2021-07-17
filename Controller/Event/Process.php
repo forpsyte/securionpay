@@ -104,6 +104,7 @@ class Process extends Action implements CsrfAwareActionInterface, HttpPostAction
             $eventModel
                 ->setEventId($eventDetails[Response::ID])
                 ->setType($eventDetails[Response::CHARGE_TYPE])
+                ->setIsProcessed(false)
                 ->setSource($request->getClientIp())
                 ->setDetails($response->getBodyAsString());
             $this->eventProcessor->process($eventModel);

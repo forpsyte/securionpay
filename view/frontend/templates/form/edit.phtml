@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * @var Simon\SecurionPay\Block\Form\Cc $block
+ */
+$code = $block->escapeHtml($block->getMethodCode());
+
+?>
+<form class="form form-edit-account"
+      id="form-validate">
+    <fieldset class="fieldset" id="payment_method_<?= /* @noEscape */ $code ?>">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Card Information')) ?></span></legend><br>
+        <?= $block->getBlockHtml('formkey') ?>
+        <div class="field-type field required">
+            <label class="label" for="<?= /* @noEscape */ $code ?>_cc_type">
+                <span><?= $block->escapeHtml(__('Credit Card Type')) ?></span>
+            </label>
+            <div class="">
+                <select id="<?= /* @noEscape */ $code ?>_cc_type" name="payment[cc_type]"
+                        class="required-entry validate-cc-type-select">
+                    <option value="">Select a credit card type</option>
+                    <?php foreach ($block->getCcAvailableTypes() as $typeCode => $typeName): ?>
+                        <option
+                            value="<?= $block->escapeHtml($typeCode) ?>">
+                            <?= $block->escapeHtml($typeName) ?>
+                        </option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+        </div>
+        <div class="field-number field required">
+            <label class="label" for="<?= /* @noEscape */ $code ?>_cc_number">
+                <span><?= $block->escapeHtml(__('Credit Card Number')) ?></span>
+            </label>
+            <div class="control">
+                <input type="text" id="<?= /* @noEscape */ $code ?>_cc_number" name="payment[cc_number]"
+                       title="<?= $block->escapeHtml(__('Credit Card Number')) ?>"
+                       class="input-text required-entry validate-cc-number validate-number"
+                       data-securionpay="number"/>
+            </div>
+        </div>
+        <div class="field-date field required">
+            <label class="label" for="<?= /* @noEscape */ $code ?>_expiration">
+                <span><?= $block->escapeHtml(__('Expiration Date')) ?></span>
+            </label>
+            <div class=control">
+                <select id="<?= /* @noEscape */ $code ?>_cc_exp_month" name="payment[cc_exp_month]"
+                        data-securionpay="expMonth"
+                        class="validate-cc-exp required-entry">
+                    <?php foreach ($block->getCcMonths() as $k => $v): ?>
+                        <option value="<?= $block->escapeHtml($k) ?>">
+                            <?= $block->escapeHtml($v) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <select id="<?= /* @noEscape */ $code ?>_cc_exp_year" name="payment[cc_exp_year]"
+                        data-securionpay="expYear"
+                        class="required-entry">
+                    <?php foreach ($block->getCcYears() as $k => $v): ?>
+                        <option value="<?= /* @noEscape */ $k ? $block->escapeHtml($k) : '' ?>">
+                            <?= $block->escapeHtml($v) ?>
+                        </option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+        </div>
+
+        <?php if ($block->hasVerification()): ?>
+            <div class="field-number required field required">
+                <label class="label" for="<?= /* @noEscape */ $code ?>_cvv2">
+                    <span><?= $block->escapeHtml(__('Card Verification Number')) ?></span>
+                </label>
+                <div class="control">
+                    <input type="text" title="<?= $block->escapeHtml(__('Card Verification Number')) ?>"
+                           class="required-entry validate-cc-cvn input-text validate-number"
+                           id="<?= /* @noEscape */ $code ?>_cvv2"
+                           data-securionpay="cvc"
+                           name="payment[cvv2]"/>
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="button" role="save-payment-method" title="<?= $block->escapeHtmlAttr(__('Submit')) ?>" class="action primary add"><?= $block->escapeHtmlAttr(__('Submit')) ?></button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<script type="text/x-magento-init">
+    {
+        "#form-validate": {
+            "save-payment-method": <?= /* @noEscape */ $block->getJsonConfig() ?>
+        }
+    }
+</script>

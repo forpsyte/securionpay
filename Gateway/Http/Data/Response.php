@@ -30,6 +30,7 @@ class Response implements \ArrayAccess
     const BRAND = 'brand';
     const EXP_MONTH = 'expMonth';
     const EXP_YEAR = 'expYear';
+    const CREATED = 'created';
 
     /**
      * @var Serializer
