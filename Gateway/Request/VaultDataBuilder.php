@@ -1,12 +1,12 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Request;
+namespace Forpsyte\SecurionPay\Gateway\Request;
 
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\SubjectReader;
-use Simon\SecurionPay\Observer\DataAssignObserver;
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
+use Forpsyte\SecurionPay\Observer\DataAssignObserver;
 
 class VaultDataBuilder implements BuilderInterface
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Simon\SecurionPay\Block;
+namespace Forpsyte\SecurionPay\Block;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\Serialize\Serializer\Json as Serializer;
 use Magento\Framework\View\Element\Template;
-use Simon\SecurionPay\Gateway\Config\Config;
-use Simon\SecurionPay\Model\Ui\ConfigProvider;
+use Forpsyte\SecurionPay\Gateway\Config\Config;
+use Forpsyte\SecurionPay\Model\Ui\ConfigProvider;
 
 class Payment extends Template
 {

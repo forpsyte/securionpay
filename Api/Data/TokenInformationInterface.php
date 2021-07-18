@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Api\Data;
+namespace Forpsyte\SecurionPay\Api\Data;
 
 interface TokenInformationInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
@@ -75,15 +75,15 @@ interface TokenInformationInterface extends \Magento\Framework\Api\ExtensibleDat
     /**
      * Retrieve existing extension attributes object or create a new one.
      *
-     * @return \Simon\SecurionPay\Api\Data\TokenInformationExtensionInterface|null
+     * @return \Forpsyte\SecurionPay\Api\Data\TokenInformationExtensionInterface|null
      */
     public function getExtensionAttributes();
 
     /**
-     * @param \Simon\SecurionPay\Api\Data\TokenInformationExtensionInterface $extensionAttributes
+     * @param \Forpsyte\SecurionPay\Api\Data\TokenInformationExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(
-        \Simon\SecurionPay\Api\Data\TokenInformationExtensionInterface $extensionAttributes
+        \Forpsyte\SecurionPay\Api\Data\TokenInformationExtensionInterface $extensionAttributes
     );
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Client;
+namespace Forpsyte\SecurionPay\Gateway\Http\Client;
 
 /**
  * Sends capture charge request

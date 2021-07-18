@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Helper;
+namespace Forpsyte\SecurionPay\Helper;
 
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 

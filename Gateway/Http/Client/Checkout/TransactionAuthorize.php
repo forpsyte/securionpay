@@ -1,13 +1,13 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Client\Checkout;
+namespace Forpsyte\SecurionPay\Gateway\Http\Client\Checkout;
 
 use Magento\Payment\Model\Method\Logger;
 use Psr\Log\LoggerInterface;
-use Simon\SecurionPay\Gateway\Http\Client\AbstractTransaction;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
-use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
+use Forpsyte\SecurionPay\Gateway\Http\Client\AbstractTransaction;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\Http\Data\ResponseFactory;
+use Forpsyte\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
 
 class TransactionAuthorize extends AbstractTransaction
 {

@@ -1,5 +1,5 @@
 {
-    "name": "simon/magento2-module-securionpay",
+    "name": "forpsyte/magento2-module-securionpay",
     "description": "SecurionPay payment gateway module for Magento 2",
     "version": "1.0.0",
     "type": "magento2-module",
@@ -32,7 +32,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Simon\\SecurionPay\\": ""
+            "Forpsyte\\SecurionPay\\": ""
         }
     }
 

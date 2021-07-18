@@ -1,10 +1,10 @@
 <?php
 
-namespace Simon\SecurionPay\Block\Adminhtml\Checkout;
+namespace Forpsyte\SecurionPay\Block\Adminhtml\Checkout;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\View\Element\Template;
-use Simon\SecurionPay\Model\Ui\Adminhtml\Checkout\ConfigProvider;
+use Forpsyte\SecurionPay\Model\Ui\Adminhtml\Checkout\ConfigProvider;
 
 class Payment extends Template
 {

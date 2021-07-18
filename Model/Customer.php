@@ -1,10 +1,10 @@
 <?php
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
 use Magento\Framework\DataObject\IdentityInterface;
 use Magento\Framework\Model\AbstractModel;
-use Simon\SecurionPay\Api\Data\CustomerInterface;
+use Forpsyte\SecurionPay\Api\Data\CustomerInterface;
 
 /**
  * Customer Class
@@ -13,16 +13,16 @@ class Customer extends AbstractModel implements IdentityInterface, CustomerInter
 {
     const NOROUTE_ENTITY_ID = 'no-route';
 
-    const CACHE_TAG = 'simon_securionpay_customer';
+    const CACHE_TAG = 'forpsyte_securionpay_customer';
 
     /**
      * @inheritDoc
      */
-    protected $_cacheTag = 'simon_securionpay_customer';
+    protected $_cacheTag = 'forpsyte_securionpay_customer';
     /**
      * @inheritDoc
      */
-    protected $_eventPrefix = 'simon_securionpay_customer';
+    protected $_eventPrefix = 'forpsyte_securionpay_customer';
     /**
      * @inheritDoc
      */

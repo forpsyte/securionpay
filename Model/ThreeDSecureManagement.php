@@ -1,15 +1,11 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
 use Magento\Quote\Model\Quote;
-use Simon\SecurionPay\Api\Data\ThreeDSecureInformationInterface;
+use Forpsyte\SecurionPay\Api\Data\ThreeDSecureInformationInterface;
 
-class ThreeDSecureManagement implements \Simon\SecurionPay\Api\ThreeDSecureManagementInterface
+class ThreeDSecureManagement implements \Forpsyte\SecurionPay\Api\ThreeDSecureManagementInterface
 {
     /**
      * @var \Magento\Quote\Model\QuoteIdMaskFactory
@@ -20,11 +16,11 @@ class ThreeDSecureManagement implements \Simon\SecurionPay\Api\ThreeDSecureManag
      */
     protected $cartRepository;
     /**
-     * @var \Simon\SecurionPay\Helper\Currency
+     * @var \Forpsyte\SecurionPay\Helper\Currency
      */
     protected $currencyHelper;
     /**
-     * @var \Simon\SecurionPay\Model\ThreeDSecureInformationFactory
+     * @var \Forpsyte\SecurionPay\Model\ThreeDSecureInformationFactory
      */
     protected $threeDSecureInformationFactory;
 
@@ -32,14 +28,14 @@ class ThreeDSecureManagement implements \Simon\SecurionPay\Api\ThreeDSecureManag
      * GuestCheckoutRequestGenerator constructor.
      * @param \Magento\Quote\Model\QuoteIdMaskFactory $quoteIdMaskFactory
      * @param \Magento\Quote\Api\CartRepositoryInterface $cartRepository
-     * @param \Simon\SecurionPay\Helper\Currency $currencyHelper
+     * @param \Forpsyte\SecurionPay\Helper\Currency $currencyHelper
      * @param ThreeDSecureInformationFactory $threeDSecureInformationFactory
      */
     public function __construct(
         \Magento\Quote\Model\QuoteIdMaskFactory $quoteIdMaskFactory,
         \Magento\Quote\Api\CartRepositoryInterface $cartRepository,
-        \Simon\SecurionPay\Helper\Currency $currencyHelper,
-        \Simon\SecurionPay\Model\ThreeDSecureInformationFactory $threeDSecureInformationFactory
+        \Forpsyte\SecurionPay\Helper\Currency $currencyHelper,
+        \Forpsyte\SecurionPay\Model\ThreeDSecureInformationFactory $threeDSecureInformationFactory
     ) {
         $this->quoteIdMaskFactory = $quoteIdMaskFactory;
         $this->cartRepository = $cartRepository;
@@ -52,7 +48,7 @@ class ThreeDSecureManagement implements \Simon\SecurionPay\Api\ThreeDSecureManag
      */
     public function getThreeDSecureParams(
         $cartId,
-        \Simon\SecurionPay\Api\Data\TokenInformationInterface $tokenInformation
+        \Forpsyte\SecurionPay\Api\Data\TokenInformationInterface $tokenInformation
     ) {
         /** @var Quote $quote */
         $quote = $this->cartRepository->getActive($cartId);

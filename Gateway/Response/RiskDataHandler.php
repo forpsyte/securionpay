@@ -1,15 +1,15 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Response;
+namespace Forpsyte\SecurionPay\Gateway\Response;
 
 use Magento\Payment\Gateway\Helper\ContextHelper;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\Config\Config;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
-use Simon\SecurionPay\Gateway\SubjectReader;
-use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
-use Simon\SecurionPay\Model\Adminhtml\Source\FraudDetectionAction;
+use Forpsyte\SecurionPay\Gateway\Config\Config;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
+use Forpsyte\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
+use Forpsyte\SecurionPay\Model\Adminhtml\Source\FraudDetectionAction;
 
 /**
  * Risk data response handler.

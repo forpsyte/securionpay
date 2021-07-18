@@ -4,11 +4,11 @@
     <body>
         <referenceContainer name="content">
             <referenceBlock name="vault.cards.list">
-                <block class="Simon\SecurionPay\Block\Customer\CardRenderer"
+                <block class="Forpsyte\SecurionPay\Block\Customer\CardRenderer"
                        name="securionpay.card.renderer"
                        template="Magento_Vault::customer_account/credit_card.phtml"/>
             </referenceBlock>
-            <block class="Simon\SecurionPay\Block\Customer\PaymentMethod" name="vault.cards.add" cacheable="false" template="Simon_SecurionPay::cards_add.phtml"/>
+            <block class="Forpsyte\SecurionPay\Block\Customer\PaymentMethod" name="vault.cards.add" cacheable="false" template="Forpsyte_SecurionPay::cards_add.phtml"/>
         </referenceContainer>
     </body>
 </page>

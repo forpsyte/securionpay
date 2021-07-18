@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Client;
+namespace Forpsyte\SecurionPay\Gateway\Http\Client;
 
 use Exception;
 use Magento\Payment\Gateway\Http\ClientException;
@@ -8,8 +8,8 @@ use Magento\Payment\Gateway\Http\ClientInterface;
 use Magento\Payment\Gateway\Http\TransferInterface;
 use Magento\Payment\Model\Method\Logger;
 use Psr\Log\LoggerInterface;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
-use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
 
 /**
  * Gateway client parent class

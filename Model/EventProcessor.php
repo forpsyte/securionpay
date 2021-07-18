@@ -1,9 +1,9 @@
 <?php
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
-use Simon\SecurionPay\Api\Data\EventInterface;
-use Simon\SecurionPay\Api\Event\EventProcessorInterface;
+use Forpsyte\SecurionPay\Api\Data\EventInterface;
+use Forpsyte\SecurionPay\Api\Event\EventProcessorInterface;
 
 class EventProcessor implements EventProcessorInterface
 {

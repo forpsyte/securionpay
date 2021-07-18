@@ -1,8 +1,8 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Client\Checkout;
+namespace Forpsyte\SecurionPay\Gateway\Http\Client\Checkout;
 
-use Simon\SecurionPay\Gateway\Http\Client\AbstractTransaction;
+use Forpsyte\SecurionPay\Gateway\Http\Client\AbstractTransaction;
 
 class TransactionGetCharge extends AbstractTransaction
 {

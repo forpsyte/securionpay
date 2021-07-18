@@ -4,6 +4,6 @@ use \Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'Simon_SecurionPay',
+    'Forpsyte_SecurionPay',
     __DIR__
 );

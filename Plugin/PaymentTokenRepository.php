@@ -1,13 +1,13 @@
 <?php
 
-namespace Simon\SecurionPay\Plugin;
+namespace Forpsyte\SecurionPay\Plugin;
 
 use Magento\Framework\Serialize\Serializer\Json as Serializer;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Api\PaymentTokenRepositoryInterface;
 use Psr\Log\LoggerInterface;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
 
 class PaymentTokenRepository
 {

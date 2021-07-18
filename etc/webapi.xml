@@ -9,7 +9,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <!-- Guest get SecurionPay checkout request signature -->
     <route url="/V1/guest-carts/:cartId/checkout-request" method="GET">
-        <service class="Simon\SecurionPay\Api\GuestCheckoutRequestGeneratorInterface" method="getCheckoutRequest"/>
+        <service class="Forpsyte\SecurionPay\Api\GuestCheckoutRequestGeneratorInterface" method="getCheckoutRequest"/>
         <resources>
             <resource ref="anonymous" />
         </resources>
@@ -17,7 +17,7 @@
 
     <!-- Customer get SecurionPay checkout request signature -->
     <route url="/V1/carts/mine/checkout-request" method="GET">
-        <service class="Simon\SecurionPay\Api\CheckoutRequestGeneratorInterface" method="getCheckoutRequest"/>
+        <service class="Forpsyte\SecurionPay\Api\CheckoutRequestGeneratorInterface" method="getCheckoutRequest"/>
         <resources>
             <resource ref="self" />
         </resources>
@@ -28,7 +28,7 @@
 
     <!-- Guest get SecurionPay 3D-Secure verification params -->
     <route url="/V1/guest-carts/:cartId/3d-secure-information" method="POST">
-        <service class="Simon\SecurionPay\Api\GuestThreeDSecureManagementInterface" method="getThreeDSecureParams"/>
+        <service class="Forpsyte\SecurionPay\Api\GuestThreeDSecureManagementInterface" method="getThreeDSecureParams"/>
         <resources>
             <resource ref="anonymous" />
         </resources>
@@ -36,7 +36,7 @@
 
     <!-- Customer get SecurionPay 3D-Secure verification params -->
     <route url="/V1/carts/mine/3d-secure-information" method="POST">
-        <service class="Simon\SecurionPay\Api\ThreeDSecureManagementInterface" method="getThreeDSecureParams"/>
+        <service class="Forpsyte\SecurionPay\Api\ThreeDSecureManagementInterface" method="getThreeDSecureParams"/>
         <resources>
             <resource ref="self" />
         </resources>

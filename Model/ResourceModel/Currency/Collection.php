@@ -1,9 +1,9 @@
 <?php
 
-namespace Simon\SecurionPay\Model\ResourceModel\Currency;
+namespace Forpsyte\SecurionPay\Model\ResourceModel\Currency;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Simon\SecurionPay\Model\Currency;
+use Forpsyte\SecurionPay\Model\Currency;
 
 class Collection extends AbstractCollection
 {
@@ -31,7 +31,7 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(Currency::class, \Simon\SecurionPay\Model\ResourceModel\Currency::class);
+        $this->_init(Currency::class, \Forpsyte\SecurionPay\Model\ResourceModel\Currency::class);
         $this->_map['fields']['entity_id'] = 'main_table.entity_id';
     }
 }

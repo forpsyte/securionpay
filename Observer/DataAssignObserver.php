@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Observer;
+namespace Forpsyte\SecurionPay\Observer;
 
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Event\Observer;
@@ -10,7 +10,7 @@ use Magento\Quote\Api\Data\PaymentInterface;
 use Magento\Quote\Model\Quote\Payment;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
 
 /**
  * Adds additional data to quote payment.

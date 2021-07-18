@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Event\Processor\ChargeUpdated;
+namespace Forpsyte\SecurionPay\Model\Event\Processor\ChargeUpdated;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Serialize\Serializer\Json as Serializer;
@@ -10,12 +10,12 @@ use Magento\Sales\Api\OrderPaymentRepositoryInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Api\Data\EventInterface;
-use Simon\SecurionPay\Api\EventRepositoryInterface;
-use Simon\SecurionPay\Gateway\Config\Config;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
-use Simon\SecurionPay\Model\Adminhtml\Source\FraudDetectionAction;
-use Simon\SecurionPay\Model\Event\Processor\AbstractProcessor;
+use Forpsyte\SecurionPay\Api\Data\EventInterface;
+use Forpsyte\SecurionPay\Api\EventRepositoryInterface;
+use Forpsyte\SecurionPay\Gateway\Config\Config;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Model\Adminhtml\Source\FraudDetectionAction;
+use Forpsyte\SecurionPay\Model\Event\Processor\AbstractProcessor;
 
 class FraudDetectionProcessor extends AbstractProcessor
 {

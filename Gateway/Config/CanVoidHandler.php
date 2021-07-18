@@ -1,10 +1,10 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Config;
+namespace Forpsyte\SecurionPay\Gateway\Config;
 
 use Magento\Payment\Gateway\Config\ValueHandlerInterface;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\SubjectReader;
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
 
 class CanVoidHandler implements ValueHandlerInterface
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Response;
+namespace Forpsyte\SecurionPay\Gateway\Response;
 
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
 
 /**
  * Void payment response handler

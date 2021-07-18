@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Response;
+namespace Forpsyte\SecurionPay\Gateway\Response;
 
 use Exception;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -14,9 +14,9 @@ use Magento\Sales\Model\Order\Payment;
 use Magento\Vault\Api\Data\PaymentTokenFactoryInterface;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Api\PaymentTokenRepositoryInterface;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
-use Simon\SecurionPay\Gateway\SubjectReader;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
 
 /**
  * Adds customer payment information to the Magento Vault.

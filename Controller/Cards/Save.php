@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Controller\Cards;
+namespace Forpsyte\SecurionPay\Controller\Cards;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Session;
@@ -11,7 +11,7 @@ use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Vault\Controller\CardsManagement;
-use Simon\SecurionPay\Model\TokenManagement;
+use Forpsyte\SecurionPay\Model\TokenManagement;
 
 class Save extends CardsManagement implements HttpGetActionInterface, CsrfAwareActionInterface
 {

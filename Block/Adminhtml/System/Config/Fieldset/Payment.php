@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Block\Adminhtml\System\Config\Fieldset;
+namespace Forpsyte\SecurionPay\Block\Adminhtml\System\Config\Fieldset;
 
 use Magento\Backend\Block\Context;
 use Magento\Backend\Model\Auth\Session;

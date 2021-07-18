@@ -2,24 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
 use Magento\Quote\Model\Quote;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
 
 /**
  * Checkout request generator model.
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class CheckoutRequestGenerator implements \Simon\SecurionPay\Api\CheckoutRequestGeneratorInterface
+class CheckoutRequestGenerator implements \Forpsyte\SecurionPay\Api\CheckoutRequestGeneratorInterface
 {
     /**
      * @var \Magento\Quote\Api\CartRepositoryInterface
      */
     protected $cartRepository;
     /**
-     * @var \Simon\SecurionPay\Model\CheckoutRequestDetailsFactory
+     * @var \Forpsyte\SecurionPay\Model\CheckoutRequestDetailsFactory
      */
     protected $checkoutRequestDetailsFactory;
     /**
@@ -27,11 +27,11 @@ class CheckoutRequestGenerator implements \Simon\SecurionPay\Api\CheckoutRequest
      */
     protected $securionPayAdapterFactory;
     /**
-     * @var \Simon\SecurionPay\Helper\Currency
+     * @var \Forpsyte\SecurionPay\Helper\Currency
      */
     protected $currencyHelper;
     /**
-     * @var \Simon\SecurionPay\Gateway\Config\Config
+     * @var \Forpsyte\SecurionPay\Gateway\Config\Config
      */
     protected $config;
 
@@ -39,17 +39,17 @@ class CheckoutRequestGenerator implements \Simon\SecurionPay\Api\CheckoutRequest
     /**
      * GuestCheckoutRequestGenerator constructor.
      * @param \Magento\Quote\Api\CartRepositoryInterface $cartRepository
-     * @param \Simon\SecurionPay\Model\CheckoutRequestDetailsFactory $checkoutRequestDetailsFactory
+     * @param \Forpsyte\SecurionPay\Model\CheckoutRequestDetailsFactory $checkoutRequestDetailsFactory
      * @param Adapter\SecurionPayAdapterFactory $securionPayAdapterFactory
-     * @param \Simon\SecurionPay\Helper\Currency $currencyHelper
-     * @param \Simon\SecurionPay\Gateway\Config\Config $config
+     * @param \Forpsyte\SecurionPay\Helper\Currency $currencyHelper
+     * @param \Forpsyte\SecurionPay\Gateway\Config\Config $config
      */
     public function __construct(
         \Magento\Quote\Api\CartRepositoryInterface $cartRepository,
-        \Simon\SecurionPay\Model\CheckoutRequestDetailsFactory $checkoutRequestDetailsFactory,
-        \Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory $securionPayAdapterFactory,
-        \Simon\SecurionPay\Helper\Currency $currencyHelper,
-        \Simon\SecurionPay\Gateway\Config\Config $config
+        \Forpsyte\SecurionPay\Model\CheckoutRequestDetailsFactory $checkoutRequestDetailsFactory,
+        \Forpsyte\SecurionPay\Model\Adapter\SecurionPayAdapterFactory $securionPayAdapterFactory,
+        \Forpsyte\SecurionPay\Helper\Currency $currencyHelper,
+        \Forpsyte\SecurionPay\Gateway\Config\Config $config
     ) {
         $this->cartRepository = $cartRepository;
         $this->securionPayAdapterFactory = $securionPayAdapterFactory;

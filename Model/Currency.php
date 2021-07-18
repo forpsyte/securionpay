@@ -1,16 +1,16 @@
 <?php
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
 use Magento\Framework\Model\AbstractModel;
-use Simon\SecurionPay\Api\Data\CurrencyInterface;
+use Forpsyte\SecurionPay\Api\Data\CurrencyInterface;
 
 class Currency extends AbstractModel implements CurrencyInterface
 {
     /**
      * @inheritDoc
      */
-    protected $_cacheTag = 'simon_securionpay_customer';
+    protected $_cacheTag = 'forpsyte_securionpay_customer';
     /**
      * @inheritDoc
      */
@@ -25,7 +25,7 @@ class Currency extends AbstractModel implements CurrencyInterface
      */
     public function _construct()
     {
-        $this->_init(\Simon\SecurionPay\Model\ResourceModel\Currency::class);
+        $this->_init(\Forpsyte\SecurionPay\Model\ResourceModel\Currency::class);
     }
 
     /**

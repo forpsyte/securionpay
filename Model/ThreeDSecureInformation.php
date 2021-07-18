@@ -1,11 +1,11 @@
 <?php
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
-use Simon\SecurionPay\Api\Data\ThreeDSecureInformationInterface;
+use Forpsyte\SecurionPay\Api\Data\ThreeDSecureInformationInterface;
 
 class ThreeDSecureInformation extends \Magento\Framework\Model\AbstractExtensibleModel implements
-    \Simon\SecurionPay\Api\Data\ThreeDSecureInformationInterface
+    \Forpsyte\SecurionPay\Api\Data\ThreeDSecureInformationInterface
 {
 
     /**
@@ -68,7 +68,7 @@ class ThreeDSecureInformation extends \Magento\Framework\Model\AbstractExtensibl
      * @inheritDoc
      */
     public function setExtensionAttributes(
-        \Simon\SecurionPay\Api\Data\ThreeDSecureInformationExtensionInterface $extensionAttributes
+        \Forpsyte\SecurionPay\Api\Data\ThreeDSecureInformationExtensionInterface $extensionAttributes
     ) {
         return $this->_setExtensionAttributes($extensionAttributes);
     }

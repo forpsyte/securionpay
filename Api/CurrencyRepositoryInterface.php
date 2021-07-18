@@ -1,9 +1,9 @@
 <?php
 
-namespace Simon\SecurionPay\Api;
+namespace Forpsyte\SecurionPay\Api;
 
 use Magento\Framework\Api\SearchResultsInterface;
-use Simon\SecurionPay\Model\Currency;
+use Forpsyte\SecurionPay\Model\Currency;
 
 interface CurrencyRepositoryInterface
 {

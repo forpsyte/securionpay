@@ -1,13 +1,9 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
 class CheckoutRequestDetails extends \Magento\Framework\Model\AbstractExtensibleModel implements
-    \Simon\SecurionPay\Api\Data\CheckoutRequestDetailsInterface
+    \Forpsyte\SecurionPay\Api\Data\CheckoutRequestDetailsInterface
 {
     /**
      * @inheritDoc

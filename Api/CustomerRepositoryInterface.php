@@ -1,10 +1,10 @@
 <?php
 
-namespace Simon\SecurionPay\Api;
+namespace Forpsyte\SecurionPay\Api;
 
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchResultsInterface;
-use Simon\SecurionPay\Model\Customer;
+use Forpsyte\SecurionPay\Model\Customer;
 
 /**
  * CustomerRepository Interface

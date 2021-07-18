@@ -1,9 +1,9 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Client\Adapter;
+namespace Forpsyte\SecurionPay\Gateway\Http\Client\Adapter;
 
 use SecurionPay\Exception\SecurionPayException;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
 
 interface AdapterInterface
 {

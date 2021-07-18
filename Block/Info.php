@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Block;
+namespace Forpsyte\SecurionPay\Block;
 
 use Magento\Framework\Phrase;
 use Magento\Framework\View\Element\Template\Context;

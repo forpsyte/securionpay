@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Command;
+namespace Forpsyte\SecurionPay\Gateway\Command;
 
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -11,7 +11,7 @@ use Magento\Payment\Gateway\Helper\ContextHelper;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Api\Data\TransactionInterface;
 use Magento\Sales\Api\TransactionRepositoryInterface;
-use Simon\SecurionPay\Gateway\SubjectReader;
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
 
 /**
  * Class CaptureStrategyCommand

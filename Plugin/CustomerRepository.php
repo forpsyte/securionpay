@@ -1,12 +1,12 @@
 <?php
 
-namespace Simon\SecurionPay\Plugin;
+namespace Forpsyte\SecurionPay\Plugin;
 
 use Exception;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Api\Data\CustomerSearchResultsInterface;
 use Psr\Log\LoggerInterface;
-use Simon\SecurionPay\Api\CustomerRepositoryInterface;
+use Forpsyte\SecurionPay\Api\CustomerRepositoryInterface;
 
 class CustomerRepository
 {

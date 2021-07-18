@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Controller\Adminhtml\Order\Create;
+namespace Forpsyte\SecurionPay\Controller\Adminhtml\Order\Create;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -8,14 +8,14 @@ use Magento\Backend\Model\Session\Quote;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\Result\Redirect;
-use Simon\SecurionPay\Gateway\Config\Checkout\Config;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Helper\Currency as CurrencyHelper;
-use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
+use Forpsyte\SecurionPay\Gateway\Config\Checkout\Config;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Helper\Currency as CurrencyHelper;
+use Forpsyte\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
 
 class LoadCheckoutRequest extends Action
 {
-    const ADMIN_RESOURCE = 'Simon_SecurionPay::get_checkout_request';
+    const ADMIN_RESOURCE = 'Forpsyte_SecurionPay::get_checkout_request';
 
     /**
      * @var SecurionPayAdapterFactory
