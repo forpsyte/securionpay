@@ -2,6 +2,7 @@
 
 namespace Forpsyte\SecurionPay\Gateway\Command;
 
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Payment\Gateway\Command\CommandPoolInterface;
@@ -11,7 +12,7 @@ use Magento\Payment\Gateway\Helper\ContextHelper;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Api\Data\TransactionInterface;
 use Magento\Sales\Api\TransactionRepositoryInterface;
-use Forpsyte\SecurionPay\Gateway\SubjectReader;
+use Magento\Sales\Model\Order;
 
 /**
  * Class CaptureStrategyCommand
@@ -21,14 +22,19 @@ use Forpsyte\SecurionPay\Gateway\SubjectReader;
 class CaptureStrategyCommand implements CommandInterface
 {
     /**
-     * MerchantE authorize and capture command
+     * SecurionPay authorize and capture command
      */
     const SALE = 'sale';
 
     /**
-     * MerchantE capture command
+     * SecurionPay capture command
      */
     const CAPTURE = 'settlement';
+
+    /**
+     * SecurionPay get charge command
+     */
+    const VERIFY = 'verify';
 
     /**
      * @var CommandPoolInterface
@@ -96,12 +102,16 @@ class CaptureStrategyCommand implements CommandInterface
     protected function getCommand(PaymentDataObjectInterface $paymentDO)
     {
         $payment = $paymentDO->getPayment();
+        /** @var Order $order */
+        $order = $payment->getOrder();
         ContextHelper::assertOrderPayment($payment);
 
         // if auth transaction does not exist then execute authorize&capture command
         /** @var OrderPaymentInterface $payment */
         $existsCapture = $this->isExistsCaptureTransaction($payment);
-        if (!$payment->getAuthorizationTransaction() && !$existsCapture) {
+        if ($existsCapture && $order->getStatus() == Order::STATE_PAYMENT_REVIEW) {
+            return self::VERIFY;
+        } elseif (!$payment->getAuthorizationTransaction() && !$existsCapture) {
             return self::SALE;
         } else {
             return self::CAPTURE;

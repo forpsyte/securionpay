@@ -138,6 +138,7 @@
                 <item name="vault_sale" xsi:type="string">SecurionPayVaultSaleCommand</item>
                 <item name="capture" xsi:type="string">SecurionPayCaptureStrategyCommand</item>
                 <item name="settlement" xsi:type="string">SecurionPayCaptureCommand</item>
+                <item name="verify" xsi:type="string">SecurionPayVerifyCommand</item>
                 <item name="refund" xsi:type="string">SecurionPayRefundCommand</item>
                 <item name="void" xsi:type="string">SecurionPayCancelCommand</item>
                 <item name="cancel" xsi:type="string">SecurionPayCancelCommand</item>
@@ -236,6 +237,14 @@
     </virtualType>
     <!-- END Capture Transaction Request -->
 
+    <virtualType name="SecurionPayVerifyRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="payment" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\Verify\PaymentDataBuilder</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
     <!-- Refund Transaction Request -->
     <virtualType name="SecurionPayRefundRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
         <arguments>
@@ -315,6 +324,14 @@
         </arguments>
     </virtualType>
     <!-- END Capture Command  -->
+
+    <!-- Verify Command -->
+    <virtualType name="SecurionPayVerifyCommand" type="SecurionPayCaptureCommand">
+        <arguments>
+            <argument name="client" xsi:type="object">Forpsyte\SecurionPay\Gateway\Http\Client\TransactionVerify</argument>
+        </arguments>
+    </virtualType>
+    <!-- END Verify Command -->
 
     <!-- BEGIN Capture Strategy Command  -->
     <virtualType name="SecurionPayCaptureStrategyCommand" type="Forpsyte\SecurionPay\Gateway\Command\CaptureStrategyCommand">
@@ -497,7 +514,8 @@
         <arguments>
             <argument name="processors" xsi:type="array">
                 <item name="default" xsi:type="object">Forpsyte\SecurionPay\Model\Event\Processor\DefaultProcessor</item>
-                <item name="fraud_detection" xsi:type="object">Forpsyte\SecurionPay\Model\Event\Processor\ChargeUpdated\FraudDetectionProcessor</item>
+                <item name="authorization_fraud_detection" xsi:type="object">Forpsyte\SecurionPay\Model\Event\Processor\ChargeUpdated\AuthorizationFraudDetectionProcessor</item>
+                <item name="capture_fraud_detection" xsi:type="object">Forpsyte\SecurionPay\Model\Event\Processor\ChargeUpdated\CaptureFraudDetectionProcessor</item>
             </argument>
         </arguments>
     </virtualType>
