@@ -1,16 +1,16 @@
 <?php
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Simon\SecurionPay\Api\CurrencyRepositoryInterface;
-use Simon\SecurionPay\Api\Data;
-use Simon\SecurionPay\Model\ResourceModel\Currency as ResourceCurrency;
-use Simon\SecurionPay\Model\ResourceModel\Currency\CollectionFactory as CurrencyCollectionFactory;
+use Forpsyte\SecurionPay\Api\CurrencyRepositoryInterface;
+use Forpsyte\SecurionPay\Api\Data;
+use Forpsyte\SecurionPay\Model\ResourceModel\Currency as ResourceCurrency;
+use Forpsyte\SecurionPay\Model\ResourceModel\Currency\CollectionFactory as CurrencyCollectionFactory;
 
 /**
  * Gives service requestors the ability to perform
@@ -117,7 +117,7 @@ class CurrencyRepository implements CurrencyRepositoryInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
-        /** @var  \Simon\SecurionPay\Model\ResourceModel\Currency\Collection $collection */
+        /** @var  \Forpsyte\SecurionPay\Model\ResourceModel\Currency\Collection $collection */
         $collection = $this->currencyCollectionFactory->create();
 
         $this->collectionProcessor->process($searchCriteria, $collection);

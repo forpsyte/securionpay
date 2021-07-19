@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Block\Form;
+namespace Forpsyte\SecurionPay\Block\Form;
 
 use Magento\Framework\Serialize\Serializer\Json as Serializer;
 use Magento\Framework\UrlInterface;
@@ -12,7 +12,7 @@ class Cc extends \Magento\Payment\Block\Form\Cc
      */
     protected $method;
     /**
-     * @var \Simon\SecurionPay\Gateway\Config\Config
+     * @var \Forpsyte\SecurionPay\Gateway\Config\Config
      */
     protected $config;
     /**
@@ -34,7 +34,7 @@ class Cc extends \Magento\Payment\Block\Form\Cc
      * @param \Magento\Framework\View\Asset\Repository $assetRepository
      * @param \Magento\Payment\Model\Config $paymentConfig
      * @param \Magento\Payment\Model\MethodInterface $method
-     * @param \Simon\SecurionPay\Gateway\Config\Config $config
+     * @param \Forpsyte\SecurionPay\Gateway\Config\Config $config
      * @param Serializer $serializer
      * @param UrlInterface $urlBuilder
      * @param array $data
@@ -44,7 +44,7 @@ class Cc extends \Magento\Payment\Block\Form\Cc
         \Magento\Framework\View\Asset\Repository $assetRepository,
         \Magento\Payment\Model\Config $paymentConfig,
         \Magento\Payment\Model\MethodInterface $method,
-        \Simon\SecurionPay\Gateway\Config\Config $config,
+        \Forpsyte\SecurionPay\Gateway\Config\Config $config,
         Serializer $serializer,
         UrlInterface $urlBuilder,
         array $data = []
@@ -78,7 +78,7 @@ class Cc extends \Magento\Payment\Block\Form\Cc
                 'savePaymentMethod' => "button[role='save-payment-method']",
                 'savePaymentMethodLocation' => $this->urlBuilder->getUrl('vault/cards/save'),
                 'redirectUrl' => $this->urlBuilder->getUrl('vault/cards/listaction'),
-                'icon' => $this->assetRepository->createAsset('Simon_SecurionPay::images/loader.gif')->getUrl()
+                'icon' => $this->assetRepository->createAsset('Forpsyte_SecurionPay::images/loader.gif')->getUrl()
             ];
             return $this->serializer->serialize($config);
         } catch (\Exception $e) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Ui;
+namespace Forpsyte\SecurionPay\Model\Ui;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Checkout\Model\Session as CheckoutSession;
@@ -8,8 +8,8 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Simon\SecurionPay\Gateway\Config\Config;
-use Simon\SecurionPay\Helper\Currency as CurrencyHelper;
+use Forpsyte\SecurionPay\Gateway\Config\Config;
+use Forpsyte\SecurionPay\Helper\Currency as CurrencyHelper;
 
 /**
  * Config provider for the SecurionPay Payment Gateway payment method.

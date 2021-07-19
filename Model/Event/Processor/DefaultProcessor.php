@@ -1,14 +1,14 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Event\Processor;
+namespace Forpsyte\SecurionPay\Model\Event\Processor;
 
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Phrase;
-use Simon\SecurionPay\Api\Data\EventInterface;
-use Simon\SecurionPay\Api\EventRepositoryInterface;
-use Simon\SecurionPay\Model\Event;
+use Forpsyte\SecurionPay\Api\Data\EventInterface;
+use Forpsyte\SecurionPay\Api\EventRepositoryInterface;
+use Forpsyte\SecurionPay\Model\Event;
 
 class DefaultProcessor extends AbstractProcessor
 {

@@ -1,16 +1,16 @@
 <?php
-namespace Simon\SecurionPay\Plugin;
+namespace Forpsyte\SecurionPay\Plugin;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Session;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use SecurionPay\Request\CardRequestFactory;
 use SecurionPay\SecurionPayGateway;
-use Simon\SecurionPay\Gateway\Config\Config;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\AbstractClient;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
-use Simon\SecurionPay\Observer\DataAssignObserver;
+use Forpsyte\SecurionPay\Gateway\Config\Config;
+use Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\AbstractClient;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Observer\DataAssignObserver;
 
 class CreateCard
 {

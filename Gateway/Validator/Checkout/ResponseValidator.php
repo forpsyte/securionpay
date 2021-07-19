@@ -1,18 +1,14 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
-namespace Simon\SecurionPay\Gateway\Validator\Checkout;
+namespace Forpsyte\SecurionPay\Gateway\Validator\Checkout;
 
 
 use Magento\Payment\Gateway\Validator\AbstractValidator;
 use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
-use Simon\SecurionPay\Gateway\Http\Data\Error;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\SubjectReader;
-use Simon\SecurionPay\Helper\Currency;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Error;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
+use Forpsyte\SecurionPay\Helper\Currency;
 
 /**
  * Validates response for all calls sent to the

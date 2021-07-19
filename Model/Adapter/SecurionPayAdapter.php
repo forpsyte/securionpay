@@ -1,12 +1,12 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Adapter;
+namespace Forpsyte\SecurionPay\Model\Adapter;
 
 use Psr\Log\LoggerInterface;
 use SecurionPay\Exception\SecurionPayException;
-use Simon\SecurionPay\Gateway\Http\Client\Adapter\CommandStrategy;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
-use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
+use Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\CommandStrategy;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Gateway\Http\Data\ResponseFactory;
 
 class SecurionPayAdapter
 {

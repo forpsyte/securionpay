@@ -1,8 +1,8 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Event\Processor;
+namespace Forpsyte\SecurionPay\Model\Event\Processor;
 
-use Simon\SecurionPay\Api\Event\EventProcessorInterface;
+use Forpsyte\SecurionPay\Api\Event\EventProcessorInterface;
 
 abstract class AbstractProcessor implements EventProcessorInterface
 {

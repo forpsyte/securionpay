@@ -1,11 +1,11 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Validator;
+namespace Forpsyte\SecurionPay\Gateway\Validator;
 
 use Magento\Payment\Gateway\Validator\AbstractValidator;
 use Magento\Payment\Gateway\Validator\ResultInterfaceFactory;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
-use Simon\SecurionPay\Gateway\SubjectReader;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
 
 /**
  * Validates response for all calls sent to the

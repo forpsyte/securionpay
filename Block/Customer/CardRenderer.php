@@ -1,10 +1,10 @@
 <?php
 
-namespace Simon\SecurionPay\Block\Customer;
+namespace Forpsyte\SecurionPay\Block\Customer;
 
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Block\AbstractCardRenderer;
-use Simon\SecurionPay\Model\Ui\ConfigProvider;
+use Forpsyte\SecurionPay\Model\Ui\ConfigProvider;
 
 class CardRenderer extends AbstractCardRenderer
 {

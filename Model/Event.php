@@ -1,17 +1,17 @@
 <?php
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
 
 use Magento\Framework\Model\AbstractModel;
-use Simon\SecurionPay\Api\Data\EventInterface;
+use Forpsyte\SecurionPay\Api\Data\EventInterface;
 
 class Event extends AbstractModel implements EventInterface
 {
     /**
      * @inheritDoc
      */
-    protected $_cacheTag = 'simon_securionpay_payment_event';
+    protected $_cacheTag = 'forpsyte_securionpay_payment_event';
     /**
      * @inheritDoc
      */
@@ -26,7 +26,7 @@ class Event extends AbstractModel implements EventInterface
      */
     public function _construct()
     {
-        $this->_init(\Simon\SecurionPay\Model\ResourceModel\Event::class);
+        $this->_init(\Forpsyte\SecurionPay\Model\ResourceModel\Event::class);
     }
 
     /**

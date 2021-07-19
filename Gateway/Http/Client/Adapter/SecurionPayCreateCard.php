@@ -1,13 +1,13 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Client\Adapter;
+namespace Forpsyte\SecurionPay\Gateway\Http\Client\Adapter;
 
 use SecurionPay\Exception\SecurionPayException;
 use SecurionPay\Request\CardRequestFactory;
 use SecurionPay\SecurionPayGateway;
-use Simon\SecurionPay\Gateway\Config\Config;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
-use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
+use Forpsyte\SecurionPay\Gateway\Config\Config;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Gateway\Http\Data\ResponseFactory;
 
 class SecurionPayCreateCard implements AdapterInterface
 {

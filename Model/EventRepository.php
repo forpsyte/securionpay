@@ -1,16 +1,16 @@
 <?php
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Simon\SecurionPay\Api\Data;
-use Simon\SecurionPay\Api\EventRepositoryInterface;
-use Simon\SecurionPay\Model\ResourceModel\Event as ResourceEvent;
-use Simon\SecurionPay\Model\ResourceModel\Event\CollectionFactory as EventCollectionFactory;
+use Forpsyte\SecurionPay\Api\Data;
+use Forpsyte\SecurionPay\Api\EventRepositoryInterface;
+use Forpsyte\SecurionPay\Model\ResourceModel\Event as ResourceEvent;
+use Forpsyte\SecurionPay\Model\ResourceModel\Event\CollectionFactory as EventCollectionFactory;
 
 class EventRepository implements EventRepositoryInterface
 {
@@ -103,7 +103,7 @@ class EventRepository implements EventRepositoryInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
-        /** @var \Simon\SecurionPay\Model\ResourceModel\Event\Collection $collection */
+        /** @var \Forpsyte\SecurionPay\Model\ResourceModel\Event\Collection $collection */
         $collection = $this->collectionFactory->create();
         $this->collectionProcessor->process($searchCriteria, $collection);
         /** @var Data\EventSearchResultsInterface $searchResults */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Config;
+namespace Forpsyte\SecurionPay\Gateway\Config;
 
 use Exception;
 use Magento\Framework\App\Config\ScopeConfigInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Block\Customer;
+namespace Forpsyte\SecurionPay\Block\Customer;
 
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\Template;

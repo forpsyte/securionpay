@@ -1,10 +1,6 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
-namespace Simon\SecurionPay\Api\Data;
+namespace Forpsyte\SecurionPay\Api\Data;
 
 interface ThreeDSecureInformationInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
@@ -62,15 +58,15 @@ interface ThreeDSecureInformationInterface extends \Magento\Framework\Api\Extens
     /**
      * Retrieve existing extension attributes object or create a new one.
      *
-     * @return \Simon\SecurionPay\Api\Data\ThreeDSecureInformationExtensionInterface|null
+     * @return \Forpsyte\SecurionPay\Api\Data\ThreeDSecureInformationExtensionInterface|null
      */
     public function getExtensionAttributes();
 
     /**
-     * @param \Simon\SecurionPay\Api\Data\ThreeDSecureInformationExtensionInterface $extensionAttributes
+     * @param \Forpsyte\SecurionPay\Api\Data\ThreeDSecureInformationExtensionInterface $extensionAttributes
      * @return $this
      */
     public function setExtensionAttributes(
-        \Simon\SecurionPay\Api\Data\ThreeDSecureInformationExtensionInterface $extensionAttributes
+        \Forpsyte\SecurionPay\Api\Data\ThreeDSecureInformationExtensionInterface $extensionAttributes
     );
 }

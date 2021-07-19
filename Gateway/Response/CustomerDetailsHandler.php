@@ -1,17 +1,17 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Response;
+namespace Forpsyte\SecurionPay\Gateway\Response;
 
 use Exception;
 use Magento\Customer\Model\Session;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Payment\Gateway\Response\HandlerInterface;
 use Psr\Log\LoggerInterface;
-use Simon\SecurionPay\Api\CustomerRepositoryInterface;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\SubjectReader;
-use Simon\SecurionPay\Model\Customer;
-use Simon\SecurionPay\Model\CustomerFactory;
+use Forpsyte\SecurionPay\Api\CustomerRepositoryInterface;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
+use Forpsyte\SecurionPay\Model\Customer;
+use Forpsyte\SecurionPay\Model\CustomerFactory;
 
 class CustomerDetailsHandler implements HandlerInterface
 {

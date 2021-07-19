@@ -11,7 +11,7 @@ define(
         'Magento_Checkout/js/model/quote',
         'Magento_Checkout/js/model/full-screen-loader',
         'Magento_Vault/js/view/payment/vault-enabler',
-        'Simon_SecurionPay/js/action/get-3d-secure-information'
+        'Forpsyte_SecurionPay/js/action/get-3d-secure-information'
     ],
     function (
         _,
@@ -28,7 +28,7 @@ define(
 
         return Component.extend({
             defaults: {
-                template: 'Simon_SecurionPay/payment/cc-form',
+                template: 'Forpsyte_SecurionPay/payment/cc-form',
                 active: false,
                 code: 'securionpay',
                 lastBillingAddress: null,

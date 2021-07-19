@@ -4,14 +4,14 @@
 
     <!-- Plugins -->
     <type name="Magento\Customer\Api\CustomerRepositoryInterface">
-        <plugin name="securionpay_customer_repository_interface" type="Simon\SecurionPay\Plugin\CustomerRepository" />
+        <plugin name="securionpay_customer_repository_interface" type="Forpsyte\SecurionPay\Plugin\CustomerRepository" />
     </type>
-    <type name="Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayAuthorize">
-        <plugin name="securion_pay_abstract_client_create_customer" type="Simon\SecurionPay\Plugin\CreateCustomer" />
-        <plugin name="securion_pay_abstract_client_create_card" type="Simon\SecurionPay\Plugin\CreateCard" />
+    <type name="Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayAuthorize">
+        <plugin name="securion_pay_abstract_client_create_customer" type="Forpsyte\SecurionPay\Plugin\CreateCustomer" />
+        <plugin name="securion_pay_abstract_client_create_card" type="Forpsyte\SecurionPay\Plugin\CreateCard" />
     </type>
-    <type name="Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPaySale">
-        <plugin name="securion_pay_abstract_client_create_customer" type="Simon\SecurionPay\Plugin\CreateCustomer" />
-        <plugin name="securion_pay_abstract_client_create_card" type="Simon\SecurionPay\Plugin\CreateCard" />
+    <type name="Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPaySale">
+        <plugin name="securion_pay_abstract_client_create_customer" type="Forpsyte\SecurionPay\Plugin\CreateCustomer" />
+        <plugin name="securion_pay_abstract_client_create_card" type="Forpsyte\SecurionPay\Plugin\CreateCard" />
     </type>
 </config>

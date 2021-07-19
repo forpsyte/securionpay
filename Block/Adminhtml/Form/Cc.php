@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Block\Adminhtml\Form;
+namespace Forpsyte\SecurionPay\Block\Adminhtml\Form;
 
 use Magento\Backend\Model\Session\Quote;
 use Magento\Framework\View\Element\Template\Context;

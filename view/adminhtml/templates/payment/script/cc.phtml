@@ -1,7 +1,7 @@
 <?php
 
 
-/** @var Simon\SecurionPay\Block\Payment $block */
+/** @var Forpsyte\SecurionPay\Block\Payment $block */
 
 $code = $block->escapeHtml($block->getCode());
 
@@ -10,7 +10,7 @@ $code = $block->escapeHtml($block->getCode());
     //<![CDATA[
     require(
         [
-            'Simon_SecurionPay/js/securionpay',
+            'Forpsyte_SecurionPay/js/securionpay',
             'jquery',
             'domReady!'
         ], function(SecurionPay, $) {

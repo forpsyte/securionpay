@@ -1,9 +1,9 @@
 <?php
 
-namespace Simon\SecurionPay\Model\ResourceModel\Customer;
+namespace Forpsyte\SecurionPay\Model\ResourceModel\Customer;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Simon\SecurionPay\Model\Customer;
+use Forpsyte\SecurionPay\Model\Customer;
 
 class Collection extends AbstractCollection
 {
@@ -31,7 +31,7 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(Customer::class, \Simon\SecurionPay\Model\ResourceModel\Customer::class);
+        $this->_init(Customer::class, \Forpsyte\SecurionPay\Model\ResourceModel\Customer::class);
         $this->_map['fields']['entity_id'] = 'main_table.entity_id';
     }
 

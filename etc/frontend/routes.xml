@@ -3,10 +3,10 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
         <route id="sales" frontName="sales">
-            <module name="Simon_SecurionPay" before="Magento_Sales"/>
+            <module name="Forpsyte_SecurionPay" before="Magento_Sales"/>
         </route>
         <route id="vault" frontName="vault">
-            <module name="Simon_SecurionPay" before="Magento_Vault"/>
+            <module name="Forpsyte_SecurionPay" before="Magento_Vault"/>
         </route>
     </router>
 </config>

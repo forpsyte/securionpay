@@ -1,13 +1,13 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Ui\Checkout;
+namespace Forpsyte\SecurionPay\Model\Ui\Checkout;
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\UrlInterface;
 use Psr\Log\LoggerInterface;
-use Simon\SecurionPay\Gateway\Config\Checkout\Config;
-use Simon\SecurionPay\Gateway\Config\Config as ScpConfig;
+use Forpsyte\SecurionPay\Gateway\Config\Checkout\Config;
+use Forpsyte\SecurionPay\Gateway\Config\Config as ScpConfig;
 
 class ConfigProvider implements ConfigProviderInterface
 {
@@ -82,7 +82,7 @@ class ConfigProvider implements ConfigProviderInterface
     private function getServiceUrl()
     {
         return $this->urlBuilder->getBaseUrl() .
-            \Simon\SecurionPay\Model\Ui\ConfigProvider::CODE .
+            \Forpsyte\SecurionPay\Model\Ui\ConfigProvider::CODE .
             '/checkout/signature';
     }
 }

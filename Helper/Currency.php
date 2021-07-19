@@ -1,9 +1,9 @@
 <?php
 
-namespace Simon\SecurionPay\Helper;
+namespace Forpsyte\SecurionPay\Helper;
 
 use Magento\Store\Model\StoreManagerInterface;
-use Simon\SecurionPay\Api\CurrencyRepositoryInterface;
+use Forpsyte\SecurionPay\Api\CurrencyRepositoryInterface;
 
 class Currency
 {
@@ -39,7 +39,7 @@ class Currency
     public function getMinorUnits($price)
     {
         $currencyCode = $this->storeManager->getStore()->getCurrentCurrencyCode();
-        /** @var \Simon\SecurionPay\Model\Currency $currency */
+        /** @var \Forpsyte\SecurionPay\Model\Currency $currency */
         $currency = $this->currencyRepository->getByCode($currencyCode);
         return intval($price * pow(10, $currency->getDecimals()));
     }
@@ -51,7 +51,7 @@ class Currency
      */
     public function getDecimals($currency)
     {
-        /** @var \Simon\SecurionPay\Model\Currency $currency */
+        /** @var \Forpsyte\SecurionPay\Model\Currency $currency */
         $currency = $this->currencyRepository->getByCode($currency);
         return $currency->getDecimals();
     }

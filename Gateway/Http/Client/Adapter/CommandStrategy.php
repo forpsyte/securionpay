@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Client\Adapter;
+namespace Forpsyte\SecurionPay\Gateway\Http\Client\Adapter;
 
 use Magento\Framework\ObjectManager\TMapFactory;
 

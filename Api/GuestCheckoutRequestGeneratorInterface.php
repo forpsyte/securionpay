@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Api;
+namespace Forpsyte\SecurionPay\Api;
 
 /**
  * Interface for retrieving checkout request signature
@@ -11,7 +11,7 @@ interface GuestCheckoutRequestGeneratorInterface
      * Get payment information
      *
      * @param string $cartId
-     * @return \Simon\SecurionPay\Api\Data\CheckoutRequestDetailsInterface
+     * @return \Forpsyte\SecurionPay\Api\Data\CheckoutRequestDetailsInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\LocalizedException
      */

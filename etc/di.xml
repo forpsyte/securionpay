@@ -3,29 +3,29 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
     <!-- Class Preferences -->
-    <preference for="Simon\SecurionPay\Api\CheckoutRequestGeneratorInterface" type="\Simon\SecurionPay\Model\CheckoutRequestGenerator" />
-    <preference for="Simon\SecurionPay\Api\CurrencyRepositoryInterface" type="Simon\SecurionPay\Model\CurrencyRepository"/>
-    <preference for="Simon\SecurionPay\Api\CustomerRepositoryInterface" type="Simon\SecurionPay\Model\CustomerRepository"/>
-    <preference for="Simon\SecurionPay\Api\EventRepositoryInterface" type="Simon\SecurionPay\Model\EventRepository" />
-    <preference for="Simon\SecurionPay\Api\GuestCheckoutRequestGeneratorInterface" type="Simon\SecurionPay\Model\GuestCheckoutRequestGenerator" />
-    <preference for="Simon\SecurionPay\Api\GuestThreeDSecureManagementInterface" type="Simon\SecurionPay\Model\GuestThreeDSecureManagement" />
-    <preference for="Simon\SecurionPay\Api\ThreeDSecureManagementInterface" type="Simon\SecurionPay\Model\ThreeDSecureManagement" />
-    <preference for="Simon\SecurionPay\Api\Data\CurrencyInterface" type="Simon\SecurionPay\Model\Currency" />
-    <preference for="Simon\SecurionPay\Api\Data\CurrencySearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
-    <preference for="Simon\SecurionPay\Api\Data\CustomerInterface" type="Simon\SecurionPay\Model\Customer" />
-    <preference for="Simon\SecurionPay\Api\Data\CustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
-    <preference for="Simon\SecurionPay\Api\Data\CheckoutRequestDetailsInterface" type="Simon\SecurionPay\Model\CheckoutRequestDetails" />
-    <preference for="Simon\SecurionPay\Api\Data\EventInterface" type="Simon\SecurionPay\Model\Event" />
-    <preference for="Simon\SecurionPay\Api\Data\EventSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
-    <preference for="Simon\SecurionPay\Api\Data\ThreeDSecureInformationInterface" type="Simon\SecurionPay\Model\ThreeDSecureInformation" />
-    <preference for="Simon\SecurionPay\Api\Data\TokenInformationInterface" type="Simon\SecurionPay\Model\TokenInformation" />
+    <preference for="Forpsyte\SecurionPay\Api\CheckoutRequestGeneratorInterface" type="\Forpsyte\SecurionPay\Model\CheckoutRequestGenerator" />
+    <preference for="Forpsyte\SecurionPay\Api\CurrencyRepositoryInterface" type="Forpsyte\SecurionPay\Model\CurrencyRepository"/>
+    <preference for="Forpsyte\SecurionPay\Api\CustomerRepositoryInterface" type="Forpsyte\SecurionPay\Model\CustomerRepository"/>
+    <preference for="Forpsyte\SecurionPay\Api\EventRepositoryInterface" type="Forpsyte\SecurionPay\Model\EventRepository" />
+    <preference for="Forpsyte\SecurionPay\Api\GuestCheckoutRequestGeneratorInterface" type="Forpsyte\SecurionPay\Model\GuestCheckoutRequestGenerator" />
+    <preference for="Forpsyte\SecurionPay\Api\GuestThreeDSecureManagementInterface" type="Forpsyte\SecurionPay\Model\GuestThreeDSecureManagement" />
+    <preference for="Forpsyte\SecurionPay\Api\ThreeDSecureManagementInterface" type="Forpsyte\SecurionPay\Model\ThreeDSecureManagement" />
+    <preference for="Forpsyte\SecurionPay\Api\Data\CurrencyInterface" type="Forpsyte\SecurionPay\Model\Currency" />
+    <preference for="Forpsyte\SecurionPay\Api\Data\CurrencySearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Forpsyte\SecurionPay\Api\Data\CustomerInterface" type="Forpsyte\SecurionPay\Model\Customer" />
+    <preference for="Forpsyte\SecurionPay\Api\Data\CustomerSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Forpsyte\SecurionPay\Api\Data\CheckoutRequestDetailsInterface" type="Forpsyte\SecurionPay\Model\CheckoutRequestDetails" />
+    <preference for="Forpsyte\SecurionPay\Api\Data\EventInterface" type="Forpsyte\SecurionPay\Model\Event" />
+    <preference for="Forpsyte\SecurionPay\Api\Data\EventSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Forpsyte\SecurionPay\Api\Data\ThreeDSecureInformationInterface" type="Forpsyte\SecurionPay\Model\ThreeDSecureInformation" />
+    <preference for="Forpsyte\SecurionPay\Api\Data\TokenInformationInterface" type="Forpsyte\SecurionPay\Model\TokenInformation" />
 
     <!-- Payment Method Facade configuration -->
     <virtualType name="SecurionPayFacade" type="Magento\Payment\Model\Method\Adapter">
         <arguments>
-            <argument name="code" xsi:type="const">Simon\SecurionPay\Model\Ui\ConfigProvider::CODE</argument>
+            <argument name="code" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\ConfigProvider::CODE</argument>
             <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form\Cc</argument>
-            <argument name="infoBlockType" xsi:type="string">Simon\SecurionPay\Block\Info</argument>
+            <argument name="infoBlockType" xsi:type="string">Forpsyte\SecurionPay\Block\Info</argument>
             <argument name="valueHandlerPool" xsi:type="object">SecurionPayValueHandlerPool</argument>
             <argument name="validatorPool" xsi:type="object">SecurionPayValidatorPool</argument>
             <argument name="commandPool" xsi:type="object">SecurionPayCommandPool</argument>
@@ -36,9 +36,9 @@
     <!-- Checkout Payment Method Facade configuration -->
     <virtualType name="SecurionPayCheckoutFacade" type="Magento\Payment\Model\Method\Adapter">
         <arguments>
-            <argument name="code" xsi:type="const">Simon\SecurionPay\Model\Ui\Checkout\ConfigProvider::CODE</argument>
+            <argument name="code" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\Checkout\ConfigProvider::CODE</argument>
             <argument name="formBlockType" xsi:type="string">Magento\Payment\Block\Form\Cc</argument>
-            <argument name="infoBlockType" xsi:type="string">Simon\SecurionPay\Block\Checkout\Info</argument>
+            <argument name="infoBlockType" xsi:type="string">Forpsyte\SecurionPay\Block\Checkout\Info</argument>
             <argument name="valueHandlerPool" xsi:type="object">SecurionPayCheckoutValueHandlerPool</argument>
             <argument name="validatorPool" xsi:type="object">SecurionPayValidatorPool</argument>
             <argument name="commandPool" xsi:type="object">SecurionPayCheckoutCommandPool</argument>
@@ -52,7 +52,7 @@
             <argument name="config" xsi:type="object">SecurionPayVaultPaymentConfig</argument>
             <argument name="valueHandlerPool" xsi:type="object">SecurionPayVaultPaymentValueHandlerPool</argument>
             <argument name="vaultProvider" xsi:type="object">SecurionPayFacade</argument>
-            <argument name="code" xsi:type="const">Simon\SecurionPay\Model\Ui\ConfigProvider::CC_VAULT_CODE</argument>
+            <argument name="code" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\ConfigProvider::CC_VAULT_CODE</argument>
         </arguments>
     </virtualType>
     <virtualType name="SecurionPayVaultPaymentValueHandlerPool" type="VaultPaymentValueHandlerPool">
@@ -69,18 +69,18 @@
     </virtualType>
     <virtualType name="SecurionPayVaultPaymentConfig" type="Magento\Payment\Gateway\Config\Config">
         <arguments>
-            <argument name="methodCode" xsi:type="const">Simon\SecurionPay\Model\Ui\ConfigProvider::CC_VAULT_CODE</argument>
+            <argument name="methodCode" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\ConfigProvider::CC_VAULT_CODE</argument>
         </arguments>
     </virtualType>
     <!-- END Vault payment method facade configuration -->
 
     <!-- Helper configurations -->
-    <type name="Simon\SecurionPay\Helper\Data">
+    <type name="Forpsyte\SecurionPay\Helper\Data">
         <arguments>
             <argument name="methods" xsi:type="array">
-                <item name="securionpay" xsi:type="const">Simon\SecurionPay\Model\Ui\ConfigProvider::CODE</item>
-                <item name="securionpay_checkout" xsi:type="const">Simon\SecurionPay\Model\Ui\Checkout\ConfigProvider::CODE</item>
-                <item name="securionpay_cc_vault" xsi:type="const">Simon\SecurionPay\Model\Ui\ConfigProvider::CC_VAULT_CODE</item>
+                <item name="securionpay" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\ConfigProvider::CODE</item>
+                <item name="securionpay_checkout" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\Checkout\ConfigProvider::CODE</item>
+                <item name="securionpay_cc_vault" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\ConfigProvider::CC_VAULT_CODE</item>
                 <!-- TODO - Add additional methods for Vault and SecurionPay Checkout-->
             </argument>
         </arguments>
@@ -88,14 +88,14 @@
     <!-- END Helper configurations -->
 
     <!-- Configuration reader -->
-    <type name="Simon\SecurionPay\Gateway\Config\Config">
+    <type name="Forpsyte\SecurionPay\Gateway\Config\Config">
         <arguments>
-            <argument name="methodCode" xsi:type="const">Simon\SecurionPay\Model\Ui\ConfigProvider::CODE</argument>
+            <argument name="methodCode" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\ConfigProvider::CODE</argument>
         </arguments>
     </type>
-    <type name="Simon\SecurionPay\Gateway\Config\Checkout\Config">
+    <type name="Forpsyte\SecurionPay\Gateway\Config\Checkout\Config">
         <arguments>
-            <argument name="methodCode" xsi:type="const">Simon\SecurionPay\Model\Ui\Checkout\ConfigProvider::CODE</argument>
+            <argument name="methodCode" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\Checkout\ConfigProvider::CODE</argument>
         </arguments>
     </type>
     <!-- END Configuration reader -->
@@ -103,25 +103,25 @@
     <!-- Logger, initialized with SecurionPay -->
     <virtualType name="SecurionPayLoggerForTransaction" type="Magento\Payment\Model\Method\Logger">
         <arguments>
-            <argument name="config" xsi:type="object">Simon\SecurionPay\Gateway\Config\Config</argument>
+            <argument name="config" xsi:type="object">Forpsyte\SecurionPay\Gateway\Config\Config</argument>
         </arguments>
     </virtualType>
-    <type name="Simon\SecurionPay\Gateway\Http\Client\TransactionAuthorization">
+    <type name="Forpsyte\SecurionPay\Gateway\Http\Client\TransactionAuthorization">
         <arguments>
             <argument name="customLogger" xsi:type="object">SecurionPayLoggerForTransaction</argument>
         </arguments>
     </type>
-    <type name="Simon\SecurionPay\Gateway\Http\Client\TransactionCapture">
+    <type name="Forpsyte\SecurionPay\Gateway\Http\Client\TransactionCapture">
         <arguments>
             <argument name="customLogger" xsi:type="object">SecurionPayLoggerForTransaction</argument>
         </arguments>
     </type>
-    <type name="Simon\SecurionPay\Gateway\Http\Client\TransactionRefund">
+    <type name="Forpsyte\SecurionPay\Gateway\Http\Client\TransactionRefund">
         <arguments>
             <argument name="customLogger" xsi:type="object">SecurionPayLoggerForTransaction</argument>
         </arguments>
     </type>
-    <type name="Simon\SecurionPay\Gateway\Http\Client\TransactionSale">
+    <type name="Forpsyte\SecurionPay\Gateway\Http\Client\TransactionSale">
         <arguments>
             <argument name="customLogger" xsi:type="object">SecurionPayLoggerForTransaction</argument>
         </arguments>
@@ -138,6 +138,7 @@
                 <item name="vault_sale" xsi:type="string">SecurionPayVaultSaleCommand</item>
                 <item name="capture" xsi:type="string">SecurionPayCaptureStrategyCommand</item>
                 <item name="settlement" xsi:type="string">SecurionPayCaptureCommand</item>
+                <item name="verify" xsi:type="string">SecurionPayVerifyCommand</item>
                 <item name="refund" xsi:type="string">SecurionPayRefundCommand</item>
                 <item name="void" xsi:type="string">SecurionPayCancelCommand</item>
                 <item name="cancel" xsi:type="string">SecurionPayCancelCommand</item>
@@ -178,20 +179,20 @@
     <!-- END Command managers section for Vault -->
 
     <!-- Error Mapping -->
-    <virtualType name="Simon\SecurionPay\Gateway\ErrorMapper\VirtualConfigReader" type="Magento\Payment\Gateway\ErrorMapper\VirtualConfigReader">
+    <virtualType name="Forpsyte\SecurionPay\Gateway\ErrorMapper\VirtualConfigReader" type="Magento\Payment\Gateway\ErrorMapper\VirtualConfigReader">
         <arguments>
             <argument name="fileName" xsi:type="string">securionpay_error_mapping.xml</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Simon\SecurionPay\Gateway\ErrorMapper\VirtualMappingData" type="Magento\Payment\Gateway\ErrorMapper\MappingData">
+    <virtualType name="Forpsyte\SecurionPay\Gateway\ErrorMapper\VirtualMappingData" type="Magento\Payment\Gateway\ErrorMapper\MappingData">
         <arguments>
-            <argument name="reader" xsi:type="object">Simon\SecurionPay\Gateway\ErrorMapper\VirtualConfigReader</argument>
+            <argument name="reader" xsi:type="object">Forpsyte\SecurionPay\Gateway\ErrorMapper\VirtualConfigReader</argument>
             <argument name="cacheId" xsi:type="string">securionpay_error_mapper</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Simon\SecurionPay\Gateway\ErrorMapper\VirtualErrorMessageMapper" type="Magento\Payment\Gateway\ErrorMapper\ErrorMessageMapper">
+    <virtualType name="Forpsyte\SecurionPay\Gateway\ErrorMapper\VirtualErrorMessageMapper" type="Magento\Payment\Gateway\ErrorMapper\ErrorMessageMapper">
         <arguments>
-            <argument name="messageMapping" xsi:type="object">Simon\SecurionPay\Gateway\ErrorMapper\VirtualMappingData</argument>
+            <argument name="messageMapping" xsi:type="object">Forpsyte\SecurionPay\Gateway\ErrorMapper\VirtualMappingData</argument>
         </arguments>
     </virtualType>
     <!-- END Error Mapping -->
@@ -200,18 +201,18 @@
     <virtualType name="SecurionPayAuthorizeRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
         <arguments>
             <argument name="builders" xsi:type="array">
-                <item name="payment" xsi:type="string">Simon\SecurionPay\Gateway\Request\Authorize\PaymentDataBuilder</item>
-                <item name="address" xsi:type="string">Simon\SecurionPay\Gateway\Request\AddressDataBuilder</item>
-                <item name="vault" xsi:type="string">Simon\SecurionPay\Gateway\Request\VaultDataBuilder</item>
-                <item name="3d_secure" xsi:type="string">Simon\SecurionPay\Gateway\Request\ThreeDSecure\PaymentDataBuilder</item>
+                <item name="payment" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\Authorize\PaymentDataBuilder</item>
+                <item name="address" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\AddressDataBuilder</item>
+                <item name="vault" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\VaultDataBuilder</item>
+                <item name="3d_secure" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\ThreeDSecure\PaymentDataBuilder</item>
             </argument>
         </arguments>
     </virtualType>
     <virtualType name="SecurionPayCheckoutAuthorizeRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
         <arguments>
             <argument name="builders" xsi:type="array">
-                <item name="payment" xsi:type="string">Simon\SecurionPay\Gateway\Request\Checkout\Authorize\PaymentDataBuilder</item>
-                <item name="customer" xsi:type="string">Simon\SecurionPay\Gateway\Request\Checkout\Authorize\CustomerDataBuilder</item>
+                <item name="payment" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\Checkout\Authorize\PaymentDataBuilder</item>
+                <item name="customer" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\Checkout\Authorize\CustomerDataBuilder</item>
             </argument>
         </arguments>
     </virtualType>
@@ -219,8 +220,8 @@
     <virtualType name="SecurionPayVaultAuthorizeRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
         <arguments>
             <argument name="builders" xsi:type="array">
-                <item name="payment" xsi:type="string">Simon\SecurionPay\Gateway\Request\Authorize\Payment\VaultDataBuilder</item>
-                <item name="address" xsi:type="string">Simon\SecurionPay\Gateway\Request\AddressDataBuilder</item>
+                <item name="payment" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\Authorize\Payment\VaultDataBuilder</item>
+                <item name="address" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\AddressDataBuilder</item>
             </argument>
         </arguments>
     </virtualType>
@@ -230,17 +231,25 @@
     <virtualType name="SecurionPayCaptureRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
         <arguments>
             <argument name="builders" xsi:type="array">
-                <item name="payment" xsi:type="string">Simon\SecurionPay\Gateway\Request\Capture\PaymentDataBuilder</item>
+                <item name="payment" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\Capture\PaymentDataBuilder</item>
             </argument>
         </arguments>
     </virtualType>
     <!-- END Capture Transaction Request -->
 
+    <virtualType name="SecurionPayVerifyRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="payment" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\Verify\PaymentDataBuilder</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
     <!-- Refund Transaction Request -->
     <virtualType name="SecurionPayRefundRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
         <arguments>
             <argument name="builders" xsi:type="array">
-                <item name="payment" xsi:type="string">Simon\SecurionPay\Gateway\Request\Refund\PaymentDataBuilder</item>
+                <item name="payment" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\Refund\PaymentDataBuilder</item>
             </argument>
         </arguments>
     </virtualType>
@@ -250,7 +259,7 @@
     <virtualType name="SecurionPayCancelRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
         <arguments>
             <argument name="builders" xsi:type="array">
-                <item name="payment" xsi:type="string">Simon\SecurionPay\Gateway\Request\Cancel\PaymentDataBuilder</item>
+                <item name="payment" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\Cancel\PaymentDataBuilder</item>
             </argument>
         </arguments>
     </virtualType>
@@ -260,20 +269,20 @@
     <virtualType name="SecurionPayAuthorizeCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
         <arguments>
             <argument name="requestBuilder" xsi:type="object">SecurionPayAuthorizeRequest</argument>
-            <argument name="transferFactory" xsi:type="object">Simon\SecurionPay\Gateway\Http\TransferFactory</argument>
-            <argument name="client" xsi:type="object">Simon\SecurionPay\Gateway\Http\Client\TransactionAuthorize</argument>
+            <argument name="transferFactory" xsi:type="object">Forpsyte\SecurionPay\Gateway\Http\TransferFactory</argument>
+            <argument name="client" xsi:type="object">Forpsyte\SecurionPay\Gateway\Http\Client\TransactionAuthorize</argument>
             <argument name="handler" xsi:type="object">SecurionPayAuthorizationHandler</argument>
-            <argument name="validator" xsi:type="object">Simon\SecurionPay\Gateway\Validator\ResponseValidator</argument>
-            <argument name="errorMessageMapper" xsi:type="object">Simon\SecurionPay\Gateway\ErrorMapper\VirtualErrorMessageMapper</argument>
+            <argument name="validator" xsi:type="object">Forpsyte\SecurionPay\Gateway\Validator\ResponseValidator</argument>
+            <argument name="errorMessageMapper" xsi:type="object">Forpsyte\SecurionPay\Gateway\ErrorMapper\VirtualErrorMessageMapper</argument>
         </arguments>
     </virtualType>
 
     <virtualType name="SecurionPayCheckoutAuthorizeCommand" type="SecurionPayAuthorizeCommand">
         <arguments>
             <argument name="requestBuilder" xsi:type="object">SecurionPayCheckoutAuthorizeRequest</argument>
-            <argument name="client" xsi:type="object">Simon\SecurionPay\Gateway\Http\Client\Checkout\TransactionGetCharge</argument>
+            <argument name="client" xsi:type="object">Forpsyte\SecurionPay\Gateway\Http\Client\Checkout\TransactionGetCharge</argument>
             <argument name="handler" xsi:type="object">SecurionPayCheckoutAuthorizationHandler</argument>
-            <argument name="validator" xsi:type="object">Simon\SecurionPay\Gateway\Validator\Checkout\ResponseValidator</argument>
+            <argument name="validator" xsi:type="object">Forpsyte\SecurionPay\Gateway\Validator\Checkout\ResponseValidator</argument>
         </arguments>
     </virtualType>
 
@@ -288,7 +297,7 @@
     <virtualType name="SecurionPaySaleCommand" type="SecurionPayAuthorizeCommand">
         <arguments>
             <argument name="requestBuilder" xsi:type="object">SecurionPayAuthorizeRequest</argument>
-            <argument name="client" xsi:type="object">Simon\SecurionPay\Gateway\Http\Client\TransactionSale</argument>
+            <argument name="client" xsi:type="object">Forpsyte\SecurionPay\Gateway\Http\Client\TransactionSale</argument>
             <argument name="handler" xsi:type="object">SecurionPaySaleHandler</argument>
         </arguments>
     </virtualType>
@@ -310,14 +319,22 @@
     <virtualType name="SecurionPayCaptureCommand" type="SecurionPayAuthorizeCommand">
         <arguments>
             <argument name="requestBuilder" xsi:type="object">SecurionPayCaptureRequest</argument>
-            <argument name="client" xsi:type="object">Simon\SecurionPay\Gateway\Http\Client\TransactionCapture</argument>
+            <argument name="client" xsi:type="object">Forpsyte\SecurionPay\Gateway\Http\Client\TransactionCapture</argument>
             <argument name="handler" xsi:type="object">SecurionPayCaptureHandler</argument>
         </arguments>
     </virtualType>
     <!-- END Capture Command  -->
 
+    <!-- Verify Command -->
+    <virtualType name="SecurionPayVerifyCommand" type="SecurionPayCaptureCommand">
+        <arguments>
+            <argument name="client" xsi:type="object">Forpsyte\SecurionPay\Gateway\Http\Client\TransactionVerify</argument>
+        </arguments>
+    </virtualType>
+    <!-- END Verify Command -->
+
     <!-- BEGIN Capture Strategy Command  -->
-    <virtualType name="SecurionPayCaptureStrategyCommand" type="Simon\SecurionPay\Gateway\Command\CaptureStrategyCommand">
+    <virtualType name="SecurionPayCaptureStrategyCommand" type="Forpsyte\SecurionPay\Gateway\Command\CaptureStrategyCommand">
         <arguments>
             <argument name="commandPool" xsi:type="object">SecurionPayCommandPool</argument>
         </arguments>
@@ -328,11 +345,11 @@
     <virtualType name="SecurionPayRefundCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
         <arguments>
             <argument name="requestBuilder" xsi:type="object">SecurionPayRefundRequest</argument>
-            <argument name="transferFactory" xsi:type="object">Simon\SecurionPay\Gateway\Http\TransferFactory</argument>
-            <argument name="client" xsi:type="object">Simon\SecurionPay\Gateway\Http\Client\TransactionRefund</argument>
-            <argument name="handler" xsi:type="object">Simon\SecurionPay\Gateway\Response\RefundHandler</argument>
-            <argument name="validator" xsi:type="object">Simon\SecurionPay\Gateway\Validator\ResponseValidator</argument>
-            <argument name="errorMessageMapper" xsi:type="object">Simon\SecurionPay\Gateway\ErrorMapper\VirtualErrorMessageMapper</argument>
+            <argument name="transferFactory" xsi:type="object">Forpsyte\SecurionPay\Gateway\Http\TransferFactory</argument>
+            <argument name="client" xsi:type="object">Forpsyte\SecurionPay\Gateway\Http\Client\TransactionRefund</argument>
+            <argument name="handler" xsi:type="object">Forpsyte\SecurionPay\Gateway\Response\RefundHandler</argument>
+            <argument name="validator" xsi:type="object">Forpsyte\SecurionPay\Gateway\Validator\ResponseValidator</argument>
+            <argument name="errorMessageMapper" xsi:type="object">Forpsyte\SecurionPay\Gateway\ErrorMapper\VirtualErrorMessageMapper</argument>
         </arguments>
     </virtualType>
     <!-- END Refund Command -->
@@ -341,7 +358,7 @@
     <virtualType name="SecurionPayCancelCommand" type="SecurionPayRefundCommand">
         <arguments>
             <argument name="requestBuilder" xsi:type="object">SecurionPayCancelRequest</argument>
-            <argument name="handler" xsi:type="object">Simon\SecurionPay\Gateway\Response\VoidHandler</argument>
+            <argument name="handler" xsi:type="object">Forpsyte\SecurionPay\Gateway\Response\VoidHandler</argument>
         </arguments>
     </virtualType>
     <!-- END Void Command -->
@@ -351,8 +368,8 @@
         <arguments>
             <argument name="handlers" xsi:type="array">
                 <item name="default" xsi:type="string">SecurionPayConfigValueHandler</item>
-                <item name="can_void" xsi:type="string">Simon\SecurionPay\Gateway\Config\CanVoidHandler</item>
-                <item name="can_cancel" xsi:type="string">Simon\SecurionPay\Gateway\Config\CanVoidHandler</item>
+                <item name="can_void" xsi:type="string">Forpsyte\SecurionPay\Gateway\Config\CanVoidHandler</item>
+                <item name="can_cancel" xsi:type="string">Forpsyte\SecurionPay\Gateway\Config\CanVoidHandler</item>
             </argument>
         </arguments>
     </virtualType>
@@ -365,56 +382,56 @@
     </virtualType>
     <virtualType name="SecurionPayConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
         <arguments>
-            <argument name="configInterface" xsi:type="object">Simon\SecurionPay\Gateway\Config\Config</argument>
+            <argument name="configInterface" xsi:type="object">Forpsyte\SecurionPay\Gateway\Config\Config</argument>
         </arguments>
     </virtualType>
     <virtualType name="SecurionPayCheckoutConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
         <arguments>
-            <argument name="configInterface" xsi:type="object">Simon\SecurionPay\Gateway\Config\Checkout\Config</argument>
+            <argument name="configInterface" xsi:type="object">Forpsyte\SecurionPay\Gateway\Config\Checkout\Config</argument>
         </arguments>
     </virtualType>
     <virtualType name="SecurionPayAuthorizationHandler" type="Magento\Payment\Gateway\Response\HandlerChain">
         <arguments>
             <argument name="handlers" xsi:type="array">
-                <item name="auth_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\AuthDetailsHandler</item>
-                <item name="txn_id" xsi:type="string">Simon\SecurionPay\Gateway\Response\TransactionIdHandler</item>
-                <item name="risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\RiskDataHandler</item>
-                <item name="post_risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
-                <item name="customer_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\CustomerDetailsHandler</item>
-                <item name="vault_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\VaultDetailsHandler</item>
+                <item name="auth_details" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\AuthDetailsHandler</item>
+                <item name="txn_id" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\TransactionIdHandler</item>
+                <item name="risk_data" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\RiskDataHandler</item>
+                <item name="post_risk_data" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
+                <item name="customer_details" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\CustomerDetailsHandler</item>
+                <item name="vault_details" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\VaultDetailsHandler</item>
             </argument>
         </arguments>
     </virtualType>
     <virtualType name="SecurionPayCheckoutAuthorizationHandler" type="Magento\Payment\Gateway\Response\HandlerChain">
         <arguments>
             <argument name="handlers" xsi:type="array">
-                <item name="auth_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\AuthDetailsHandler</item>
-                <item name="charge_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\ChargeDetailsHandler</item>
-                <item name="txn_id" xsi:type="string">Simon\SecurionPay\Gateway\Response\TransactionIdHandler</item>
-                <item name="risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\RiskDataHandler</item>
-                <item name="post_risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
+                <item name="auth_details" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\AuthDetailsHandler</item>
+                <item name="charge_details" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\ChargeDetailsHandler</item>
+                <item name="txn_id" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\TransactionIdHandler</item>
+                <item name="risk_data" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\RiskDataHandler</item>
+                <item name="post_risk_data" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
             </argument>
         </arguments>
     </virtualType>
     <virtualType name="SecurionPaySaleHandler" type="SecurionPayAuthorizationHandler">
             <arguments>
                 <argument name="handlers" xsi:type="array">
-                    <item name="txn_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\AuthDetailsHandler</item>
-                    <item name="sale_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\SaleDetailsHandler</item>
-                    <item name="risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\RiskDataHandler</item>
-                    <item name="post_risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
-                    <item name="customer_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\CustomerDetailsHandler</item>
-                    <item name="vault_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\VaultDetailsHandler</item>
+                    <item name="txn_details" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\AuthDetailsHandler</item>
+                    <item name="sale_details" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\SaleDetailsHandler</item>
+                    <item name="risk_data" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\RiskDataHandler</item>
+                    <item name="post_risk_data" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
+                    <item name="customer_details" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\CustomerDetailsHandler</item>
+                    <item name="vault_details" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\VaultDetailsHandler</item>
                 </argument>
             </arguments>
     </virtualType>
     <virtualType name="SecurionPayCaptureHandler" type="Magento\Payment\Gateway\Response\HandlerChain">
         <arguments>
             <argument name="handlers" xsi:type="array">
-                <item name="settlement_details" xsi:type="string">Simon\SecurionPay\Gateway\Response\SettleDetailsHandler</item>
-                <item name="txn_id" xsi:type="string">Simon\SecurionPay\Gateway\Response\TransactionIdHandler</item>
-                <item name="risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\RiskDataHandler</item>
-                <item name="post_risk_data" xsi:type="string">Simon\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
+                <item name="settlement_details" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\SettleDetailsHandler</item>
+                <item name="txn_id" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\TransactionIdHandler</item>
+                <item name="risk_data" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\RiskDataHandler</item>
+                <item name="post_risk_data" xsi:type="string">Forpsyte\SecurionPay\Gateway\Response\PostRiskDataHandler</item>
             </argument>
         </arguments>
     </virtualType>
@@ -423,7 +440,7 @@
     <!-- SecurionPay validators infrastructure -->
     <virtualType name="SecurionPayCountryValidator" type="Magento\Payment\Gateway\Validator\CountryValidator">
         <arguments>
-            <argument name="config" xsi:type="object">Simon\SecurionPay\Gateway\Config\Config</argument>
+            <argument name="config" xsi:type="object">Forpsyte\SecurionPay\Gateway\Config\Config</argument>
         </arguments>
     </virtualType>
     <virtualType name="SecurionPayValidatorPool" type="Magento\Payment\Gateway\Validator\ValidatorPool">
@@ -436,20 +453,20 @@
     <!-- END SecurionPay validators infrastructure -->
 
     <!-- BEGIN Payment blocks configuration -->
-    <type name="Simon\SecurionPay\Block\Info">
+    <type name="Forpsyte\SecurionPay\Block\Info">
         <arguments>
-            <argument name="config" xsi:type="object">Simon\SecurionPay\Gateway\Config\Config</argument>
+            <argument name="config" xsi:type="object">Forpsyte\SecurionPay\Gateway\Config\Config</argument>
         </arguments>
     </type>
-    <virtualType name="Simon\SecurionPay\Block\Checkout\Info" type="Simon\SecurionPay\Block\Info">
+    <virtualType name="Forpsyte\SecurionPay\Block\Checkout\Info" type="Forpsyte\SecurionPay\Block\Info">
         <arguments>
-            <argument name="config" xsi:type="object">Simon\SecurionPay\Gateway\Config\Checkout\Config</argument>
+            <argument name="config" xsi:type="object">Forpsyte\SecurionPay\Gateway\Config\Checkout\Config</argument>
         </arguments>
     </virtualType>
     <!-- END Payment blocks configuration -->
 
     <!-- Collections Processors -->
-    <virtualType name="Simon\SecurionPay\Model\Api\SearchCriteria\CurrencyCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Forpsyte\SecurionPay\Model\Api\SearchCriteria\CurrencyCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
         <arguments>
             <argument name="processors" xsi:type="array">
                 <item name="filters" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor</item>
@@ -458,12 +475,12 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Simon\SecurionPay\Model\CurrencyRepository">
+    <type name="Forpsyte\SecurionPay\Model\CurrencyRepository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Simon\SecurionPay\Model\Api\SearchCriteria\CurrencyCollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Forpsyte\SecurionPay\Model\Api\SearchCriteria\CurrencyCollectionProcessor</argument>
         </arguments>
     </type>
-    <virtualType name="Simon\SecurionPay\Model\Api\SearchCriteria\CustomerCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Forpsyte\SecurionPay\Model\Api\SearchCriteria\CustomerCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
         <arguments>
             <argument name="processors" xsi:type="array">
                 <item name="filters" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor</item>
@@ -472,12 +489,12 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Simon\SecurionPay\Model\CustomerRepository">
+    <type name="Forpsyte\SecurionPay\Model\CustomerRepository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Simon\SecurionPay\Model\Api\SearchCriteria\CustomerCollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Forpsyte\SecurionPay\Model\Api\SearchCriteria\CustomerCollectionProcessor</argument>
         </arguments>
     </type>
-    <virtualType name="Simon\SecurionPay\Model\Api\SearchCriteria\EventCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Forpsyte\SecurionPay\Model\Api\SearchCriteria\EventCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
         <arguments>
             <argument name="processors" xsi:type="array">
                 <item name="filters" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor</item>
@@ -486,41 +503,42 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Simon\SecurionPay\Model\EventRepository">
+    <type name="Forpsyte\SecurionPay\Model\EventRepository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Simon\SecurionPay\Model\Api\SearchCriteria\EventCollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Forpsyte\SecurionPay\Model\Api\SearchCriteria\EventCollectionProcessor</argument>
         </arguments>
     </type>
 
     <!-- Event Processors -->
-    <virtualType name="Simon\SecurionPay\Api\Event\EventProcessor" type="Simon\SecurionPay\Model\EventProcessor">
+    <virtualType name="Forpsyte\SecurionPay\Api\Event\EventProcessor" type="Forpsyte\SecurionPay\Model\EventProcessor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="default" xsi:type="object">Simon\SecurionPay\Model\Event\Processor\DefaultProcessor</item>
-                <item name="fraud_detection" xsi:type="object">Simon\SecurionPay\Model\Event\Processor\ChargeUpdated\FraudDetectionProcessor</item>
+                <item name="default" xsi:type="object">Forpsyte\SecurionPay\Model\Event\Processor\DefaultProcessor</item>
+                <item name="authorization_fraud_detection" xsi:type="object">Forpsyte\SecurionPay\Model\Event\Processor\ChargeUpdated\AuthorizationFraudDetectionProcessor</item>
+                <item name="capture_fraud_detection" xsi:type="object">Forpsyte\SecurionPay\Model\Event\Processor\ChargeUpdated\CaptureFraudDetectionProcessor</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Simon\SecurionPay\Controller\Event\Process">
+    <type name="Forpsyte\SecurionPay\Controller\Event\Process">
         <arguments>
-            <argument name="eventProcessor" xsi:type="object">Simon\SecurionPay\Api\Event\EventProcessor</argument>
+            <argument name="eventProcessor" xsi:type="object">Forpsyte\SecurionPay\Api\Event\EventProcessor</argument>
         </arguments>
     </type>
 
     <!-- Custom transaction client strategy -->
-    <type name="Simon\SecurionPay\Gateway\Http\Client\Adapter\CommandStrategy">
+    <type name="Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\CommandStrategy">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="authorize" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayAuthorize</item>
-                <item name="capture" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCapture</item>
-                <item name="refund" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayRefund</item>
-                <item name="sale" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPaySale</item>
-                <item name="create_customer" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCreateCustomer</item>
-                <item name="create_card" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCreateCard</item>
-                <item name="delete_card" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayDeleteCard</item>
-                <item name="get_charge" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayGetCharge</item>
-                <item name="get_checkout" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCheckout</item>
-                <item name="get_event" xsi:type="string">Simon\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayGetEvent</item>
+                <item name="authorize" xsi:type="string">Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayAuthorize</item>
+                <item name="capture" xsi:type="string">Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCapture</item>
+                <item name="refund" xsi:type="string">Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayRefund</item>
+                <item name="sale" xsi:type="string">Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPaySale</item>
+                <item name="create_customer" xsi:type="string">Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCreateCustomer</item>
+                <item name="create_card" xsi:type="string">Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCreateCard</item>
+                <item name="delete_card" xsi:type="string">Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayDeleteCard</item>
+                <item name="get_charge" xsi:type="string">Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayGetCharge</item>
+                <item name="get_checkout" xsi:type="string">Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayCheckout</item>
+                <item name="get_event" xsi:type="string">Forpsyte\SecurionPay\Gateway\Http\Client\Adapter\SecurionPayGetEvent</item>
             </argument>
         </arguments>
     </type>

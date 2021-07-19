@@ -1,9 +1,9 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Adapter;
+namespace Forpsyte\SecurionPay\Model\Adapter;
 
 use Magento\Framework\ObjectManagerInterface;
-use Simon\SecurionPay\Gateway\Config\Config;
+use Forpsyte\SecurionPay\Gateway\Config\Config;
 
 class SecurionPayAdapterFactory
 {

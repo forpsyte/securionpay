@@ -5,15 +5,15 @@
         <referenceBlock name="order.create.billing.method.form">
             <action method="setMethodFormTemplate">
                 <argument name="method" xsi:type="string">securionpay</argument>
-                <argument name="template" xsi:type="string">Simon_SecurionPay::form/cc.phtml</argument>
+                <argument name="template" xsi:type="string">Forpsyte_SecurionPay::form/cc.phtml</argument>
             </action>
             <action method="setMethodFormTemplate">
                 <argument name="method" xsi:type="string">securionpay_checkout</argument>
-                <argument name="template" xsi:type="string">Simon_SecurionPay::form/securionpay_checkout.phtml</argument>
+                <argument name="template" xsi:type="string">Forpsyte_SecurionPay::form/securionpay_checkout.phtml</argument>
             </action>
             <action method="setMethodFormTemplate">
                 <argument name="method" xsi:type="string">securionpay_cc_vault</argument>
-                <argument name="template" xsi:type="string">Simon_SecurionPay::form/vault.phtml</argument>
+                <argument name="template" xsi:type="string">Forpsyte_SecurionPay::form/vault.phtml</argument>
             </action>
         </referenceBlock>
     </body>

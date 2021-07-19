@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Client\Adapter;
+namespace Forpsyte\SecurionPay\Gateway\Http\Client\Adapter;
 
 use Magento\Payment\Model\MethodInterface;
 use SecurionPay\Request\CheckoutRequest;
@@ -8,10 +8,10 @@ use SecurionPay\Request\CheckoutRequestCharge;
 use SecurionPay\Request\CheckoutRequestChargeFactory;
 use SecurionPay\Request\CheckoutRequestFactory;
 use SecurionPay\SecurionPayGateway;
-use Simon\SecurionPay\Gateway\Config\Checkout\Config;
-use Simon\SecurionPay\Gateway\Config\Config as ScpConfig;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
+use Forpsyte\SecurionPay\Gateway\Config\Checkout\Config;
+use Forpsyte\SecurionPay\Gateway\Config\Config as ScpConfig;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\Http\Data\ResponseFactory;
 
 class SecurionPayCheckout implements AdapterInterface
 {

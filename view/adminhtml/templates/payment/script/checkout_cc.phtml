@@ -1,5 +1,5 @@
 <?php
-/** @var \Simon\SecurionPay\Block\Adminhtml\Checkout\Payment $block */
+/** @var \Forpsyte\SecurionPay\Block\Adminhtml\Checkout\Payment $block */
 
 $code = $block->escapeHtml($block->getCode());
 ?>
@@ -7,7 +7,7 @@ $code = $block->escapeHtml($block->getCode());
     //<![CDATA[
     require(
         [
-            'Simon_SecurionPay/js/securionpay-checkout',
+            'Forpsyte_SecurionPay/js/securionpay-checkout',
             'jquery',
             'domReady!'
         ], function(SecurionPayCheckout, $) {

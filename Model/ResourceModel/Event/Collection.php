@@ -1,9 +1,9 @@
 <?php
 
-namespace Simon\SecurionPay\Model\ResourceModel\Event;
+namespace Forpsyte\SecurionPay\Model\ResourceModel\Event;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Simon\SecurionPay\Model\Event;
+use Forpsyte\SecurionPay\Model\Event;
 
 class Collection extends AbstractCollection
 {
@@ -31,7 +31,7 @@ class Collection extends AbstractCollection
      */
     protected function _construct()
     {
-        $this->_init(Event::class, \Simon\SecurionPay\Model\ResourceModel\Event::class);
+        $this->_init(Event::class, \Forpsyte\SecurionPay\Model\ResourceModel\Event::class);
         $this->_map['fields']['entity_id'] = 'main_table.entity_id';
     }
 

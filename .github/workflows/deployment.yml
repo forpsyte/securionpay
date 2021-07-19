@@ -49,8 +49,8 @@ jobs:
           KEY: ${{ secrets.SSH_KEY }}
           script: |
             cd ${{ env.webroot_path }}
-            rm -rf app/code/Simon/SecurionPay
-            ln -sfn ${{ env.build_path }} app/code/Simon/SecurionPay
+            rm -rf app/code/Forpsyte/SecurionPay
+            ln -sfn ${{ env.build_path }} app/code/Forpsyte/SecurionPay
             sudo chown -R :www-data ${{ env.build_path }}
 
       - name: Clean up previous builds
