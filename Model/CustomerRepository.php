@@ -1,16 +1,16 @@
 <?php
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Simon\SecurionPay\Api\CustomerRepositoryInterface;
-use Simon\SecurionPay\Api\Data;
-use Simon\SecurionPay\Model\ResourceModel\Customer as ResourceCustomer;
-use Simon\SecurionPay\Model\ResourceModel\Customer\CollectionFactory as CustomerCollectionFactory;
+use Forpsyte\SecurionPay\Api\CustomerRepositoryInterface;
+use Forpsyte\SecurionPay\Api\Data;
+use Forpsyte\SecurionPay\Model\ResourceModel\Customer as ResourceCustomer;
+use Forpsyte\SecurionPay\Model\ResourceModel\Customer\CollectionFactory as CustomerCollectionFactory;
 
 /**
  * CustomerRepository Class
@@ -102,7 +102,7 @@ class CustomerRepository implements CustomerRepositoryInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
-        /** @var  \Simon\SecurionPay\Model\ResourceModel\Customer\Collection $collection */
+        /** @var  \Forpsyte\SecurionPay\Model\ResourceModel\Customer\Collection $collection */
         $collection = $this->customerCollectionFactory->create();
 
         $this->collectionProcessor->process($searchCriteria, $collection);

@@ -22,7 +22,7 @@ define(
             rendererList.push(
                 {
                     type: securionPayGatewayType,
-                    component: 'Simon_SecurionPay/js/view/payment/method-renderer/cc-form'
+                    component: 'Forpsyte_SecurionPay/js/view/payment/method-renderer/cc-form'
                 }
             );
         }

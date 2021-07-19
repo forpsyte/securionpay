@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Adminhtml\Source;
+namespace Forpsyte\SecurionPay\Model\Adminhtml\Source;
 
 /**
  * CC type list source used in admin configuration.

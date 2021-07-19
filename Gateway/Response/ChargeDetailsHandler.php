@@ -1,14 +1,14 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Response;
+namespace Forpsyte\SecurionPay\Gateway\Response;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\Config\Checkout\Config;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
-use Simon\SecurionPay\Gateway\SubjectReader;
+use Forpsyte\SecurionPay\Gateway\Config\Checkout\Config;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
 
 class ChargeDetailsHandler extends AbstractHandler
 {

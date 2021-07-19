@@ -1,6 +1,6 @@
 # SecurionPay Payments
 
-Module Simon\SecurionPay implements integration with the SecurionPay payment system.
+Module Forpsyte\SecurionPay implements integration with the SecurionPay payment system.
 
 ## Overview
 
@@ -27,16 +27,16 @@ SecurionPay.
 ## Installation
 ### Composer (Recommended)
 In your Magento 2 root directory run  
-`composer require simon/magento2-module-securionpay`  
-`php bin/magento module:enable Simon_SecurionPay`  
+`composer require forpsyte/magento2-module-securionpay`  
+`php bin/magento module:enable Forpsyte_SecurionPay`  
 `php bin/magento setup:upgrade`
 
 ### Manual
 In your Magento 2 root directory run  
-`mkdir -p app/code/Simon/`  
-`git clone https://github.com/jsimon-development/securionpay.git app/code/Simon/SecurionPay`  
+`mkdir -p app/code/Forpsyte/`  
+`git clone https://github.com/forpsyte/securionpay.git app/code/Forpsyte/SecurionPay`  
 `composer require securionpay/securionpay-php:^2.2.0`  
-`php bin/magento module:enable Simon_SecurionPay`  
+`php bin/magento module:enable Forpsyte_SecurionPay`  
 `php bin/magento setup:upgrade`
 
 ## Configuration

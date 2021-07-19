@@ -1,14 +1,14 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Request\Cancel;
+namespace Forpsyte\SecurionPay\Gateway\Request\Cancel;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\SubjectReader;
-use Simon\SecurionPay\Helper\Currency;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
+use Forpsyte\SecurionPay\Helper\Currency;
 
 class PaymentDataBuilder implements BuilderInterface
 {

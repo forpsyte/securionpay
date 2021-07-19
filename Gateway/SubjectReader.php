@@ -1,11 +1,11 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway;
+namespace Forpsyte\SecurionPay\Gateway;
 
 use InvalidArgumentException;
 use Magento\Payment\Gateway\Data\PaymentDataObjectInterface;
 use Magento\Payment\Gateway\Helper;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
 
 class SubjectReader
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
 class TokenInformation extends \Magento\Framework\Model\AbstractExtensibleModel implements
-    \Simon\SecurionPay\Api\Data\TokenInformationInterface
+    \Forpsyte\SecurionPay\Api\Data\TokenInformationInterface
 {
 
     /**
@@ -82,7 +82,7 @@ class TokenInformation extends \Magento\Framework\Model\AbstractExtensibleModel 
      * @inheritDoc
      */
     public function setExtensionAttributes(
-        \Simon\SecurionPay\Api\Data\TokenInformationExtensionInterface $extensionAttributes
+        \Forpsyte\SecurionPay\Api\Data\TokenInformationExtensionInterface $extensionAttributes
     ) {
         return $this->_setExtensionAttributes($extensionAttributes);
     }

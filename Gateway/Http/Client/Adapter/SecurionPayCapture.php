@@ -1,12 +1,12 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Client\Adapter;
+namespace Forpsyte\SecurionPay\Gateway\Http\Client\Adapter;
 
 use SecurionPay\Request\CaptureRequest;
 use SecurionPay\Request\CaptureRequestFactory;
 use SecurionPay\SecurionPayGateway;
-use Simon\SecurionPay\Gateway\Config\Config;
-use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
+use Forpsyte\SecurionPay\Gateway\Config\Config;
+use Forpsyte\SecurionPay\Gateway\Http\Data\ResponseFactory;
 
 class SecurionPayCapture implements AdapterInterface
 {

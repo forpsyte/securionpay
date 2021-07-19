@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Ui;
+namespace Forpsyte\SecurionPay\Model\Ui;
 
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
@@ -44,7 +44,7 @@ class TokenUiComponentProvider implements TokenUiComponentProviderInterface
                     TokenUiComponentProviderInterface::COMPONENT_DETAILS => $jsonDetails,
                     TokenUiComponentProviderInterface::COMPONENT_PUBLIC_HASH => $paymentToken->getPublicHash()
                 ],
-                'name' => 'Simon_SecurionPay/js/view/payment/method-renderer/vault'
+                'name' => 'Forpsyte_SecurionPay/js/view/payment/method-renderer/vault'
             ]
         );
     }

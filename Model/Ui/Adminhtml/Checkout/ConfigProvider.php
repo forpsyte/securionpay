@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Ui\Adminhtml\Checkout;
+namespace Forpsyte\SecurionPay\Model\Ui\Adminhtml\Checkout;
 
 use Magento\Backend\Model\Session\Quote;
 use Magento\Checkout\Model\ConfigProviderInterface;
@@ -8,9 +8,9 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\UrlInterface;
 use Psr\Log\LoggerInterface;
-use Simon\SecurionPay\Gateway\Config\Checkout\Config;
-use Simon\SecurionPay\Gateway\Config\Config as ScpConfig;
-use Simon\SecurionPay\Helper\Currency as CurrencyHelper;
+use Forpsyte\SecurionPay\Gateway\Config\Checkout\Config;
+use Forpsyte\SecurionPay\Gateway\Config\Config as ScpConfig;
+use Forpsyte\SecurionPay\Helper\Currency as CurrencyHelper;
 
 class ConfigProvider implements ConfigProviderInterface
 {
@@ -102,7 +102,7 @@ class ConfigProvider implements ConfigProviderInterface
     private function getServiceUrl()
     {
         return $this->urlBuilder->getUrl(
-            \Simon\SecurionPay\Model\Ui\ConfigProvider::CODE .
+            \Forpsyte\SecurionPay\Model\Ui\ConfigProvider::CODE .
             '/order_create/loadCheckoutRequest'
         );
     }

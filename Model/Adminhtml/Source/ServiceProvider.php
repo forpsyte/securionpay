@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Model\Adminhtml\Source;
+namespace Forpsyte\SecurionPay\Model\Adminhtml\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
 

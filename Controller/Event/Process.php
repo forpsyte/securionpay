@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Controller\Event;
+namespace Forpsyte\SecurionPay\Controller\Event;
 
 use Exception;
 use Magento\Framework\App\Action\Action;
@@ -15,13 +15,13 @@ use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Phrase;
 use Magento\Framework\Serialize\Serializer\Json as Serializer;
 use Psr\Log\LoggerInterface;
-use Simon\SecurionPay\Api\Event\EventProcessorInterface;
-use Simon\SecurionPay\Gateway\Http\Data\Error;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
-use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
-use Simon\SecurionPay\Model\Event;
-use Simon\SecurionPay\Model\EventFactory;
+use Forpsyte\SecurionPay\Api\Event\EventProcessorInterface;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Error;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
+use Forpsyte\SecurionPay\Model\Event;
+use Forpsyte\SecurionPay\Model\EventFactory;
 
 class Process extends Action implements CsrfAwareActionInterface, HttpPostActionInterface
 {

@@ -10,7 +10,7 @@
             </arguments>
         </referenceBlock>
         <referenceContainer name="content">
-            <block class="Simon\SecurionPay\Block\Form\Cc" name="payment_method_edit" template="Simon_SecurionPay::form/edit.phtml" cacheable="false">
+            <block class="Forpsyte\SecurionPay\Block\Form\Cc" name="payment_method_edit" template="Forpsyte_SecurionPay::form/edit.phtml" cacheable="false">
                 <container name="form.payment.method" as="form_payment_method"/>
             </block>
         </referenceContainer>

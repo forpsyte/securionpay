@@ -1,12 +1,12 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Client\Adapter;
+namespace Forpsyte\SecurionPay\Gateway\Http\Client\Adapter;
 
 use SecurionPay\Request\RefundRequest;
 use SecurionPay\Request\RefundRequestFactory;
 use SecurionPay\SecurionPayGateway;
-use Simon\SecurionPay\Gateway\Config\Config;
-use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
+use Forpsyte\SecurionPay\Gateway\Config\Config;
+use Forpsyte\SecurionPay\Gateway\Http\Data\ResponseFactory;
 
 class SecurionPayRefund implements AdapterInterface
 {

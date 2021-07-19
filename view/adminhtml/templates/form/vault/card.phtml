@@ -12,7 +12,7 @@ $expYear = $expirationDate[1] ?? '';
 $publicHash = $block->getData(TokenUiComponentProviderInterface::COMPONENT_PUBLIC_HASH);
 ?>
 <div data-mage-init='{
-        "Simon_SecurionPay/js/vault": {
+        "Forpsyte_SecurionPay/js/vault": {
             "container": "payment_<?= /* @noEscape */ $id ?>",
             "publicHash": "<?= $block->escapeHtml($publicHash) ?>",
             "ccNumber": "<?= $block->escapeHtml($details['maskedCC']) ?>",

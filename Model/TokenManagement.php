@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Model;
+namespace Forpsyte\SecurionPay\Model;
 
 use Exception;
 use Magento\Customer\Api\Data\CustomerInterface;
@@ -10,11 +10,11 @@ use Magento\Vault\Api\Data\PaymentTokenFactoryInterface;
 use Magento\Vault\Api\Data\PaymentTokenInterface;
 use Magento\Vault\Api\PaymentTokenRepositoryInterface;
 use Magento\Vault\Model\PaymentTokenFactory;
-use Simon\SecurionPay\Api\CustomerRepositoryInterface;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\Http\Data\Response;
-use Simon\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
-use Simon\SecurionPay\Model\Ui\ConfigProvider;
+use Forpsyte\SecurionPay\Api\CustomerRepositoryInterface;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Response;
+use Forpsyte\SecurionPay\Model\Adapter\SecurionPayAdapterFactory;
+use Forpsyte\SecurionPay\Model\Ui\ConfigProvider;
 
 class TokenManagement
 {

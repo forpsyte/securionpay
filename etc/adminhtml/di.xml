@@ -5,9 +5,9 @@
     <!-- Payment Method Facade configuration -->
     <virtualType name="SecurionPayFacade" type="Magento\Payment\Model\Method\Adapter">
         <arguments>
-            <argument name="code" xsi:type="const">Simon\SecurionPay\Model\Ui\ConfigProvider::CODE</argument>
-            <argument name="formBlockType" xsi:type="string">Simon\SecurionPay\Block\Adminhtml\Form\Cc</argument>
-            <argument name="infoBlockType" xsi:type="string">Simon\SecurionPay\Block\Info</argument>
+            <argument name="code" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\ConfigProvider::CODE</argument>
+            <argument name="formBlockType" xsi:type="string">Forpsyte\SecurionPay\Block\Adminhtml\Form\Cc</argument>
+            <argument name="infoBlockType" xsi:type="string">Forpsyte\SecurionPay\Block\Info</argument>
             <argument name="valueHandlerPool" xsi:type="object">SecurionPayValueHandlerPool</argument>
             <argument name="validatorPool" xsi:type="object">SecurionPayValidatorPool</argument>
             <argument name="commandPool" xsi:type="object">SecurionPayCommandPool</argument>
@@ -16,7 +16,7 @@
 
     <type name="SecurionPayCheckoutFacade">
         <arguments>
-            <argument name="formBlockType" xsi:type="string">Simon\SecurionPay\Block\Adminhtml\Form\Cc</argument>
+            <argument name="formBlockType" xsi:type="string">Forpsyte\SecurionPay\Block\Adminhtml\Form\Cc</argument>
         </arguments>
     </type>
     <!-- END Payment Method Facade configuration -->
@@ -27,24 +27,24 @@
             <argument name="config" xsi:type="object">SecurionPayVaultPaymentConfig</argument>
             <argument name="valueHandlerPool" xsi:type="object">SecurionPayVaultPaymentValueHandlerPool</argument>
             <argument name="vaultProvider" xsi:type="object">SecurionPayFacade</argument>
-            <argument name="code" xsi:type="const">Simon\SecurionPay\Model\Ui\ConfigProvider::CC_VAULT_CODE</argument>
+            <argument name="code" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\ConfigProvider::CC_VAULT_CODE</argument>
         </arguments>
     </virtualType>
     <!-- END: Vault Payment Method Facade configuration -->
 
-    <type name="Simon\SecurionPay\Block\Adminhtml\Checkout\Payment">
+    <type name="Forpsyte\SecurionPay\Block\Adminhtml\Checkout\Payment">
         <arguments>
-            <argument name="configProvider" xsi:type="object">Simon\SecurionPay\Model\Ui\Adminhtml\Checkout\ConfigProvider</argument>
+            <argument name="configProvider" xsi:type="object">Forpsyte\SecurionPay\Model\Ui\Adminhtml\Checkout\ConfigProvider</argument>
         </arguments>
     </type>
 
-    <type name="Simon\SecurionPay\Block\Payment">
+    <type name="Forpsyte\SecurionPay\Block\Payment">
         <arguments>
-            <argument name="configProvider" xsi:type="object">Simon\SecurionPay\Model\Ui\ConfigProvider</argument>
+            <argument name="configProvider" xsi:type="object">Forpsyte\SecurionPay\Model\Ui\ConfigProvider</argument>
         </arguments>
     </type>
 
-    <type name="Simon\SecurionPay\Block\Info">
+    <type name="Forpsyte\SecurionPay\Block\Info">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item xsi:type="string" name="is_secure_mode">0</item>
@@ -55,7 +55,7 @@
     <type name="Magento\Vault\Model\Ui\Adminhtml\TokensConfigProvider">
         <arguments>
             <argument name="tokenUiComponentProviders" xsi:type="array">
-                <item name="securionpay" xsi:type="object">Simon\SecurionPay\Model\Ui\Adminhtml\TokenUiComponentProvider</item>
+                <item name="securionpay" xsi:type="object">Forpsyte\SecurionPay\Model\Ui\Adminhtml\TokenUiComponentProvider</item>
             </argument>
         </arguments>
     </type>
@@ -64,9 +64,9 @@
     <virtualType name="SecurionPayAuthorizeRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
         <arguments>
             <argument name="builders" xsi:type="array">
-                <item name="payment" xsi:type="string">Simon\SecurionPay\Gateway\Request\Authorize\PaymentDataBuilder</item>
-                <item name="address" xsi:type="string">Simon\SecurionPay\Gateway\Request\AddressDataBuilder</item>
-                <item name="vault" xsi:type="string">Simon\SecurionPay\Gateway\Request\VaultDataBuilder</item>
+                <item name="payment" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\Authorize\PaymentDataBuilder</item>
+                <item name="address" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\AddressDataBuilder</item>
+                <item name="vault" xsi:type="string">Forpsyte\SecurionPay\Gateway\Request\VaultDataBuilder</item>
             </argument>
         </arguments>
     </virtualType>

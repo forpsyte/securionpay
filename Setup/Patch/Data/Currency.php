@@ -1,12 +1,12 @@
 <?php
 
-namespace Simon\SecurionPay\Setup\Patch\Data;
+namespace Forpsyte\SecurionPay\Setup\Patch\Data;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
-use Simon\SecurionPay\Api\CurrencyRepositoryInterface;
-use Simon\SecurionPay\Model\CurrencyFactory;
+use Forpsyte\SecurionPay\Api\CurrencyRepositoryInterface;
+use Forpsyte\SecurionPay\Model\CurrencyFactory;
 
 /**
  * Add currency data.

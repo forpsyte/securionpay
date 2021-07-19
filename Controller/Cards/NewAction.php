@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Controller\Cards;
+namespace Forpsyte\SecurionPay\Controller\Cards;
 
 use Magento\Customer\Model\Session;
 use Magento\Framework\App\Action\Context;

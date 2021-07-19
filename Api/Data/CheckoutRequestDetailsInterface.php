@@ -1,10 +1,6 @@
 <?php
-/**
- * Copyright © Visiture, LLC. All rights reserved.
- * See COPYING.txt for license details.
- */
 
-namespace Simon\SecurionPay\Api\Data;
+namespace Forpsyte\SecurionPay\Api\Data;
 
 /**
  * Interface CheckoutRequestDetailsInterface

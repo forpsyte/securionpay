@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Api\Data;
+namespace Forpsyte\SecurionPay\Api\Data;
 
 /**
  * Customer Interface

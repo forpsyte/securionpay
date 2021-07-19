@@ -1,11 +1,11 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Request\Checkout\Authorize;
+namespace Forpsyte\SecurionPay\Gateway\Request\Checkout\Authorize;
 
 use Magento\Payment\Gateway\Request\BuilderInterface;
 use Magento\Sales\Model\Order\Payment;
-use Simon\SecurionPay\Gateway\Http\Data\Request;
-use Simon\SecurionPay\Gateway\SubjectReader;
+use Forpsyte\SecurionPay\Gateway\Http\Data\Request;
+use Forpsyte\SecurionPay\Gateway\SubjectReader;
 
 class PaymentDataBuilder implements BuilderInterface
 {

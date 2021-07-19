@@ -4,8 +4,8 @@
     <type name="Magento\Checkout\Model\CompositeConfigProvider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="securionpay_config_provider" xsi:type="object">Simon\SecurionPay\Model\Ui\ConfigProvider</item>
-                <item name="securionpay_checkout_config_provider" xsi:type="object">Simon\SecurionPay\Model\Ui\Checkout\ConfigProvider</item>
+                <item name="securionpay_config_provider" xsi:type="object">Forpsyte\SecurionPay\Model\Ui\ConfigProvider</item>
+                <item name="securionpay_checkout_config_provider" xsi:type="object">Forpsyte\SecurionPay\Model\Ui\Checkout\ConfigProvider</item>
             </argument>
         </arguments>
     </type>
@@ -13,13 +13,13 @@
     <type name="Magento\Payment\Model\CcGenericConfigProvider">
         <arguments>
             <argument name="methodCodes" xsi:type="array">
-                <item name="securionpay" xsi:type="const">Simon\SecurionPay\Model\Ui\ConfigProvider::CODE</item>
-                <item name="securionpay_checkout" xsi:type="const">Simon\SecurionPay\Model\Ui\Checkout\ConfigProvider::CODE</item>
+                <item name="securionpay" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\ConfigProvider::CODE</item>
+                <item name="securionpay_checkout" xsi:type="const">Forpsyte\SecurionPay\Model\Ui\Checkout\ConfigProvider::CODE</item>
             </argument>
         </arguments>
     </type>
 
-    <type name="Simon\SecurionPay\Block\Info">
+    <type name="Forpsyte\SecurionPay\Block\Info">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item xsi:type="string" name="is_secure_mode">1</item>
@@ -27,13 +27,13 @@
         </arguments>
     </type>
 
-    <type name="Simon\SecurionPay\Block\Form\Cc">
+    <type name="Forpsyte\SecurionPay\Block\Form\Cc">
         <arguments>
             <argument name="method" xsi:type="object">SecurionPayFacade</argument>
         </arguments>
     </type>
 
-    <type name="Simon\SecurionPay\Block\Checkout\Info">
+    <type name="Forpsyte\SecurionPay\Block\Checkout\Info">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item xsi:type="string" name="is_secure_mode">1</item>
@@ -44,16 +44,16 @@
     <type name="Magento\Vault\Model\Ui\TokensConfigProvider">
         <arguments>
             <argument name="tokenUiComponentProviders" xsi:type="array">
-                <item name="securionpay" xsi:type="object">Simon\SecurionPay\Model\Ui\TokenUiComponentProvider</item>
+                <item name="securionpay" xsi:type="object">Forpsyte\SecurionPay\Model\Ui\TokenUiComponentProvider</item>
             </argument>
         </arguments>
     </type>
 
     <!-- Plugins -->
     <type name="Magento\Vault\Api\PaymentTokenRepositoryInterface">
-        <plugin name="securionpay_payment_token_repository_interface" type="Simon\SecurionPay\Plugin\PaymentTokenRepository" />
+        <plugin name="securionpay_payment_token_repository_interface" type="Forpsyte\SecurionPay\Plugin\PaymentTokenRepository" />
     </type>
     <type name="Magento\Customer\Api\CustomerRepositoryInterface">
-        <plugin name="securionpay_customer_repository_interface" type="Simon\SecurionPay\Plugin\CustomerRepository" />
+        <plugin name="securionpay_customer_repository_interface" type="Forpsyte\SecurionPay\Plugin\CustomerRepository" />
     </type>
 </config>

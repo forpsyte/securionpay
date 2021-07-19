@@ -1,14 +1,14 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Client\Adapter;
+namespace Forpsyte\SecurionPay\Gateway\Http\Client\Adapter;
 
 use Magento\Customer\Api\Data\CustomerInterface;
 use SecurionPay\Request\ChargeRequest;
 use SecurionPay\Request\ChargeRequestFactory;
 use SecurionPay\SecurionPayGateway;
-use Simon\SecurionPay\Gateway\Config\Config;
-use Simon\SecurionPay\Gateway\Http\Data\ResponseFactory;
-use Simon\SecurionPay\Observer\DataAssignObserver;
+use Forpsyte\SecurionPay\Gateway\Config\Config;
+use Forpsyte\SecurionPay\Gateway\Http\Data\ResponseFactory;
+use Forpsyte\SecurionPay\Observer\DataAssignObserver;
 
 abstract class AbstractClient implements AdapterInterface
 {

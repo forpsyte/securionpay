@@ -8,7 +8,7 @@ define(
         'securionpay_checkout',
         'Magento_Payment/js/view/payment/cc-form',
         'Magento_Ui/js/model/messageList',
-        'Simon_SecurionPay/js/action/get-checkout-request'
+        'Forpsyte_SecurionPay/js/action/get-checkout-request'
     ],
     function (
         _,
@@ -22,7 +22,7 @@ define(
 
         return Component.extend({
             defaults: {
-                template: 'Simon_SecurionPay/payment/checkout-cc-form',
+                template: 'Forpsyte_SecurionPay/payment/checkout-cc-form',
                 active: false,
                 code: 'securionpay_checkout',
                 lastBillingAddress: null,

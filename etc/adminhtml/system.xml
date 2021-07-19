@@ -9,7 +9,7 @@
                         Offering a more convenient way to accept credit/debit cards in your Magento Store.
                     </comment>
                     <fieldset_css>complex securionpay-section</fieldset_css>
-                    <frontend_model>Simon\SecurionPay\Block\Adminhtml\System\Config\Fieldset\Payment</frontend_model>
+                    <frontend_model>Forpsyte\SecurionPay\Block\Adminhtml\System\Config\Fieldset\Payment</frontend_model>
                     <attribute type="activity_path">payment/securionpay/active</attribute>
                     <attribute type="displayIn">recommended_solutions</attribute>
                     <group id="securionpay_required" translate="label" showInDefault="1" showInWebsite="1" showInStore="1"
@@ -72,7 +72,7 @@
                         <field id="payment_action" translate="label" type="select" sortOrder="20" showInDefault="1"
                                showInWebsite="1" showInStore="0">
                             <label>Payment Action</label>
-                            <source_model>Simon\SecurionPay\Model\Adminhtml\Source\PaymentAction</source_model>
+                            <source_model>Forpsyte\SecurionPay\Model\Adminhtml\Source\PaymentAction</source_model>
                             <config_path>payment/securionpay/payment_action</config_path>
                         </field>
                     </group>
@@ -97,7 +97,7 @@
                         <field id="spc_payment_action" translate="label" type="select" sortOrder="40" showInDefault="1"
                                showInWebsite="1" showInStore="0">
                             <label>Payment Action</label>
-                            <source_model>Simon\SecurionPay\Model\Adminhtml\Source\PaymentAction</source_model>
+                            <source_model>Forpsyte\SecurionPay\Model\Adminhtml\Source\PaymentAction</source_model>
                             <config_path>payment/securionpay_checkout/payment_action</config_path>
                         </field>
                     </group>
@@ -111,7 +111,7 @@
                         </field>
                         <field id="cctypes" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Credit Card Types</label>
-                            <source_model>Simon\SecurionPay\Model\Adminhtml\Source\CcType</source_model>
+                            <source_model>Forpsyte\SecurionPay\Model\Adminhtml\Source\CcType</source_model>
                             <config_path>payment/securionpay/cctypes</config_path>
                         </field>
                         <field id="sort_order" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -122,7 +122,7 @@
                         <field id="fraud_detection_action" translate="label" type="select" sortOrder="40" showInDefault="1"
                                showInWebsite="0" showInStore="0">
                             <label>Fraud Detection Action</label>
-                            <source_model>Simon\SecurionPay\Model\Adminhtml\Source\FraudDetectionAction</source_model>
+                            <source_model>Forpsyte\SecurionPay\Model\Adminhtml\Source\FraudDetectionAction</source_model>
                             <config_path>payment/securionpay/fraud_detection_action</config_path>
                             <comment>
                                 <![CDATA[

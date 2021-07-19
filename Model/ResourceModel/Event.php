@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Model\ResourceModel;
+namespace Forpsyte\SecurionPay\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 

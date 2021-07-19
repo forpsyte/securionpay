@@ -1,6 +1,6 @@
 <?php
 
-namespace Simon\SecurionPay\Gateway\Http\Data;
+namespace Forpsyte\SecurionPay\Gateway\Http\Data;
 
 class Request
 {
