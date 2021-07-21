@@ -211,7 +211,7 @@ abstract class AbstractFraudDetectionProcessor extends AbstractProcessor
     {
         $eventData = $this->getEventData($event);
         $fraudDetails = $eventData[Response::FRAUD_DETAILS] ?? [];
-        $status = $fraudDetails[Response::FRAUD_DETAIL_STATUS] ?? 'Unknown';
+        $status = $fraudDetails[Response::FRAUD_DETAIL_STATUS] ?? 'unknown';
         $status = in_array($status, $this->_highRiskStatuses) || $status == Response::FRAUD_STATUS_IN_UNKNOWN ?
             'declined' : 'approved';
         /** @var Payment $payment */
