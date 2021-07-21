@@ -210,16 +210,15 @@ abstract class AbstractFraudDetectionProcessor extends AbstractProcessor
     protected function addPaymentNotification(EventInterface $event)
     {
         $eventData = $this->getEventData($event);
-        $fraudDetails = $eventData[Response::FRAUD_DETAILS] ?? 'Unknown';
+        $fraudDetails = $eventData[Response::FRAUD_DETAILS] ?? [];
         $status = $fraudDetails[Response::FRAUD_DETAIL_STATUS] ?? 'Unknown';
-        $transactionId = $eventData[Response::ID] ?? 'Unknown';
+        $status = in_array($status, $this->_highRiskStatuses) || $status == Response::FRAUD_STATUS_IN_UNKNOWN ?
+            'declined' : 'approved';
         /** @var Payment $payment */
         $payment = $this->getPayment($event);
         $this->notifierPool->addNotice(
             "Payment Update",
-            "Order ID: {$payment->getOrder()->getIncrementId()}<br>" .
-            "Transaction ID: {$transactionId}<br>" .
-            "Payment Status: {$status}"
+            "Payment for Order {$payment->getOrder()->getIncrementId()} has been {$status}."
         );
     }
 }
