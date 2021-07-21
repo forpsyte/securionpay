@@ -25,6 +25,7 @@ class CaptureFraudDetectionProcessor extends AbstractFraudDetectionProcessor
         if ($order->getState() == Order::STATE_PROCESSING) {
             return;
         }
+
         try {
             $this->invoiceManagement->setCapture($invoice->getEntityId());
             $invoice->getOrder()->setIsInProcess(true);
@@ -37,7 +38,7 @@ class CaptureFraudDetectionProcessor extends AbstractFraudDetectionProcessor
             $this->logger->error($e->getMessage());
             return;
         }
-
+        $this->addPaymentNotification($event);
         $event->setIsProcessed(true);
         return;
     }
@@ -49,6 +50,7 @@ class CaptureFraudDetectionProcessor extends AbstractFraudDetectionProcessor
     {
         return !$this->eventRepository->exists($event) &&
             $event->getType() == $this->getEventType() &&
+            $this->getPayment($event) != null &&
             $this->isExistsCaptureTransaction($this->getPayment($event)) &&
             $this->config->getFraudDetectionAction() == FraudDetectionAction::OPTION_AFTER_CHECKOUT;
     }
