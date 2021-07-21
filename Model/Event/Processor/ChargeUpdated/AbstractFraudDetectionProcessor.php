@@ -217,9 +217,9 @@ abstract class AbstractFraudDetectionProcessor extends AbstractProcessor
         $payment = $this->getPayment($event);
         $this->notifierPool->addNotice(
             "Payment Update",
-            "Order ID: {$payment->getOrder()->getIncrementId()}\n" .
-            "Transaction ID: {$transactionId}" .
-            "Payment Status: {$status}\n"
+            "Order ID: {$payment->getOrder()->getIncrementId()}<br>" .
+            "Transaction ID: {$transactionId}<br>" .
+            "Payment Status: {$status}"
         );
     }
 }
