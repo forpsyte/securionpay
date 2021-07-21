@@ -10,6 +10,7 @@ use Forpsyte\SecurionPay\Model\Event\Processor\AbstractProcessor;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\DB\TransactionFactory;
+use Magento\Framework\Notification\NotifierInterface;
 use Magento\Framework\Serialize\Serializer\Json as Serializer;
 use Magento\Sales\Api\Data\OrderPaymentInterface;
 use Magento\Sales\Api\Data\TransactionInterface;
@@ -88,6 +89,10 @@ abstract class AbstractFraudDetectionProcessor extends AbstractProcessor
      * @var LoggerInterface
      */
     protected $logger;
+    /**
+     * @var NotifierInterface
+     */
+    protected $notifierPool;
 
     /**
      * ChargeUpdated constructor.
@@ -101,6 +106,7 @@ abstract class AbstractFraudDetectionProcessor extends AbstractProcessor
      * @param TransactionRepositoryInterface $transactionRepository
      * @param TransactionFactory $transactionFactory
      * @param Order\StatusResolver $statusResolver
+     * @param NotifierInterface $notifierPool
      * @param Config $config
      * @param Serializer $serializer
      * @param LoggerInterface $logger
@@ -116,6 +122,7 @@ abstract class AbstractFraudDetectionProcessor extends AbstractProcessor
         TransactionRepositoryInterface $transactionRepository,
         TransactionFactory $transactionFactory,
         Order\StatusResolver $statusResolver,
+        NotifierInterface $notifierPool,
         Config $config,
         Serializer $serializer,
         LoggerInterface $logger
@@ -129,6 +136,7 @@ abstract class AbstractFraudDetectionProcessor extends AbstractProcessor
         $this->transactionRepository = $transactionRepository;
         $this->transactionFactory = $transactionFactory;
         $this->statusResolver = $statusResolver;
+        $this->notifierPool = $notifierPool;
         $this->config = $config;
         $this->serializer = $serializer;
         $this->logger = $logger;
@@ -194,5 +202,23 @@ abstract class AbstractFraudDetectionProcessor extends AbstractProcessor
 
         $count = $this->transactionRepository->getList($searchCriteria)->getTotalCount();
         return (boolean) $count;
+    }
+
+    /**
+     * @param EventInterface $event
+     */
+    protected function addPaymentNotification(EventInterface $event)
+    {
+        $eventData = $this->getEventData($event);
+        $fraudDetails = $eventData[Response::FRAUD_DETAILS] ?? [];
+        $status = $fraudDetails[Response::FRAUD_DETAIL_STATUS] ?? 'unknown';
+        $status = in_array($status, $this->_highRiskStatuses) || $status == Response::FRAUD_STATUS_IN_UNKNOWN ?
+            'declined' : 'approved';
+        /** @var Payment $payment */
+        $payment = $this->getPayment($event);
+        $this->notifierPool->addNotice(
+            "Payment Update",
+            "Payment for Order {$payment->getOrder()->getIncrementId()} has been {$status}."
+        );
     }
 }

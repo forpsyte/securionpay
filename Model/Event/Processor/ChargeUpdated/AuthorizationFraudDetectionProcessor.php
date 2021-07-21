@@ -16,18 +16,8 @@ class AuthorizationFraudDetectionProcessor extends AbstractFraudDetectionProcess
      */
     public function process(EventInterface $event)
     {
-        $details = $this->serializer->unserialize($event->getDetails());
-        $eventData = $details[Response::DATA];
-        $searchCriteria = $this->searchCriteriaBuilder
-            ->addFilter(OrderPaymentInterface::CC_TRANS_ID, $eventData[Response::ID])
-            ->create();
-        $results = $this->orderPaymentRepository->getList($searchCriteria);
-        if ($results->getTotalCount() == 0) {
-            return;
-        }
-        /** @var Payment $payment */
-        $items = $results->getItems();
-        $payment = array_pop($items);
+        $eventData = $this->getEventData($event);
+        $payment = $this->getPayment($event);
         $order = $payment->getOrder();
 
         if ($order->getState() == Order::STATE_PROCESSING) {
@@ -61,6 +51,7 @@ class AuthorizationFraudDetectionProcessor extends AbstractFraudDetectionProcess
         $message = __($message, $order->getBaseCurrency()->formatTxt($amount));
         $order->addCommentToStatusHistory($message, false, false);
         $this->orderRepository->save($order);
+        $this->addPaymentNotification($event);
         $event->setIsProcessed(true);
         return;
     }
@@ -72,6 +63,7 @@ class AuthorizationFraudDetectionProcessor extends AbstractFraudDetectionProcess
     {
         return !$this->eventRepository->exists($event) &&
             $event->getType() == $this->getEventType() &&
+            $this->getPayment($event) != null &&
             !$this->isExistsCaptureTransaction($this->getPayment($event)) &&
             $this->config->getFraudDetectionAction() == FraudDetectionAction::OPTION_AFTER_CHECKOUT;
     }
