@@ -33,7 +33,6 @@ In your Magento 2 root directory run
 
 ### Manual
 In your Magento 2 root directory run  
-`mkdir -p app/code/Forpsyte/`  
 `git clone https://github.com/forpsyte/securionpay.git app/code/Forpsyte/SecurionPay`  
 `composer require securionpay/securionpay-php:^2.2.0`  
 `php bin/magento module:enable Forpsyte_SecurionPay`  
